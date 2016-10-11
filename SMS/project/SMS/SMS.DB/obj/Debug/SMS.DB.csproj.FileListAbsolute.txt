@@ -1,0 +1,15 @@
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\SMS.DB.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\SMS.DB.pdb
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\DBTools.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\SMS.Model.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\Dapper.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\MySql.Data.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\Newtonsoft.Json.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\DBTools.pdb
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\SMS.Model.pdb
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\Dapper.pdb
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\Dapper.xml
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\bin\Debug\Newtonsoft.Json.xml
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\obj\Debug\SMS.DB.csprojResolveAssemblyReference.cache
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\obj\Debug\SMS.DB.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.DB\obj\Debug\SMS.DB.pdb

@@ -1,0 +1,11 @@
+E:\SMS\project\Common\WatchDogService\bin\Release\WatchDogService.Config
+E:\SMS\project\Common\WatchDogService\bin\Release\WatchDogService.exe
+E:\SMS\project\Common\WatchDogService\bin\Release\WatchDogService.pdb
+E:\SMS\project\Common\WatchDogService\bin\Release\Monitoring.dll
+E:\SMS\project\Common\WatchDogService\bin\Release\Monitoring.pdb
+E:\SMS\project\Common\WatchDogService\obj\Release\WatchDogService.csprojResolveAssemblyReference.cache
+E:\SMS\project\Common\WatchDogService\obj\Release\WatchDogService.ProjectInstaller.resources
+E:\SMS\project\Common\WatchDogService\obj\Release\WatchDogService.WatchDogService.resources
+E:\SMS\project\Common\WatchDogService\obj\Release\WatchDogService.csproj.GenerateResource.Cache
+E:\SMS\project\Common\WatchDogService\obj\Release\WatchDogService.exe
+E:\SMS\project\Common\WatchDogService\obj\Release\WatchDogService.pdb

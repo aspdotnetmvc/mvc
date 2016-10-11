@@ -1,0 +1,51 @@
+.bss_right .bss_main .main_top{border-bottom: 1px solid #e2e2e2;overflow: hidden;margin: 0px;padding: 0px;list-style-type: none;}
+.bss_right .bss_main .main_top li{float: left;line-height: 40px;margin-left: 30px;font-size: 16px;cursor: pointer;padding: 0 10px;}
+
+.bss_right .bss_main .ismp_con{width: 98%;margin: 0 auto;}
+.bss_right .bss_main .ismp_con .ismp_search{margin-top: 30px;}
+.bss_right .bss_main .ismp_con .pure-g [class *="pure-u"]{font-size: 14px;font-family: \5FAE\8F6F\96C5\9ED1,\5B8B\4F53!important;}
+.bss_right .bss_main .ismp_con .pure-form select{height: auto;}
+.bss_right .bss_main .ismp_con .ismp_search input{width: 63%;}
+.bss_right .bss_main .ismp_con .ismp_search .combo{border-color:#ccc;width:44%!important;height: 35px!important;}
+.bss_right .bss_main .ismp_con .ismp_search .combo input{border:none!important;box-shadow:none!important;width: 80%!important;height: 35px!important;font-size:inherit!important;line-height: 35px;}
+.bss_right .bss_main .ismp_con .ismp_search .combo-arrow{background-color:transparent;background-image:url(../../Images/ico_1.jpg);width: 23px!important; height: 23px!important;margin: 6px;}
+.bss_right .bss_main .ismp_con .ismp_search select{width: 63%;}
+.bss_right .bss_main .ismp_con .ismp_search .btn{padding: 8px 20%;}
+
+.bss_right .bss_main .ismp_con .data-list{width: 100%;margin: 30px auto 0 auto;}
+.bss_right .bss_main .ismp_con .data-list th{line-height: 30px;text-align: center;border-bottom: 1px solid #cbcbcb;}
+.bss_right .bss_main .ismp_con .data-list td{text-align: center;padding:.5em;}
+.bss_right .bss_main .ismp_con .data-list td .btn{margin-right: 5px;padding:0.2em 0.6em;}
+.bss_right .bss_main .ismp_con .data-list td .caozuo_more{padding-left: 23px;padding-right: 23px;position: relative;}
+.bss_right .bss_main .ismp_con .data-list td .caozuo_more i{margin-left: 5px;}
+.bss_right .bss_main .ismp_con .data-list td .more_con{width:86px;position: absolute;z-index: 10;background: #fff;border-left: 1px solid #d5d5d5;border-right: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;list-style-type: none;margin: 0px;padding: 0px;}
+.bss_right .bss_main .ismp_con .data-list td .more_con li{line-height: 30px;color: #333;}
+.bss_right .bss_main .ismp_con .data-list td .more_con li a:hover{color:#d90002;}
+
+.bss_right .bss_main .ismp_con .ismp-fenye{width: 100%;margin-top: 10px;line-height: 34px;overflow: hidden;}
+.bss_right .bss_main .ismp_con .ismp-fenye .ismp-fenyecon{float: right;}
+.bss_right .bss_main .ismp_con .ismp-fenye .ismp-fenyesel{float: right;margin-right: 15px;}
+.bss_right .bss_main .ismp_con .ismp-fenye .ismp-fenyetext{float: right;margin-right: 15px;}
+.bss_right .bss_main .ismp_con .ismp-fenye ul{list-style-type: none;padding: 0px;margin: 0px;}
+.bss_right .bss_main .ismp_con .ismp-fenye ul li{float: left;}
+.bss_right .bss_main .ismp_con .ismp-fenye ul li .btn{border-radius: 0px;}
+.bss_right .bss_main .ismp_con .ismp-fenye ul li .prev1{border-radius: 3px 0 0 3px;color: #fff;}
+.bss_right .bss_main .ismp_con .ismp-fenye ul li .prev2{border-radius: 0 3px 3px 0;color: #fff;}
+.bss_right .bss_main .ismp_con .ismp-fenye ul li .pure-button-active{text-decoration:underline;}
+.bss_right .bss_main .ismp_con .ismp-fenye .ismp_fenye_select{width: 50px;}
+.ismp_text{font-size: 16px;}
+.show-btn{cursor: pointer;}
+.hidden-div{display: none;}
+
+/*添加代理商 开始*/
+.ismp_add_dailishang{background: #f7f7f7;width: 630px;height: 570px;position: absolute;top: 50%;left: 50%;margin-top: -285px;margin-left: -315px;z-index: 100;filter: progid:DXImageTransform.Microsoft.Shadow(color='#484848',Direction=135, Strength=8);-moz-box-shadow: 10px 10px 20px #484848;-webkit-box-shadow: 10px 10px 20px #484848;box-shadow: 10px 10px 20px #484848;}
+.ismp_add_dailishang .ismp_add_title{width: 100%;line-height: 45px;color: #fff;overflow: hidden;}
+.ismp_add_dailishang .ismp_add_title span{float: left;margin-left: 30px;font-size: 16px;}
+.ismp_add_dailishang .ismp_add_title i{float: right;margin-right: 15px;font-size: 20px;cursor: pointer;line-height: 45px;}
+.ismp_add_dailishang .ismp_add_box{width: 100%;height: 525px;overflow-y:auto;}
+.ismp_add_dailishang .ismp_add_box .ismp_add_con{width: 70%;margin: 0 auto;padding: 15px 0;}
+.ismp_add_dailishang .ismp_add_box .ismp_add_con .input{width: 60%;}
+
+.ismp_add_dailishang .ismp_add_box .ismp_add_con2{width: 90%;margin: 0 auto;padding: 15px 0;}
+.ismp_add_dailishang .ismp_add_box .ismp_add_con2 .input{width: 60%;}
+.ismp_add_dailishang .ismp_add_box .ismp_add_con2 .pure-form-aligned .pure-control-group label{width:5em;}

@@ -1,0 +1,253 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>关键词</title>
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $("#frmqrykeywordsgroup").combobox({
+                url: "/Platform/KeywordsGroupComboboxData",
+                valueField: 'id',
+                textField: 'text'
+            });
+
+            $("#frmeditkeywordsgroup").combobox({
+                url: "/Platform/KeywordsGroupComboboxData",
+                valueField: 'id',
+                textField: 'text'
+            });
+
+            $("#frmqrykeywordstype").combobox({
+                //  url: '/Platform/KeywordsTypeComboboxData',
+                valueField: 'id',
+                textField: 'text'
+            });
+            $.post('/Platform/KeywordsTypeComboboxData', {},
+                function (data) {
+                    var jo = eval("(" + data + ")");
+
+                    $.each(jo, function (i, r) {
+                        var t = $("<input type='radio' value='" + r.id + "' name='KeywordsType'>" + r.text + "</input>")
+                        $("#tdkeywordstype").append(t);
+                    });
+                    jo.unshift({ 'id': '', text: ' ' })
+                    $("#frmqrykeywordstype").combobox("loadData", jo);
+
+                });
+        });
+
+
+
+        function doqry() {
+            var KeywordsGroup = $("#frmqrykeywordsgroup").combobox("getValue");
+            var KeywordsType = $("#frmqrykeywordstype").combobox("getValue");
+            var Keywords = $("#frmqrykeywords").val();
+            if (KeywordsGroup + KeywordsType + Keywords == '') {
+                $.messager.alert("提示","请选择或输入一个查询条件","info")
+                return;
+            }
+
+            $("#grid").datagrid({
+                url: "/Platform/KeywordsData",
+                pageNumber: 1,
+                queryParams: {
+                    KeywordsGroup: KeywordsGroup,
+                    KeywordsType: KeywordsType,
+                    Keywords: Keywords
+                }
+            });
+        }
+
+        function reset() {
+            $("#frmqry").form("clear");
+        }
+
+        function reloadgrid() {
+            $("#grid").datagrid("reload")
+        }
+
+        function addrow() {
+
+            $("#winedit").window("open");
+            $("#frmedit").form({
+                url: "/Platform/AddKeywords",
+                onSubmit: function () {
+                    var isValid = $(this).form('validate');
+                    if (!isValid) {
+                        $.messager.progress('close'); // hide progress bar while the form is invalid
+                    }
+
+                    return isValid; // return false will stop the form submission
+
+                },
+                success: function (data) {
+                    var msg = eval("(" + data + ")");
+                    if (msg.success) {
+                        $("#winedit").window("close");
+                        reloadgrid();
+                    }
+                    $.messager.alert("提示", msg.message, msg.type);
+                }
+            });
+            $("#frmedit").form("reset");
+        }
+
+
+        function removerow(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+
+                $.messager.confirm('删除确认', '确定要删除该记录吗?', function (r) {
+                    if (r) {
+                        //删除记录
+                        var jstr = $.ajax({
+                            url: "/Platform/DeleteKeywords",
+                            data: { KeywordsGroup: row.KeyGroup, Keywords: row.Words },
+                            method: "post",
+                            async: false
+                        }).responseText;
+
+                        var msg = eval("(" + jstr + ")");
+                        if (msg.success) {
+                            $("#winedit").window("close");
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, "info");
+                    }
+                });
+
+
+
+            } else {
+                $.messager.alert("提示", "请选择要删除的行！", "info");
+            }
+        }
+
+        function enablerow(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            $.post("/Platform/KeywordsEnable", row, function (data) {
+                var msg = eval("(" + data + ")");
+                if (msg.success) {
+                    reloadgrid();
+                }
+                $.messager.alert("提示", msg.message, "info");
+            });
+        }
+        function disablerow(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            $.post("/Platform/KeywordsDisable", row, function (data) {
+                var msg = eval("(" + data + ")");
+                if (msg.success) {
+                    reloadgrid();
+                }
+                $.messager.alert("提示", msg.message, "info");
+            });
+        }
+        function saverow() {
+
+            $("#frmedit").submit();
+        }
+
+        function cancelEdit() {
+            $("#winedit").window("close");
+        }
+
+        function operations(val, row, index) {
+            var ed = '<a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="enablerow(' + index + ')">启用</a>&nbsp;&nbsp;&nbsp;';
+            if (row.Enable == true) {
+                ed = '<a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="disablerow(' + index + ')">禁用</a>&nbsp;&nbsp;&nbsp;';
+            }
+            return ed + '<a href="javascript:void(0)" class="pure-button ismp-button5 btn" onclick="removerow(' + index + ')">删除</a>';
+        }
+    </script>
+    <style>
+    .box .textbox{width:100%!important;}
+    .box td{padding-top: 10px;}
+    .box .textbox-text{width:100%!important;}
+    </style>
+</head>
+<body class="easyui-layout">
+    <div region="north" height="65">
+        <form id="frmqry" height="65" style="margin-top:15px;padding-left:1%;font-size:14px;">
+            <label for="frmqrykeywordsgroup">敏感词组</label><input id="frmqrykeywordsgroup" style="width:200px;" />
+            <label for="frmqrykeywordstype">敏感词类别</label><input id="frmqrykeywordstype" style="width:200px;" />
+            <label for="frmqrykeywords">敏感词</label><input id="frmqrykeywords" class="easyui-textbox" style="width:200px;" />
+            <a class="pure-button ismp-button4 btn" href="javascript:void(0)" onclick="doqry()"><i class="fa fa-search"></i> 查询</a>
+            <a class="pure-button ismp-button4 btn" href="javascript:void(0)" onclick="addrow()"><i class="fa fa-plus"></i> 新增</a>
+        </form>
+    </div>
+    <div region="center">
+        <table id="grid" class="easyui-datagrid" data-options="fit:true,rownumbers:true,pagination:true,showfooter:true,singleSelect:true,">
+            <thead>
+                <tr>
+                    <th data-options="field:'KeyGroup',width:100">敏感词组</th>
+                    <th data-options="field:'Words',width:100">敏感词</th>
+                    <th data-options="field:'KeywordsType',width:100">敏感词类型</th>
+                    <th data-options="field:'Enable',width:100">是否启用</th>
+                    <th data-options="field:'ReplaceKeywords',width:100">替换为其他词</th>
+
+                    <th data-options="field:'caozuo',width:300,formatter:operations">操作</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="winedit" class="easyui-window" title="敏感词管理" style="width:600px;height:400px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <form id="frmedit">
+            <table style="margin:5px auto;width:95%;" class="box">
+                <tr>
+                    <td width="95"><label for="frmeditkeywordsgroup" class="text">敏感词组：</label></td>
+                    <td><input id="frmeditkeywordsgroup" required="true" name="KeyGroup" sytle="width:100%;" /></td>
+                </tr>
+                <tr>
+                    <td><label for="frmeditkeywords" class="text">敏感词：</label></td>
+                    <td><textarea id="frmeditkeywords" name="Words" style="width:98%;height:100px;"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td><label for="frmeditkeywordstype" class="text">敏感词类型：</label></td>
+                    <td id="tdkeywordstype"></td>
+                </tr>
+                <tr>
+                    <td><label class="text">是否启用：</label></td>
+                    <td>
+                        <input id="frmeditradioenable1" type="radio" name="Enable" value="true" checked="checked" /><label for="frmeditradioenable1">启用</label>
+                        <input id="frmeditradioenable2" type="radio" name="Enable" value="false" /><label for="frmeditradioenable2">不启用</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="frmeditreplacekeywords" class="text">替换为：</label></td>
+                    <td><input id="frmeditreplacekeywords" class="input input-width" name="ReplaceKeywords" style="width:98%;" /></td>
+                </tr>
+            </table>
+        </form>
+        <div class="margintop" style="text-align:center;">
+            <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="saverow()">保存</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="cancelEdit()">取消</a>
+        </div>
+    </div>
+</body>
+</html>

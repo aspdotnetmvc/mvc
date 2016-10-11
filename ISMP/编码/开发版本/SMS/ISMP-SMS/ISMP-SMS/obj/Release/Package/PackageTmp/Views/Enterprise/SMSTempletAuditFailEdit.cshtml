@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/Scripts/jquery-easyui-1.4.3/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/Scripts/jquery-easyui-1.4.3/themes/icon.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <title>短信模版管理</title>
+    <script type="text/javascript">
+        var Param;
+        $(function () {
+            Param = eval("(" + $('#paramJson').val() + ")");
+
+            $('#TempletContent').val(Param.TempletContent);
+            $('#AuditMessage').html(Param.AuditMessage);
+
+            $("#formTempletContent").form({
+                url: "/Enterprise/AddTemplet",
+                onSubmit: function (param) {
+                    param["AccountCode"] = Param.AccountCode;
+                    param["AccountId"] = Param.AccountId;
+                    var isValid = $(this).form('validate');
+                    return isValid;
+                },
+                success: function (data) {
+                    var msg = eval("(" + data + ")");
+                    if (msg.success) {
+                        reset();
+                    }
+                    $.messager.alert("提示", msg.message, msg.type);
+                }
+            });
+
+        });
+
+        function submit() {
+            var content = $('#TempletContent').val();
+            if (content.trim() == "") {
+                $.messager.alert("提示", "请输入短信内容", null);
+                return;
+            }
+            $("#formTempletContent").submit();
+        }
+
+        function reset() {
+            $('#TempletContent').val("");
+        }
+
+        function CheckKeywords() {
+            if ($("#TempletContent").val() == "") {
+                $.messager.alert("提示", "请输入短信内容", "error");
+                return;
+            }
+            $.post("/Enterprise/CheckKeywords", { Content: $("#TempletContent").val() },
+                function (data) {
+                    var jo = eval("(" + data + ")");
+                    if (jo.success) {
+                        $.messager.alert("提示", "此短信内容中不包含敏感词", "info");
+
+                    } else {
+                        $.messager.alert("提示", "此短信内容中包含敏感词:" + jo.message, "info");
+                    }
+                });
+
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <h5>短信模版</h5>
+        <div>
+            <form id="formTempletContent">
+                <textarea id="TempletContent" name="TempletContent" rows="4" style="width: 98%;" ></textarea>
+                <p style="color:red">模板举例：亲爱的会员******，您好。您本次登录的密码是******，*分钟内有效。</p>
+            </form>
+        </div>
+        <div class="pure-g marginbottom">
+            <div class="pure-u-8-24"></div>
+            <div class="pure-u-8-24" style="text-align: center;">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="CheckKeywords()">检查敏感词</a>
+                <a id="frmSave" href="javascript:void(0)" class="easyui-linkbutton" onclick="submit()">提交</a>
+                <a id="frmCancel" href="javascript:void(0)" class="easyui-linkbutton" onclick="reset()">重置</a>
+            </div>
+            <div class="pure-u-8-24"></div>
+        </div>
+    </div>
+    <div>
+        <h5>审核失败原因</h5>
+        <div style="position: absolute; left: 1%; right: 1%;">
+            <label id="AuditMessage"></label>
+        </div>
+    </div>
+    <input id="paramJson" type="hidden" value="@ViewData["ParamObject"]">
+</body>
+</html>

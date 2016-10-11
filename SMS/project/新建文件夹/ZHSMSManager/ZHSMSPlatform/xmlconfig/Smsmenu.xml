@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Roots>
+
+  <Root id="EnterpriseSms" imgurl="~/Images/settings2584_16x16.gif" name="短信管理" value="" target="" visible="1">
+    <Child id="EnterpriseSms.List" url="../SMSM/SMS_List.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">短信未发送列表</Child>
+    <Child id="EnterpriseSms.MOList" url="../SMSM/MOList.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">用户上行短信</Child>
+    <Child id="EnterpriseSms.AuditFailure" url="../SMSM/AuditFailure.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">已审核失败短信</Child>
+    <!--<Child id="EnterpriseSms.Status" url="../Report/Rep_StatusList.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">短信状态报告</Child>-->
+    <Child id="EnterpriseSms.Statistics" url="../Report/Rep_StatisticsList.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">状态报告</Child>
+
+  </Root>
+</Roots>

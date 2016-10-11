@@ -1,0 +1,11 @@
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\bin\Debug\LogQuery.exe.config
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\bin\Debug\LogQuery.exe
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\bin\Debug\LogQuery.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\bin\Debug\LogInterface.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\bin\Debug\LogInterface.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\obj\Debug\LogQuery.fMain.resources
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\obj\Debug\LogQuery.fText.resources
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\obj\Debug\LogQuery.csproj.GenerateResource.Cache
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\obj\Debug\LogQuery.exe
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\obj\Debug\LogQuery.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogQuery\obj\Debug\LogQuery.csprojResolveAssemblyReference.cache

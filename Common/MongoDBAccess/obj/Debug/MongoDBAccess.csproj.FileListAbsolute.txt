@@ -1,0 +1,11 @@
+E:\Common\MongoDBAccess\bin\Debug\MongoDBAccess.dll
+E:\Common\MongoDBAccess\bin\Debug\MongoDBAccess.pdb
+E:\Common\MongoDBAccess\bin\Debug\MongoDB.Bson.dll
+E:\Common\MongoDBAccess\bin\Debug\MongoDB.Driver.dll
+E:\Common\MongoDBAccess\bin\Debug\MongoDB.Bson.pdb
+E:\Common\MongoDBAccess\bin\Debug\MongoDB.Bson.xml
+E:\Common\MongoDBAccess\bin\Debug\MongoDB.Driver.pdb
+E:\Common\MongoDBAccess\bin\Debug\MongoDB.Driver.xml
+E:\Common\MongoDBAccess\obj\Debug\MongoDBAccess.csprojResolveAssemblyReference.cache
+E:\Common\MongoDBAccess\obj\Debug\MongoDBAccess.dll
+E:\Common\MongoDBAccess\obj\Debug\MongoDBAccess.pdb

@@ -1,0 +1,13 @@
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\LogService.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\LogService.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\DBTools.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\LogInterface.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\MySql.Data.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\Dapper.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\DBTools.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\LogInterface.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\Dapper.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogService\bin\Debug\Dapper.xml
+D:\kf\sms\OLD\SMS\project\SMS\LogService\obj\Debug\LogService.csprojResolveAssemblyReference.cache
+D:\kf\sms\OLD\SMS\project\SMS\LogService\obj\Debug\LogService.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogService\obj\Debug\LogService.pdb

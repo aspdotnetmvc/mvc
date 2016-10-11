@@ -1,0 +1,354 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>通道配置</title>
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            doqry();
+
+            //加载网关
+            $.post("/Platform/GetAllGateways", {}, function (data) {
+                var jo = eval("(" + data + ")");
+                $.each(jo, function (i, r) {
+                    var g = $("<input type='checkbox' value='" + r.Gateway + "' name='Gateways'>&nbsp;" + r.Gateway + "&nbsp;&nbsp;</input>")
+                    $(getoperator(r.Operators.toString())).append(g);
+                });
+
+            });
+        });
+        function getoperator(oper) {
+            if (oper.indexOf("unicom") >= 0) {
+                if (oper.indexOf("mobile") >= 0) {
+                    if (oper.indexOf("telecom") >= 0) {
+                        return "#tdunicommobiletelecom";
+                    }
+                    return "#tdunicommobile";
+                } else {
+                    if (oper.indexOf("telecom") >= 0) {
+                        return "#tdunicomtelecom";
+                    }
+                    return "#tdunicom";
+                }
+            } else {
+                if (oper.indexOf("mobile") >= 0) {
+                    if (oper.indexOf("telecom") >= 0) {
+                        return "#tdmobiletelecom";
+                    }
+                    return "#tdmobile";
+                } else {
+                    if (oper.indexOf("telecom") >= 0) {
+                        return "#tdtelecom";
+                    }
+                }
+            }
+
+
+        }
+
+
+        function doqry() {
+            $("#grid").datagrid({
+                url: "/Platform/ChannelList",
+                pageNumber: 1
+            });
+        }
+
+        function reset() {
+            $("#frmqry").form("clear");
+        }
+
+        function reloadgrid() {
+            $("#grid").datagrid("reload")
+        }
+
+        function addrow() {
+
+            $("#winedit").window("open");
+            $("#frmedit").form({
+                url: "/Platform/AddChannel",
+                onSubmit: function () {
+                    var isValid = $(this).form('validate');
+                    if (!isValid) {
+                        $.messager.progress('close'); // hide progress bar while the form is invalid
+                    }
+
+                    return isValid; // return false will stop the form submission
+
+                },
+                success: function (data) {
+                    var msg = eval("(" + data + ")");
+                    if (msg.success) {
+                        $("#winedit").window("close");
+                        reloadgrid();
+                    }
+                    $.messager.alert("提示", msg.message, msg.type);
+                }
+            });
+            $("#frmedit").form("clear");
+            $("#frmChannelID").textbox({ editable: true });
+            $("#frmSMSType").combobox({ readonly: false });
+        }
+
+        function editrow(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+                $("#winedit").window("open");
+                $("#frmedit").form({
+                    url: "/Platform/UpdateChannel",
+                    onSubmit: function () {
+                        var isValid = $(this).form('validate');
+                        if (!isValid) {
+                            $.messager.progress('close'); // hide progress bar while the form is invalid
+                        }
+
+                        return isValid; // return false will stop the form submission
+
+                    },
+                    success: function (data) {
+                        var msg = eval("(" + data + ")");
+                        if (msg.success) {
+                            $("#winedit").window("close");
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, "info");
+                    }
+                });
+                $("#frmedit").form("clear");
+
+                $("#frmedit").form("load", row);
+
+                $("#frmChannelID").textbox({ editable: false });
+                $("#frmSMSType").combobox({ readonly: true });
+
+            } else {
+                $.messager.alert("提示", "请选择要编辑的行！", "info");
+            }
+        }
+
+        function removerow(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+
+                $.messager.confirm('删除确认', '确定要删除该记录吗?', function (r) {
+                    if (r) {
+                        //删除记录
+                        var jstr = $.ajax({
+                            url: "/Platform/DeleteChannel",
+                            data: row,
+                            method: "post",
+                            async: false
+                        }).responseText;
+
+                        var msg = eval("(" + jstr + ")");
+                        if (msg.success) {
+                            $("#winedit").window("close");
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, "info");
+                    }
+                });
+
+
+            } else {
+                $.messager.alert("提示", "请选择要删除的行！", "info");
+            }
+        }
+
+        function saverow() {
+
+            $("#frmedit").submit();
+        }
+
+        function cancelEdit() {
+            $("#winedit").window("close");
+        }
+
+        function operations(val, row, index) {
+
+            return '<a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="editrow(' + index + ')">编辑</a>&nbsp;'
+                + '<a href="javascript:void(0)" class="pure-button ismp-button5 btn" onclick="removerow(' + index + ')">删除</a>&nbsp;'
+                 + '<a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="allocateGateway(' + index + ')">分配网关</a>';
+        }
+
+
+        function allocateGateway(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+                $("#wingateway").window("open");
+                $("#frmgateway").form({
+                    url: "/Platform/AllocateGatewayForChannel",
+                    onSubmit: function () {
+                        var isValid = $(this).form('validate');
+                        if (!isValid) {
+                            $.messager.progress('close'); // hide progress bar while the form is invalid
+                        }
+
+                        return isValid; // return false will stop the form submission
+
+                    },
+                    success: function (data) {
+                        var msg = eval("(" + data + ")");
+                        if (msg.success) {
+                            $("#wingateway").window("close");
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, "info");
+                    }
+                });
+                $("#frmgateway").form("clear");
+                $.each(row.Gateways, function (i, val) {
+                    $("input[type='checkbox'][value='" + val + "']").prop("checked", true);
+                });
+
+                $("#frmgateway").form("load", row);
+
+
+            }
+        }
+
+        function doallocate() {
+            $("#frmgateway").submit();
+        }
+        function cancelallocate() {
+            $("#wingateway").window("close");
+        }
+    </script>
+    <style>
+        .textbox {
+            width: 100% !important;
+        }
+
+        .box td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body class="easyui-layout" style="overflow-y: hidden" scroll="no">
+    <div region="north" height="65">
+        <div class="ismp_search" style="margin-top:15px;padding-left:1%;font-size:14px;">
+            <a class="pure-button ismp-button4 btn" href="javascript:void(0)" onclick="addrow()"><i class="fa fa-plus"></i> 新增</a>
+        </div>
+    </div>
+    <div region="center">
+        <table id="grid" class="easyui-datagrid" data-options="fitColumns:true,fit:true,rownumbers:true,pagination:true,showfooter:true,singleSelect:true,">
+            <thead>
+                <tr>
+
+                    <th data-options="field:'SMSType',width:120,formatter:$formatter.smstype">通道类型</th>
+                    <th data-options="field:'ChannelID',width:200">通道(编码)</th>
+                    <th data-options="field:'ChannelName',width:100">通道名称</th>
+                    <th data-options="field:'Gateways',width:100">绑定的网关</th>
+                    <th data-options="field:'Remark',width:100">通道备注</th>
+                    <th data-options="field:'caozuo',width:300,formatter:operations">操作</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="winedit" class="easyui-window" title="通道管理" style="width:450px;height:300px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <form id="frmedit">
+            <table class="box" style="margin:5px auto;width:95%;">
+                <tr>
+                    <td width="100"><label for="frmSMSType" class="text">通道类型：</label></td>
+                    <td>
+                        <select id="frmSMSType" class="easyui-combobox" name="SMSType" style="width:200px;">
+                            <option value="0">行业通道</option>
+                            <option value="1">商业通道</option>
+                            <option value="2">四大类通道</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="frmChannelID" class="text">通道(编码)：</label></td>
+                    <td><input id="frmChannelID" class="easyui-textbox" required="true" name="ChannelID" width="200" /></td>
+                </tr>
+                <tr>
+                    <td><label for="frmChannelName" class="text">通道名称：</label></td>
+                    <td><input id="frmChannelName" class="easyui-textbox" required="true" name="ChannelName" width="200" /></td>
+                </tr>
+                <tr>
+                    <td><label for="frmRemark" class="text">通道说明</label></td>
+                    <td>
+                        <textarea id="frmRemark" name="Remark" style="width:98%;height:60px;"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="margintop" style="text-align:center;">
+            <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="saverow()">保存</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="cancelEdit()">取消</a>
+        </div>
+    </div>
+
+    <div id="wingateway" class="easyui-window" title="分配网关" style="width:600px;height:400px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <form id="frmgateway">
+            <table class="box" border="1" style="margin:5px auto;padding:3px;width:95%;">
+                <tr>
+                    <td width='80' ;><label for="frmgatewaychannelid" class="text">通道编号：</label></td>
+                    <td colspan="2"><input id="frmgatewaychannelid" class="input easyui-textbox input-width" readonly="readonly" name="ChannelID" /></td>
+                </tr>
+                <tr>
+                    <td><label for="frmgatewaychannelname" class="text">通道名称：</label></td>
+                    <td colspan="2"><input id="frmgatewaychannelname" class="input easyui-textbox input-width" readonly="readonly" name="ChannelName" /></td>
+                </tr>
+                <tr>
+                    <td rowspan="7"><label class="text">可用网关</label></td>
+                    <td width="100">联通</td>
+                    <td id="tdunicom"></td>
+                </tr>
+                <tr>
+                    <td>移动</td>
+                    <td id="tdmobile"></td>
+                </tr>
+                <tr>
+                    <td>电信</td>
+                    <td id="tdtelecom"></td>
+                </tr>
+                <tr>
+                    <td>联通,移动</td>
+                    <td id="tdunicommobile"></td>
+                </tr>
+                <tr>
+                    <td>联通,电信</td>
+                    <td id="tdunicomtelecom"></td>
+                </tr>
+                <tr>
+                    <td>移动,电信</td>
+                    <td id="tdmobiletelecom"></td>
+                </tr>
+                <tr>
+                    <td>联通,移动,电信</td>
+                    <td id="tdunicommobiletelecom"></td>
+                </tr>
+            </table>
+        </form>
+        <div class="margintop" style="text-align:center;">
+            <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="doallocate()">确定</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="cancelallocate()">取消</a>
+        </div>
+    </div>
+</body>
+</html>

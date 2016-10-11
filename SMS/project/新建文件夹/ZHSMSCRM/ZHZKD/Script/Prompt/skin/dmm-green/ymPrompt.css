@@ -1,0 +1,64 @@
+/*弹出框最外层*/
+#promptWinContainer{
+	background:#fff;
+	font-size:12px;font-family:'宋体';
+	filter:progid:DXImageTransform.Microsoft.Shadow(Color=#ffaaaaaa, Strength=4, Direction=135);
+}
+/*标题*/
+#titleContainer{
+	height:28px;line-height:30px;
+	background:#CFD7EC url(images/title_bg_left.gif) no-repeat top left;
+}
+#titleText{
+	font-size:12px;font-weight:bold;
+	color:#fff;padding-left:30px;
+	background: url(images/titleIco.gif) no-repeat 1px 1px;
+	
+}
+#titleCtrl{
+	padding:3px 3px 0px;height:28px;
+	background:#CFD7EC url(images/title_bg_right.gif) no-repeat right top;
+}
+#promptContentTable{
+	background:#F0FAFF;
+	border:0px;color:#0076A9;
+	margin:0px;padding:0px;
+	line-height:18px;
+}
+
+#winMiddleLeft,#winBtnLineLeft{width:3px;font-size:3px;background:url(images/win_l.gif) repeat-y;}
+#winMiddleRight,#winBtnLineRight{width:3px;font-size:3px;background:url(images/win_r.gif) right repeat-y;}
+#winBottomCenter{height:3px;font-size:3px;background:url(images/win_b.gif) repeat-x;}
+#winBottomLeft{width:3px;font-size:3px;height:3px;background:url(images/win_lb.gif) repeat-x;}
+#winBottomRight{width:3px;font-size:3px;height:3px;background:url(images/win_rb.gif) no-repeat;}
+
+#winMiddleCenter{
+	font-size:12px;
+	padding:10px 0px;
+	padding-left:90px;	/*此处数值要大于提示图标的大小，否则会显示很难看*/
+}
+
+.ymPrompt_alert{
+	background:url(images/info.gif) no-repeat 20px 50%
+}
+.ymPrompt_succeed{
+	background:url(images/right.gif) no-repeat 20px 50%
+}
+.ymPrompt_error{
+	background:url(images/err.gif) no-repeat 20px 50%
+}
+.ymPrompt_confirm{
+	background:url(images/ask.gif) no-repeat 20px 50%
+}
+.ymPrompt_close{
+	cursor:pointer;
+	background:url(images/close.gif) no-repeat 0 0;
+	width:22px;height:22px;
+}
+
+/*取消确认按钮样式*/
+input.btnStyle{
+	background:url(images/btn_bg.gif) no-repeat;
+	width:80px;height:23px;line-height:23px;
+	font-size:12px;color:#fff;font-weight:bold;border:0;
+}

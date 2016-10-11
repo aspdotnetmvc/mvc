@@ -1,0 +1,16 @@
+D:\temp\新建文件夹\SMS\project\Common\HttpServer\bin\Release\BXM.HttpServer.dll
+D:\temp\新建文件夹\SMS\project\Common\HttpServer\bin\Release\BXM.HttpServer.pdb
+D:\temp\新建文件夹\SMS\project\Common\HttpServer\obj\Release\BXM.HttpServer.dll
+D:\temp\新建文件夹\SMS\project\Common\HttpServer\obj\Release\BXM.HttpServer.pdb
+D:\temp\Old\SMS\project\Common\HttpServer\bin\Release\BXM.HttpServer.dll
+D:\temp\Old\SMS\project\Common\HttpServer\bin\Release\BXM.HttpServer.pdb
+D:\temp\Old\SMS\project\Common\HttpServer\obj\Release\BXM.HttpServer.dll
+D:\temp\Old\SMS\project\Common\HttpServer\obj\Release\BXM.HttpServer.pdb
+D:\work\sms\OLD\SMS\project\Common\HttpServer\bin\Release\BXM.HttpServer.dll
+D:\work\sms\OLD\SMS\project\Common\HttpServer\bin\Release\BXM.HttpServer.pdb
+D:\work\sms\OLD\SMS\project\Common\HttpServer\obj\Release\BXM.HttpServer.dll
+D:\work\sms\OLD\SMS\project\Common\HttpServer\obj\Release\BXM.HttpServer.pdb
+D:\kf\sms\OLD\SMS\project\Common\HttpServer\bin\Release\BXM.HttpServer.dll
+D:\kf\sms\OLD\SMS\project\Common\HttpServer\bin\Release\BXM.HttpServer.pdb
+D:\kf\sms\OLD\SMS\project\Common\HttpServer\obj\Release\BXM.HttpServer.dll
+D:\kf\sms\OLD\SMS\project\Common\HttpServer\obj\Release\BXM.HttpServer.pdb

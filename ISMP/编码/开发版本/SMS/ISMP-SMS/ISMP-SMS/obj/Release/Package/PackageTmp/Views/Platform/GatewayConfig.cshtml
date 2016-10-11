@@ -1,0 +1,333 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>网关配置</title>
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            doqry();
+
+            //加载敏感词组列表
+            $.post("/Platform/KeywordsGroupComboboxData", {}, function (data) {
+                var json = eval("(" + data + ")");
+                
+                for (var i in json) {
+                    if (json[i].id == "") {
+                        json[i].text = "无";
+                    }
+                    var rad = $("<input type='radio' name='KeywordsGroup' value='" + json[i].id + "'>" + json[i].text + "</input>");
+                    $("#tdkeywordsgroup").append(rad);
+                }
+            });
+
+        });
+
+
+
+        function doqry() {
+            $("#grid").datagrid({
+                url: "/Platform/GatewayList",
+                pageNumber: 1
+            });
+        }
+
+        function reset() {
+            $("#frmqry").form("clear");
+        }
+
+        function reloadgrid() {
+            $("#grid").datagrid("reload")
+        }
+
+        function addrow() {
+
+            $("#winedit").window("open");
+            $("#frmedit").form({
+                url: "/Platform/AddGateway",
+                onSubmit: function () {
+                    var isValid = $(this).form('validate');
+                    if (!isValid) {
+                        $.messager.progress('close'); // hide progress bar while the form is invalid
+                    }
+
+                    return isValid; // return false will stop the form submission
+
+                },
+                success: function (data) {
+                    var msg = eval("(" + data + ")");
+                    if (msg.success) {
+                        $("#winedit").window("close");
+                        reloadgrid();
+                    }
+                    $.messager.alert("提示", msg.message, msg.type);
+                }
+            });
+            $("#frmedit").form("clear");
+            $("#frmGateway").textbox({ editable: true });
+        }
+
+        function editrow(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+                $("#winedit").window("open");
+                $("#frmedit").form({
+                    url: "/Platform/UpdateGateway",
+                    onSubmit: function () {
+                        var isValid = $(this).form('validate');
+                        if (!isValid) {
+                            $.messager.progress('close'); // hide progress bar while the form is invalid
+                        }
+
+                        return isValid; // return false will stop the form submission
+
+                    },
+                    success: function (data) {
+                        var msg = eval("(" + data + ")");
+                        if (msg.success) {
+                            $("#winedit").window("close");
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, "info");
+                    }
+                });
+                $("#frmedit").form("clear");
+
+                $("#frmedit").form("load", row);
+                $("#frmGateway").textbox({ editable: false });
+
+                if (row.Operators.indexOf("unicom") >= 0) {
+                    $("#frmOperators1").prop("checked", "checked");
+                }
+                if (row.Operators.indexOf("mobile") >= 0) {
+                    $("#frmOperators2").prop("checked", "checked");
+                }
+                if (row.Operators.indexOf("telecom") >= 0) {
+                    $("#frmOperators3").prop("checked", "checked");
+                }
+
+            } else {
+                $.messager.alert("提示", "请选择要编辑的行！", "info");
+            }
+        }
+
+        function removerow(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+
+                $.messager.confirm('删除确认', '确定要删除该记录吗?', function (r) {
+                    if (r) {
+                        //删除记录
+                        var jstr = $.ajax({
+                            url: "/Platform/DeleteGateway",
+                            data: row,
+                            method: "post",
+                            async: false
+                        }).responseText;
+
+                        var msg = eval("(" + jstr + ")");
+                        if (msg.success) {
+                            $("#winedit").window("close");
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, "info");
+                    }
+                });
+
+
+            } else {
+                $.messager.alert("提示", "请选择要删除的行！", "info");
+            }
+        }
+
+        function saverow() {
+            var operators = "";
+            if ($("#frmOperators1").prop("checked") == true) {
+                operators += "unicom;";
+            }
+            if ($("#frmOperators2").prop("checked") == true) {
+                operators += "mobile;";
+            }
+            if ($("#frmOperators3").prop("checked") == true) {
+                operators += "telecom;";
+            }
+            if (operators == "") {
+                $.messager.alert("提示", "请选择运营商！", "info");
+                return;
+            }
+            //     $("#frmOperators").val(operators.substr(1, operators.length - 1));
+
+            $("#frmedit").submit();
+        }
+
+        function cancelEdit() {
+            $("#winedit").window("close");
+        }
+
+        function operations(val, row, index) {
+
+            return '<a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="editrow(' + index + ')">编辑</a>&nbsp;'
+                + '<a href="javascript:void(0)" class="pure-button ismp-button5 btn" onclick="removerow(' + index + ')">删除</a>&nbsp;'
+                 + '<a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="allocateKeywordsGroup(' + index + ')">分配敏感词组</a>';
+        }
+        function operatorsFormatter(val, row, index) {
+            return String(val).replace("unicom", "联通").replace("mobile", "移动").replace("telecom", "电信");
+        }
+
+        function allocateKeywordsGroup(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+                $("#winkeywordsgroup").window("open");
+                $("#frmkeywordsgroup").form({
+                    url: "/Platform/AllocateKeywordsGroupForGateway",
+                    onSubmit: function () {
+                        var isValid = $(this).form('validate');
+                        if (!isValid) {
+                            $.messager.progress('close'); // hide progress bar while the form is invalid
+                        }
+
+                        return isValid; // return false will stop the form submission
+
+                    },
+                    success: function (data) {
+                        var msg = eval("(" + data + ")");
+                        if (msg.success) {
+                            $("#winkeywordsgroup").window("close");
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, "info");
+                    }
+                });
+                $("#frmkeywordsgroup").form("clear");
+
+                $.post("/Platform/GetGatewayKeywordsGroup", {
+                    Gateway: row.Gateway
+                }, function (data) {
+                    var json = eval("(" + data + ")");
+                    if (json.success) {
+                        $("input[type='radio'][value='" + json.value + "']").prop("checked", true);
+                    }
+                });
+
+
+                $("#frmkeywordsgroup").form("load", row);
+
+
+            }
+        }
+
+        function doallocate() {
+            $("#frmkeywordsgroup").submit();
+        }
+        function cancelallocate() {
+            $("#winkeywordsgroup").window("close");
+        }
+
+    </script>
+    <style>
+        .textbox {
+            width: 100% !important;
+        }
+
+        .box td {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body class="easyui-layout">
+    <div region="north" height="65">
+        <div class="ismp_search" style="margin-top:15px;padding-left:1%;font-size:14px;">
+            <a class="pure-button ismp-button4 btn" href="javascript:void(0)" onclick="addrow()"><i class="fa fa-plus"></i> 新增</a>
+        </div>
+    </div>
+    <div region="center">
+        <table id="grid" class="easyui-datagrid" data-options="fitColumns:true,fit:true,rownumbers:true,pagination:true,showfooter:true,singleSelect:true,">
+            <thead>
+                <tr>
+                    <th data-options="field:'Gateway',width:200">网关名字(编码)</th>
+                    <th data-options="field:'Operators',width:100,formatter:operatorsFormatter">运营商</th>
+                    <th data-options="field:'HandlingAbility',width:100">网关流量(条/秒)</th>
+                    <th data-options="field:'MaxPackageSize',width:100">单包最大号码数</th>
+                    <th data-options="field:'caozuo',width:300,formatter:operations">操作</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="winedit" class="easyui-window" title="网关管理" style="width:400px;height:240px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <form id="frmedit">
+            <table class="box" style="margin:5px auto;width:95%;">
+                <tr>
+                    <td><label for="frmGateway" class="text">网关名字：</label></td>
+                    <td><input id="frmGateway" class="input easyui-textbox input-width" required="true" name="Gateway" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label class="text">运营商：</label>
+                    </td>
+                    <td>
+                        <input id="frmOperators1" type="checkbox" name="Operators" value="unicom" /><label for="frmOperators1" class="text">联通</label>
+                        <input id="frmOperators2" type="checkbox" name="Operators" value="mobile" /><label for="frmOperators2" class="text">移动</label>
+                        <input id="frmOperators3" type="checkbox" name="Operators" value="telecom" /><label for="frmOperators3" class="text">电信</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="frmHandlingAbility" class="text">网关流量(条/秒)</label></td>
+                    <td><input id="frmHandlingAbility" class="easyui-numberbox" name="HandlingAbility" /></td>
+                </tr>
+                <tr>
+                    <td><label for="frmMaxPackageSize" class="text">单包最大号码数</label></td>
+                    <td><input id="frmMaxPackageSize" class="easyui-numberbox" name="MaxPackageSize" /></td>
+                </tr>
+            </table>
+        </form>
+        <div class="margintop" style="text-align:center;">
+            <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="saverow()">保存</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="cancelEdit()">取消</a>
+        </div>
+    </div>
+
+    <div id="winkeywordsgroup" class="easyui-window" title="分配敏感词组" style="width:400px;height:240px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <form id="frmkeywordsgroup">
+            <table class="box" style="margin:5px auto;width:95%;">
+                <tr>
+                    <td><label for="frmkeywordsgroupGateway" class="text">网关名字：</label></td>
+                    <td><input id="frmkeywordsgroupGateway" class="input easyui-textbox input-width" readonly="readonly" name="Gateway" /></td>
+                </tr>
+
+                <tr>
+                    <td><label class="text">敏感词组</label></td>
+                    <td id="tdkeywordsgroup"></td>
+                </tr>
+            </table>
+        </form>
+        <div class="margintop" style="text-align:center;">
+            <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="doallocate()">确定</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="cancelallocate()">取消</a>
+        </div>
+    </div>
+</body>
+</html>

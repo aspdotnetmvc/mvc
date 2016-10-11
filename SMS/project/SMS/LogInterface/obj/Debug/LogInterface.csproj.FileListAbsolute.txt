@@ -1,0 +1,4 @@
+D:\kf\sms\OLD\SMS\project\SMS\LogInterface\bin\Debug\LogInterface.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogInterface\bin\Debug\LogInterface.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogInterface\obj\Debug\LogInterface.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogInterface\obj\Debug\LogInterface.pdb

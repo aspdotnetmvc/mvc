@@ -1,0 +1,205 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/iframe.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/toastr.min.css">
+
+    <script type="text/javascript" src='../Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='../Scripts/jquery.easyui.min.js'></script>
+    <script type="text/javascript" src='../Scripts/easyui-lang-zh_CN.js'></script>
+    <script type="text/javascript" src="../Scripts/plugin/ismp_plugin.js"></script>
+    <script type="text/javascript" src="../Scripts/plugin/toastr.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Common/zh_ISMP.js"></script>
+
+    <style type="text/css">
+        .dailishang_edit td {
+            padding-top: 15px;
+        }
+
+        .dailishang_edit .textbox {
+            width: 90% !important;
+        }
+
+        .searchinput span.textbox {
+            width: 200px !important;
+            margin-top: 10px !important;
+        }
+
+        .dailishang_edit input {
+            width: 90% !important;
+        }
+
+            .dailishang_edit input[type=radio] {
+                width: 12% !important;
+            }
+
+        .dailishang_edit td[colspan='3'] .textbox {
+            width: 96% !important;
+        }
+
+        .dailishang_edit select {
+            width: 90% !important;
+        }
+
+        .dailishang_edit {
+            font-size: 14px;
+        }
+
+        .pure-form select {
+            height: 2.45em !important;
+        }
+
+        .guishu {
+            position: relative;
+        }
+
+        .pure-form h3 {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #frmMore {
+            color: #1CB394;
+            margin-right: 22px;
+        }
+
+        #LoginNameCheckResult {
+            position: absolute;
+            display: none;
+            z-index: 9900000;
+            outline: none;
+            opacity: 1;
+            filter: alpha(opacity=100);
+            padding: 5px;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 5px;
+            -moz-border-radius: 5px 5px 5px 5px;
+            -webkit-border-radius: 5px 5px 5px 5px;
+            border-radius: 5px 5px 5px 5px;
+            border-color: #cc9933;
+            background-color: #ffffcc;
+            font-size: 12px;
+            margin: -30px 0 0 170px;
+        }
+
+        .textbox {
+            position: relative;
+        }
+
+        .easyui-fluid {
+            width: 100% !important;
+        }
+
+            .easyui-fluid .textbox-icon {
+                padding-top: 0px;
+            }
+    </style>
+    <title>短信发送记录</title>
+</head>
+<body>
+    <div class="ismp_con">
+        <!-- 搜索条件 开始 -->
+        <div class="ismp_search">
+            <form id="frmSearch" class="pure-form pure-form-aligned">
+                <span class="searchinput">
+                    <label for="frmStartTime">开始时间：</label>
+                    <input id="frmStartTime" class="easyui-datetimebox" width="200" name="StartTime">
+                </span>
+                <span class="searchinput">
+                    <label for="frmEndTime">结束时间：</label>
+                    <input id="frmEndTime" class="easyui-datetimebox" width="200" name="EndTime">
+                </span>
+        
+                <span class="searchinput">
+                    <label for="frmContent">短信内容：</label>
+                    <input id="frmContent" class="easyui-textbox" width="200" name="Content">
+                </span>
+          <input type="hidden" id="frmEnterpriseAccountId" value="@ViewData["EnterpriseAccountId"]"/>
+                <a href="#" class="pure-button ismp-button1 btn" onclick="doqry()"><i class="fa fa-search"></i> 查询</a>
+            </form>
+        </div>
+        <div style="position:absolute;top:100px;bottom:0px;left:1%;right:1%;">
+            <table id="grid"></table>
+        </div>
+    </div>
+</body>
+<script>
+
+    $(function () {
+        $('#frmStartTime').datetimebox('setValue', GetDateStr(-1));
+        InitGrid();
+    });
+
+    //初始化列表
+    function InitGrid() {
+        $('#grid').datagrid({
+            url: '/Enterprise/SMSViewData',
+            queryParams: {
+                EnterpriseAccountId: $("#frmEnterpriseAccountId").val(),
+                StartTime: $("#frmStartTime").datetimebox("getValue")
+            },
+            columns: [[
+                { field: 'Content', title: '短信内容', width: 300 },
+                { field: 'Signature', title: '短信签名', width: 100 },
+                { field: 'SendTime', title: '提交时间', width: 150 },
+                { field: 'NumberCount', title: '号码数', width: 80 },
+                { field: 'SplitNumber', title: '计费条数', width: 80 },
+                { field: 'FeeTotalCount', title: '总扣费数', width: 80 },
+                { field: 'FailureCount', title: '失败号码数', width: 80 },
+                { field: 'FeeBack', title: '返费条数', width: 80 },
+                { field: 'AuditType', title: '审核类型', width: 100 },
+                { field: 'Status', title: '状态', width: 100 }
+            ]],
+            pagination: true,
+            pageNumber: 1,
+            singleSelect: true,
+            fit: true,
+            rownumbers: true,
+            nowrap: false,   //自动换行
+            loadFilter: function (data) {
+                if (data && data.success == false) {
+                    $.messager.alert("提示", data.message, data.type);
+                    return { total: 0, rows: null };
+                }
+                return data;
+            }
+        });
+    }
+
+    function doqry() {
+        $('#grid').datagrid({
+            queryParams: {
+                EnterpriseAccountId: $("#frmEnterpriseAccountId").val(),
+                StartTime: $("#frmStartTime").datetimebox("getValue"),
+                EndTime: $("#frmEndTime").datetimebox("getValue"),
+                keywords: $("#frmContent").textbox("getValue")
+            },
+            pageNumber: 1
+        });
+    }
+
+    function GetDateStr(AddDayCount) {
+        var dd = new Date();
+        dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期
+        var y = dd.getFullYear();
+        var m = dd.getMonth() + 1;//获取当前月份的日期
+        var d = dd.getDate();
+        return y + "-" + m + "-" + d + " 00:00:00";
+    }
+</script>
+</html>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/GetBalance.aspx" hash="fffffff63f94d806" filehash="ffffc18377bf9b66" flags="110000" assembly="App_Web_wb2yzymr" type="ASP.getbalance_aspx">
+    <filedeps>
+        <filedep name="/GetBalance.aspx" />
+    </filedeps>
+</preserve>

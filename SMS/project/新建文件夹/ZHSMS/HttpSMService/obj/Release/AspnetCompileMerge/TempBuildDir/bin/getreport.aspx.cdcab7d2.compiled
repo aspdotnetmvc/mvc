@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/GetReport.aspx" hash="fffffff63f94d806" filehash="57fe5b49a41" flags="110000" assembly="App_Web_wb2yzymr" type="ASP.getreport_aspx">
+    <filedeps>
+        <filedep name="/GetReport.aspx" />
+    </filedeps>
+</preserve>

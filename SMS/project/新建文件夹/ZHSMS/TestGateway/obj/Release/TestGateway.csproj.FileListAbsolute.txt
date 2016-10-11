@@ -1,0 +1,17 @@
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\TEST.Config
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\TestGateway.dll
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\TestGateway.pdb
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\BXM.Utils.dll
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\GatewayInterface.dll
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\SMSModel.dll
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\SMSUtils.dll
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\Newtonsoft.Json.dll
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\BXM.Utils.pdb
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\GatewayInterface.pdb
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\SMSModel.pdb
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\SMSUtils.pdb
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\Newtonsoft.Json.pdb
+E:\SMS\project\ZHSMS\TestGateway\bin\Release\Newtonsoft.Json.xml
+E:\SMS\project\ZHSMS\TestGateway\obj\Release\TestGateway.csprojResolveAssemblyReference.cache
+E:\SMS\project\ZHSMS\TestGateway\obj\Release\TestGateway.dll
+E:\SMS\project\ZHSMS\TestGateway\obj\Release\TestGateway.pdb

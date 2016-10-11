@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net40": {
+      "wrappedProject": "../../Utils.csproj",
+      "bin": {
+        "assembly": "../../obj/{configuration}/BXM.Utils.dll",
+        "pdb": "../../obj/{configuration}/BXM.Utils.pdb"
+      },
+      "dependencies": {
+        "Newtonsoft.Json": "1.0.0-*"
+      }
+    },
+    "net45": {
+      "wrappedProject": "../../Utils.csproj",
+      "bin": {
+        "assembly": "../../obj/{configuration}/BXM.Utils.dll",
+        "pdb": "../../obj/{configuration}/BXM.Utils.pdb"
+      },
+      "dependencies": {
+        "Newtonsoft.Json": "1.0.0-*"
+      }
+    },
+    "net451": {
+      "wrappedProject": "../../Utils.csproj",
+      "bin": {
+        "assembly": "../../obj/{configuration}/BXM.Utils.dll",
+        "pdb": "../../obj/{configuration}/BXM.Utils.pdb"
+      },
+      "dependencies": {
+        "Newtonsoft.Json": "1.0.0-*"
+      }
+    }
+  }
+}

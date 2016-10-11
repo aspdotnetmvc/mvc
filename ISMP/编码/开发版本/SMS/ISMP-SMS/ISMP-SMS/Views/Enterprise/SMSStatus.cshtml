@@ -1,0 +1,183 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>状态报告(3天以内)</title>
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            doqry();
+        });
+
+        function doqry() {
+            $("#grid").datagrid({
+                url: "/Enterprise/SMSStatusData",
+                pageNumber: 1,
+                nowrap:false,
+                queryParams: {
+                    EnterpriseCode: $("#frmqryEnterpriseCode").val()
+                }
+            });
+        }
+        function operations(val, row, index) {
+            return '<a href="javascript:void(0)" class="easyui-linkbutton"  onclick="viewMore(' + index + ')">查看短信明细</a>';
+        }
+    
+        function StatusFormatter(val, row, index) {
+            if (row.Account == "待审核") {
+                return "待审核";
+            } else if (row.Account == "待发送") {
+                return "待发送";
+            }
+            return "已发送";
+        }
+        function ZeroTimerFormatter(val, row, index) {
+            if (val == "0001-01-01 00:00:00") {
+                return "";
+            }
+            return val;
+        }
+        function viewMore(index) {
+            var row = $("#grid").datagrid("getRows")[index];
+            if (row) {
+                $("#winview").window("open");
+                $("#fqmSerialNumber").val(row.ID);
+                $("#fqmSendTime").val(row.SendTime);
+                doqryViewMore();
+            } else {
+                $.messager.alert("提示","请选择行！","info");
+            }
+           
+        }
+        function doqryViewMore() {
+
+            $("#moregrid").datagrid({
+                url: "/Enterprise/SMSStatusMoreData",
+                pageNumber: 1,
+                queryParams: {
+                    SerialNumber: $("#fqmSerialNumber").val(),
+                    SendTime:$("#fqmSendTime").val(),
+                    Number: $("#fqmNumber").textbox("getValue"),
+                    Status: $("#fqmStatus").combobox("getValue")
+                }
+            });
+        }
+        //详情页面的操作
+        function moreoperations(val, row, index) {
+            return "";
+            if (row.Succeed == true) {
+                return "";
+            }
+            return '<a href="javascript:void(0)" class="easyui-linkbutton"  onclick="resendfail(\'' + index + '\')">重新发送</a>';
+        }
+        //发送失败的短信重新发送
+        function resendfail(index) {
+            var row = $('#moregrid').datagrid("getRows")[index];
+            $.post("/Enterprise/DoSendSMS", {
+                Numbers: row.Message.Number,
+                Content: row.Message.Content,
+                WapUrl: row.Message.WapURL
+            }, function (data) {
+                var json = eval("(" + data + ")");
+                //     $("#frmSubmit").prop("enabled", true);
+                $.messager.alert("提示", json.message, "info");
+            });
+        }
+        function closeViewMore() {
+            $("#winview").window("close");
+        }
+    </script>
+    <style>
+        #fqmNumber, #fqmStatus {
+            width: 200px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="ismp_con">
+        <div class="ismp_search">
+            <form id="frmqry" class="pure-form pure-form-aligned">
+                <a href="javascript:void(0)" class="pure-button ismp-button1 btn" style="font-size:12px;" onclick="doqry()"><i class="fa fa-search"></i> 查询</a>
+
+                <p style="color:red">说明：按行业标准，系统以72小时为一个周期准确显示发送结果。请点击【历史状态报告】查看。</p>
+                <input type="hidden" id="frmqryEnterpriseCode" value="@ViewData["EnterpriseCode"]" />
+            </form>
+        </div>
+    </div>
+    <div style="position: absolute; top: 80px; bottom: 1%; left: 1%; right: 1%;">
+        <table id="grid" class="easyui-datagrid" data-options="fit:true,nowrap:false,rownumbers:true,pagination:true,showfooter:true,singleSelect:true">
+            <thead>
+                <tr>
+                    <th data-options="field:'ID',width:200,hidden:true">业务流水号</th>
+                    <th data-options="field:'Content',width:200">短信内容</th>
+                    <th data-options="field:'Signature',width:50">短信签名</th>
+                    <th data-options="field:'SendTime',width:150,formatter:ZeroTimerFormatter">发送时间</th>
+                    <th data-options="field:'NumberCount',width:150">号码数</th>
+                    <th data-options="field:'SplitNumber',width:60">计费条数</th>
+                    <th data-options="field:'FeeTotalCount',width:60">总扣费数</th>
+                    <th data-options="field:'FailureCount',width:60">失败号码数</th>
+                    <th data-options="field:'FeeBack',width:60">返费条数</th>
+                    <th data-options="field:'Status',width:60,formatter:StatusFormatter">状态</th>
+                    <th data-options="field:'caozuo',width:120,formatter:operations">操作</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="winview" class="easyui-window" title="短信明细" style="width:900px;height:450px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <div class="easyui-layout" fit="true">
+            <div region="north" height="50" style="padding-left:20px;padding-top:10px;">
+                <form id="frmqryMore">
+                    <label>状态</label>
+                    <select id="fqmStatus" class="easyui-combobox" name="Status" style="width:200px !important;">
+                        <option value="all">全部</option>
+                        <option value="success">成功号码</option>
+                        <option value="fail">失败号码</option>
+                    </select>
+                    <label>号码</label>
+                    <input id="fqmNumber" class="easyui-textbox" style="width:200px !important;" />
+                    <input type="hidden" id="fqmSerialNumber" />
+                    <input type="hidden" id="fqmSendTime" />
+                    <a href="#" class="pure-button ismp-button1 btn" onclick="doqryViewMore()">查询</a>
+                </form>
+
+            </div>
+            <div region="center">
+                <table id="moregrid" class="easyui-datagrid" data-options="fit:true,rownumbers:true,pagination:true,showfooter:true,singleSelect:true">
+                    <thead>
+                        <tr>
+                            <th data-options="field:'SerialNumber',width:200,hidden:true">网关返回序列号</th>
+                            <th data-options="field:'Number',width:100">电话号码</th>
+                            <th data-options="field:'SendTime',width:150">发送时间</th>
+                            <th data-options="field:'ResponseTime',width:150">状态报告返回时间</th>
+                            <th data-options="field:'Status',width:100">状态</th>
+                            <th data-options="field:'Description',width:100">状态描述</th>
+                            <th data-options="field:'caozuo',width:50,formatter:moreoperations">操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

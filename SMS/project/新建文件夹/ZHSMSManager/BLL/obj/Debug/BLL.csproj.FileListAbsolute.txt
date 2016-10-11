@@ -1,0 +1,14 @@
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\BLL.dll
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\BLL.pdb
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\DAL.dll
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\Model.dll
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\MySql.Data.dll
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\DBUtility.dll
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\SMSModel.dll
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\DAL.pdb
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\Model.pdb
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\DBUtility.pdb
+E:\SMS\project\ZHSMSManager\BLL\bin\Debug\SMSModel.pdb
+E:\SMS\project\ZHSMSManager\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\SMS\project\ZHSMSManager\BLL\obj\Debug\BLL.dll
+E:\SMS\project\ZHSMSManager\BLL\obj\Debug\BLL.pdb

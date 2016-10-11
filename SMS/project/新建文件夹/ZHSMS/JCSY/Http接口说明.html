@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0032)http://59.36.98.104:3080/smshttp -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+<title>Http接口说明</title>
+<style>
+BODY {
+	color: #000000;
+	background-color: white;
+	font-family: Verdana;
+font-size:12px margin-left: 0px;
+	margin-top: 0px;
+}
+.heading1 {
+	color: #ffffff;
+	font-family: Tahoma;
+	font-size: 26px;
+	font-weight: normal;
+	background-color: #003366;
+}
+}
+</style>
+</head>
+<body>
+<br>
+<table cellspacing="0" cellpadding="0" width="96%" align="center" border="0">
+  <tbody>
+    <tr>
+      <td><table bordercolor="#6ca3e2" cellspacing="0" bordercolordark="#ffffff" cellpadding="4" width="100%" align="center" border="0">
+          <tbody>
+            <tr>
+              <td align="middle" class="heading1 " height="21"><p align="center"><strong>http接口说明 </strong></p></td>
+            </tr>
+          </tbody>
+        </table>
+        <table bordercolor="#ffcc00" cellspacing="0" bordercolordark="#ffffff" cellpadding="4" width="100%" align="center" border="0">
+          <tbody>
+            <tr>
+              <td align="middle" height="949"><table cellspacing="0" bordercolordark="#f9f9f9" cellpadding="0" width="60%" align="center" bgcolor="#ffffff" border="0">
+                  <tbody>
+                    <tr>
+                      <td align="middle" height="949"><table bordercolor="#cccccc" cellspacing="0" bordercolordark="#f9f9f9" cellpadding="0" width="100%" align="center" bgcolor="#ffffff" border="0">
+                          <tbody>
+                            <tr>
+                              <td valign="center" align="left" colspan="2" height="50"><strong></strong>调用URL地址http://59.36.98.104:3080/smshttp 字符编码GBK 提交方式 GEG/POST</td>
+                            </tr>
+                            <tr>
+                              <td colspan="2" height="50" align="left"><strong>
+                                <li>act=getbalance&nbsp;&nbsp; 查询用户短信量 </li>
+                                </strong></td>
+                            </tr>
+                            <tr align="middle">
+                              <td valign="center" align="left" height="32"><table cellspacing="0" cellpadding="0" width="100%" border="1">
+                                  <tbody>
+                                    <tr bgcolor="#cccccc">
+                                      <td valign="top" width="18%"><p><strong>参数名称</strong><strong> </strong></p></td>
+                                      <td valign="top" width="16%"><p><strong>参数格式</strong><strong> </strong></p></td>
+                                      <td valign="top" width="64%"><p><strong>参数说明</strong><strong> </strong></p></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" width="18%"><p>unitid</p></td>
+                                      <td valign="top" width="16%"><p>Int</p></td>
+                                      <td valign="top" width="64%"><p>企业代码 </p></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" width="18%"><p>username</p></td>
+                                      <td valign="top" width="16%"><p>String</p></td>
+                                      <td valign="top" width="64%"><p>用户帐号 </p></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" width="18%"><p>passwd </p></td>
+                                      <td valign="top" width="16%"><p>String</p></td>
+                                      <td valign="top" width="64%"><p>用户密码</p></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" colspan="3"><p><strong>返回值</strong></p></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" colspan="3"><p>提交成功返回余额，失败见下面的错误代码详解</p></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" colspan="3"><p><strong>示例</strong></p></td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" colspan="3"><p>http://59.36.98.104:3080/smshttp?act=getbalance&amp;unitid=168&amp;passwd=123456&amp;username=test</p></td>
+                                    </tr>
+                                  </tbody>
+                                </table></td>
+                            </tr>
+                            <tr>
+                              <td align="middle"><table bordercolor="#cccccc" cellspacing="0" bordercolordark="#f9f9f9" cellpadding="0" width="60%" align="center" bgcolor="#ffffff" border="0">
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="2" height="50" align="left"><strong>
+                                        <li>act=uppasswd&nbsp;&nbsp; 更改用户密码 </li>
+                                        </strong></td>
+                                    </tr>
+                                    <tr align="middle">
+                                      <td valign="center" align="left" height="32"><table cellspacing="0" cellpadding="0" width="100%" border="1">
+                                          <tbody>
+                                            <tr bgcolor="#cccccc">
+                                              <td valign="top" width="18%"><p><strong>参数名称</strong><strong> </strong></p></td>
+                                              <td valign="top" width="16%"><p><strong>参数格式</strong><strong> </strong></p></td>
+                                              <td valign="top" width="64%"><p><strong>参数说明</strong><strong> </strong></p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>unitid</p></td>
+                                              <td valign="top" width="16%"><p>Int</p></td>
+                                              <td valign="top" width="64%"><p>企业代码</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>username</p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>用户账号 </p></td>
+                                            </tr>                                            
+                                            <tr>
+                                              <td valign="top" width="18%"><p>passwd</p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>用户密码</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>newpasswd </p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>新的密码</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p><strong>返回值</strong></p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p>见下面的错误代码详解</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p><strong>示例</strong></p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p>http://59.36.98.104:3080/smshttp?act=uppasswd&amp;unitid=100&amp;username=test&amp;passwd=123123&amp;newpasswd=123456</p></td>
+                                            </tr>
+                                          </tbody>
+                                        </table></td>
+                                    </tr>
+                                    <tr> </tr>
+                                    <tr>
+                                      <td height="50" align="left"><strong>
+                                        <li>act=sendmsg &nbsp;&nbsp;&nbsp;&nbsp;发送短信</li>
+                                        </strong></td>
+                                    </tr>
+                                    <tr>
+                                      <td align="left"><table cellspacing="0" cellpadding="0" width="100%" border="1">
+                                          <tbody>
+                                            <tr bgcolor="#cccccc">
+                                              <td valign="top" width="18%"><p><strong>参数名称</strong><strong> </strong></p></td>
+                                              <td valign="top" width="16%"><p><strong>参数格式</strong><strong> </strong></p></td>
+                                              <td valign="top" width="64%"><p><strong>参数说明</strong><strong> </strong></p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>unitid</p></td>
+                                              <td valign="top" width="16%"><p>Int</p></td>
+                                              <td valign="top" width="64%"><p>企业代码 </p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>username</p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>用户帐号 </p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>passwd </p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>用户密码</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>msg</p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>发送的短信内容，发送手机70字，发送小灵通50字 </p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>phone</p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>发送号码（号码以’,’号分隔）</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>port</p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>扩展端口号</p></td>
+                                            </tr>                                            
+                                            <tr>
+                                              <td valign="top" width="18%"><p>sendtime </p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>发送时间( 格式1900-01-01 00:00:00)</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p><strong>返回值 </strong></p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p>状态,批号,说明 </p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p>示例</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3">http://59.36.98.104:3080/smshttp?act=sendmsg&amp;unitid=100&amp;username=test&amp;passwd=test&amp;msg=测试&amp;phone=13911111111,18911111111&amp;port=&amp;sendtime=2008-01-01  12:00:00</td>
+                                            </tr>
+                                          </tbody>
+                                        </table></td>
+                                    </tr>
+                                    <tr>
+                                      <td height="50" align="left"><strong>
+                                        <li>act=getstatue 取回执</li>
+                                        </strong></td>
+                                    </tr>
+                                    <tr>
+                                      <td align="left"><table cellspacing="0" cellpadding="0" width="100%" border="1">
+                                          <tbody>
+                                            <tr bgcolor="#cccccc">
+                                              <td valign="top" width="18%"><p><strong>参数名称</strong><strong> </strong></p></td>
+                                              <td valign="top" width="16%"><p><strong>参数格式</strong><strong> </strong></p></td>
+                                              <td valign="top" width="64%"><p><strong>参数说明</strong><strong> </strong></p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>unitid</p></td>
+                                              <td valign="top" width="16%"><p>Int</p></td>
+                                              <td valign="top" width="64%"><p>企业代码 </p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>username</p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>用户帐号 </p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>passwd </p></td>
+                                              <td valign="top" width="16%"><p>String</p></td>
+                                              <td valign="top" width="64%"><p>用户密码</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" width="18%"><p>rowid</p></td>
+                                              <td valign="top" width="16%"><p>int</p></td>
+                                              <td valign="top" width="64%"><p>获取方式(0 正常接收.1重新接收当天数据.)</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p><strong>返回值 </strong></p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p>格式: 批号|^|号码|^|状态 </p>
+                                                <p>两条记录这间用|;|分隔</p>
+                                                <p>316|^|15800000000|^|DELIVRD|;|317|^|13300000000|^|DELIVRD|;|318|^|13900000000|^|DELIVRD|;|319|^|18800000000|^|'UNDELIV</p>
+                                                <p>&nbsp;</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3"><p>示例</p></td>
+                                            </tr>
+                                            <tr>
+                                              <td valign="top" colspan="3">http://59.36.98.104:3080/smshttp?act=getstatue&amp;unitid=100&amp;username=test&amp;passwd=test&amp;rowid=0</td>
+                                            </tr>
+                                          </tbody>
+                                        </table></td>
+                                    </tr>
+                                  <tr><td height="50" align="left"><strong>
+                                      <li>act=smsrecord 获取回复信息</li>
+                                      </strong></td>
+                                  </tr>
+                                  <tr>
+                                    <td align="left"><table cellspacing="0" cellpadding="0" width="100%" border="1">
+                                        <tbody>
+                                          <tr bgcolor="#cccccc">
+                                            <td valign="top" width="18%"><p><strong>参数名称</strong><strong> </strong></p></td>
+                                            <td valign="top" width="16%"><p><strong>参数格式</strong><strong> </strong></p></td>
+                                            <td valign="top" width="64%"><p><strong>参数说明</strong><strong> </strong></p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" width="18%"><p>unitid</p></td>
+                                            <td valign="top" width="16%"><p>Int</p></td>
+                                            <td valign="top" width="64%"><p>企业代码 </p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" width="18%"><p>username</p></td>
+                                            <td valign="top" width="16%"><p>String</p></td>
+                                            <td valign="top" width="64%"><p>用户帐号 </p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" width="18%"><p>passwd </p></td>
+                                            <td valign="top" width="16%"><p>String</p></td>
+                                            <td valign="top" width="64%"><p>用户密码</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" width="18%"><p>rowid</p></td>
+                                            <td valign="top" width="16%"><p>int</p></td>
+                                            <td valign="top" width="64%"><p>获取方式(0 正常接收.1重新接收当天数据.)</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" colspan="3"><p><strong>返回值 </strong></p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" colspan="3"><p>格式: 序号|^|上行号码|^|内容|^|时间|^| sp端口号 </p>
+                                              <p>两条记录这间用|;|分隔</p>
+                                              <p>32221|15800000000|^|这是回复测试|^|2000-07-16  15:10:27|^|1065788|;|32222|^|15800000000|^|这是回复测试2|^|2000-07-16 15:10:27|^|1065788 </p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" colspan="3"><p>示例</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" colspan="3">http://59.36.98.104:3080/smshttp?act=smsrecord&amp;unitid=100&amp;username=test&amp;passwd=test&amp;rowid=0</td>
+                                          </tr>
+                                        </tbody>
+                                      </table></td>
+                                  </tr>
+                                  <tr>
+                                    <td height="50" align="left"><strong>
+                                      <li>返回状态State说明</li>
+                                      </strong></td>
+                                  </tr>
+                                  <tr>
+                                    <td align="left"><table cellspacing="0" cellpadding="0" width="100%" align="center" border="1">
+                                        <tbody>
+                                          <tr bgcolor="#cccccc">
+                                            <td valign="top" align="left" width="18%"><p><strong>返回值</strong><strong></strong></p></td>
+                                            <td valign="top" width="64%"><p><strong>参数说明</strong><strong> </strong></p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle"><p>1</p></td>
+                                            <td valign="top"><p>成功</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle"><p>-1</p></td>
+                                            <td valign="top"><p>账号错误</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle"><p>-2</p></td>
+                                            <td valign="top"><p>企业ID错误</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle"><p>-3</p></td>
+                                            <td valign="top"><p>密码错误</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle"><p>-4</p></td>
+                                            <td valign="top"><p>账号已停用</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle"><p>-5</p></td>
+                                            <td valign="top"><p>内容或号码为空</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle"><p>-6</p></td>
+                                            <td valign="top"><p>余额不足</p></td>
+                                          </tr>
+                                          <tr>
+                                            <td align="middle" valign="top"><p>-7</p></td>
+                                            <td valign="top">内容包含非法关键词</td>
+                                          </tr>
+                                          <tr>
+                                            <td align="middle" valign="top">-9</td>
+                                            <td valign="top">获取批号失败</td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle">-10</td>
+                                            <td valign="top">发送短信失败</td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle">-11</td>
+                                            <td valign="top">时间格式错误</td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle">-100</td>
+                                            <td valign="top">非法参数</td>
+                                          </tr>
+                                          <tr>
+                                            <td valign="top" align="middle">-200</td>
+                                            <td valign="top">系统错误</td>
+                                          </tr>
+                                        </tbody>
+                                      </table></td>
+                                  </tr>
+                                  <tr>
+                                    <td height="50"></td>
+                                  </tr>
+                              </tbody></table></td>
+                            </tr>
+                        </tbody></table></td>
+                    </tr>
+                </tbody></table></td>
+            </tr>
+        </tbody></table></td>
+    </tr>
+  </tbody>
+</table>
+
+
+</body></html>

@@ -1,0 +1,8 @@
+E:\SMS\project\Common\ZabbixAgentExtend\bin\Release\ZabbixAgentExtend.exe.config
+E:\SMS\project\Common\ZabbixAgentExtend\bin\Release\ZabbixAgentExtend.exe
+E:\SMS\project\Common\ZabbixAgentExtend\bin\Release\ZabbixAgentExtend.pdb
+E:\SMS\project\Common\ZabbixAgentExtend\bin\Release\Monitoring.dll
+E:\SMS\project\Common\ZabbixAgentExtend\bin\Release\Monitoring.pdb
+E:\SMS\project\Common\ZabbixAgentExtend\obj\Release\ZabbixAgentExtend.csprojResolveAssemblyReference.cache
+E:\SMS\project\Common\ZabbixAgentExtend\obj\Release\ZabbixAgentExtend.exe
+E:\SMS\project\Common\ZabbixAgentExtend\obj\Release\ZabbixAgentExtend.pdb

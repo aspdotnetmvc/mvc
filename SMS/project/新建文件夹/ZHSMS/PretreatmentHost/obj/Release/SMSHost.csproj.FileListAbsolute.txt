@@ -1,0 +1,6 @@
+D:\kf\sms\OLD\发布\SMS\PretreatmentHost\PretreatmentHost.exe.config
+D:\kf\sms\OLD\发布\SMS\PretreatmentHost\PretreatmentHost.exe
+D:\kf\sms\OLD\发布\SMS\PretreatmentHost\PretreatmentHost.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\PretreatmentHost\obj\Release\PretreatmentHost.exe
+D:\kf\sms\OLD\SMS\project\ZHSMS\PretreatmentHost\obj\Release\PretreatmentHost.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\PretreatmentHost\obj\Release\SMSHost.csprojResolveAssemblyReference.cache

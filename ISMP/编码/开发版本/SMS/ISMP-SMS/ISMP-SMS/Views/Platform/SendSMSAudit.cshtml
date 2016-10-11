@@ -1,0 +1,350 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <title>发送短信审核</title>
+    <script type="text/javascript">
+
+        var sh;
+
+        $(function () {
+            $('#grid').datagrid({
+                url: '../Platform/GetSendSMSAuditList',
+                queryParams: { StartTime: GetDateStr(-1) },
+                columns: [[
+                    { field: 'ck', checkbox: true, title: '选择', width: 50 },
+                    { field: 'SMSType', title: '短信类型', width: 100 ,formatter:$formatter.smstype},
+                    {
+                        field: 'Content', title: '短信内容', width: 500
+                    },
+                    {
+                        field: 'Signature', title: '短信签名', width: 100
+                    },
+                    { field: 'SplitNumber', title: '计费条数', width: 100 },
+
+                    { field: 'NumberCount', title: '号码个数', width: 100 },
+                    { field: 'SendTime', title: '短信提交时间', width: 150 },
+                    { field: 'ID', title: 'ID', hidden:true },
+                    { field: 'AccountID', title: 'AccountID', hidden:true },
+                    { field: 'FeeTotalCount', title: '总扣费条数', width: 150 }
+                ]],
+                pagination: true,
+                singleSelect: false,
+                selectOnCheck: true,
+                checkOnSelect: true,
+                fit: true,
+                rownumbers: true,
+                nowrap: false,   //自动换行
+                idField: 'ID',
+             
+                loadFilter: function (data) {
+                    if (data && data.success == false) {
+                        $.messager.alert("提示", data.message, data.type);
+                        return { total: 0, rows: null };
+                    }
+                    return data;
+                }
+            });
+
+            selectCancel();
+        });
+
+        function reloadgrid() {
+            var page = $('#grid').datagrid('getPager');
+            $(page).pagination({ pageNumber: 1 });
+            $('#grid').datagrid('options').url = '../Platform/GetSendSMSAuditList';
+            $('#grid').datagrid('options').queryParams = {};
+            var ds = $('#grid').datagrid('options').queryParams;
+
+            $('#grid').datagrid('reload');
+
+            selectCancel();
+        }
+        
+        //全选
+        function selectAll() {
+            $('#grid').datagrid('selectAll');
+        }
+        //反选
+        function selectAnti() {
+            var pageRow = $("#grid").datagrid("getRows");
+            var selectRow = $("#grid").datagrid("getSelections");
+
+            for (var i = 0; i < pageRow.length; i++) {
+                if ($.inArray(pageRow[i], selectRow) == -1) {
+                    $("#grid").datagrid("selectRecord", pageRow[i].SerialNumber);
+                } else {
+                    $("#grid").datagrid("unselectRow", $("#grid").datagrid("getRowIndex", pageRow[i]));
+                }
+            }
+        }
+        //取消选择
+        function selectCancel() {
+            $("#grid").datagrid("clearSelections");
+        }
+
+        function AuditSuccess() {
+            var selectRow = $("#grid").datagrid("getSelections");
+            if (selectRow && selectRow.length > 0) {
+                //选择通道
+                var SerialArray = new Array();
+                for (var i = 0; i < selectRow.length; i++) {
+                    SerialArray.push(selectRow[i].AccountID+","+selectRow[i].ID);
+                }
+                SelectChannel(SerialArray.join(";"), selectRow[0].Channel);
+            } else {
+                $.messager.alert("提示", "请选择项！", "info");
+            }
+        }
+
+        function SelectChannel(serialNumber, channelId) {
+            if (!$('#channel').val()) {
+                $.messager.alert("提示", "获取可用通道失败，请刷新当前页面重试！", "info");
+                return;
+            }
+            var channelData = $.parseJSON($("#channel").val());
+            $('#selectChannel').combobox({
+                data: channelData,
+                valueField: 'Id',
+                textField: 'Name',
+                editable: false
+            });
+            $('#selectChannel').combobox("setValue", "");
+            for (var i = 0; i < channelData.length; i++) {
+                if (channelData[i].Id == channelId) {
+                    $('#selectChannel').combobox("setValue", channelId);
+                    break;
+                }
+            }
+            $('#Dlg_SelectChannel').show();
+            $('#Dlg_SelectChannel').dialog({ modal: true });
+            //  $('#inputAccountIDSelectChannel').val(accountId);
+            $('#inputSerialNumberSelectChannel').val(serialNumber);
+            //  $('#inputSendTimeSelectChannel').val(sendTime);
+        }
+
+        function SelectChannelAction() {
+            var channel = $('#selectChannel').combobox("getValue");
+            if (!channel) {
+                $.messager.alert("提示", "请选择发送通道！");
+                return;
+            }
+
+            $.messager.confirm('操作确认', '确定要审核成功吗?', function (r) {
+                if (r) {
+                    //请求操作
+                    var jstr = $.ajax({
+                        url: "/Platform/AuditSendSMSSuccess",
+                        data: { SerialNumber: $('#inputSerialNumberSelectChannel').val(), Channel: channel },
+                        method: "post",
+                        async: false
+                    }).responseText;
+
+                    var msg = eval("(" + jstr + ")");
+                    if (msg.success) {
+                        $('#Dlg_SelectChannel').dialog('close');
+                        reloadgrid();
+                    }
+                    $.messager.alert("提示", msg.message, msg.type);
+                }
+            });
+        }
+
+        function SelectChannelCancel() {
+            $('#Dlg_SelectChannel').dialog('close');
+        }
+
+        function AuditFail() {
+            var selectRow = $("#grid").datagrid("getSelections");
+            if (selectRow && selectRow.length > 0) {
+                AuditFailMsg();
+            } else {
+                $.messager.alert("提示", "请选择项！", "info");
+            }
+        }
+
+        function AuditFailMsg() {
+            $('#Dlg_FailMsg').show();
+            $('#Dlg_FailMsg').dialog({ modal: true });
+            $('#txtFailMsg').val("");
+        }
+        //设置审核失败原因
+        function InitAuditFailureReason() {
+            $.post("/Platform/GetAuditFailureReasonList", {}, function (data) {
+                $("#dFailureReason").html("");
+            
+                var json = eval("(" + data + ")");
+                reasonlist = json;
+                for (var r in json) {
+                    $("#dFailureReason").append("<div class='failurereason'><a href='javascript:void(0)' onclick='onselectreason(" + r + ")'>" + json[r].FailureReason + "</a></div>")
+                }
+            });
+        }
+        var reasonlist;
+        function onselectreason(i) {
+            $('#txtFailMsg').val(reasonlist[i].FailureReason);
+            $('#dFailureReason').dialog("close");
+        }
+        function ShowReason() {
+           
+            $('#dFailureReason').show();
+            $('#dFailureReason').dialog({ modal: true,title:'选择原因' });
+            InitAuditFailureReason();
+
+        }
+
+
+
+        function AuditFailAction() {
+            var msg = $('#txtFailMsg').val();
+            if (msg == "") {
+                $.messager.alert("提示", "审核失败原因必须填写！");
+                return;
+            }
+            if (msg.length > 200) {
+                $.messager.alert('提示', '审核失败原因最多有200个字符！');
+                return;
+            }
+
+            var selectRow = $("#grid").datagrid("getSelections");
+
+            var arr = new Array();
+            for (var i = 0; i < selectRow.length; i++) {
+                arr.push(selectRow[i].AccountID + "," + selectRow[i].ID);
+            }
+            //请求操作
+            var jstr = $.ajax({
+                url: "/Platform/AuditSendSMSFail",
+                data: { SerialNumber: arr.join(";"), AuditMsg: $('#txtFailMsg').val() },
+                method: "post",
+                async: false
+            }).responseText;
+
+            var msg = eval("(" + jstr + ")");
+            if (msg.success) {
+                $('#Dlg_FailMsg').dialog('close');
+                reloadgrid();
+            }
+            $.messager.alert("提示", msg.message, msg.type);
+
+        }
+
+        function AuditFailCancel() {
+            $('#Dlg_FailMsg').dialog('close');
+        }
+
+        function GetDateStr(AddDayCount) {
+            var dd = new Date();
+            dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期
+            var y = dd.getFullYear();
+            var m = dd.getMonth() + 1;//获取当前月份的日期
+            var d = dd.getDate();
+            return y + "-" + m + "-" + d + " 00:00:00";
+        }
+
+    </script>
+    <style>
+        .spinner {
+            width: 100% !important;
+        }
+
+            .spinner .textbox-icon {
+                padding-top: 3px !important;
+            }
+
+                .spinner .textbox-icon a {
+                    height: 13px !important;
+                }
+
+        .numberbox .textbox-icon {
+            padding-top: 3px !important;
+        }
+
+            .numberbox .textbox-icon a {
+                height: 13px !important;
+            }
+
+        .textbox {
+            width: 300px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="ismp_search" style="margin-top:15px;padding-left:1%;font-size:14px;">
+        <form id="frmSearch" class="pure-form pure-form-aligned">
+            <a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="reloadgrid()"><i class="fa fa-search"></i> 查询</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="AuditSuccess()"><i class="fa fa-check"></i> 审核成功</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button5 btn" onclick="AuditFail()"><i class="fa fa-close"></i> 审核失败</a>
+        </form>
+    </div>
+    <div style="position:absolute;top:63px;bottom:0px;left:1%;right:2%;">
+        <table id="grid"></table>
+    </div>
+    <div id="Dlg_FailMsg" title="填写审核失败备注" style="display: none">
+        <div style="width: 360px; height: 170px; padding: 10px">
+            <table cellpadding="0" cellspacing="1" style="width: 360px;">
+                <tr>
+                    <td>
+                        备注：
+                    </td>
+                    <td style="line-height: 200%; padding: 5px;">
+                        <textarea id="txtFailMsg" style="width: 300px;height: 150px; "></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="text-align: center;margin-bottom:20px;">
+            <a id="frmReason" href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="ShowReason()">失败原因</a>
+            <a id="frmSave" href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="AuditFailAction()">确定</a>
+            <a id="frmCancel" href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="AuditFailCancel()">取消</a>
+        </div>
+        <div id="dFailureReason" style="display:none;width:400px;height:250px;z-index:1000;padding:10px;">
+
+        </div>
+    </div>
+    <div id="Dlg_SelectChannel" title="选择通道" style="display: none">
+        <div style="width: 360px; height: 100px; padding: 10px">
+            <table cellpadding="0" cellspacing="1" style="width: 360px;">
+                <tr>
+                    <td style="padding-top:30px;">
+                        通道：
+                    </td>
+                    <td style="line-height: 200%; padding: 5px; padding-top: 30px;">
+                        <input id="selectChannel" class="easyui-combobox" style="width: 300px;" required="required" />
+                        <input id="inputAccountIDSelectChannel" type="hidden">
+                        <input id="inputSerialNumberSelectChannel" type="hidden">
+                        <input id="inputSendTimeSelectChannel" type="hidden">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="text-align: center;margin-bottom:20px;">
+            <a id="frmSave" href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="SelectChannelAction()">确定</a>
+            <a id="frmCancel" href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="SelectChannelCancel()">取消</a>
+        </div>
+    </div>
+    <input type="hidden" id="channel" value='@ViewData["Channel"]' />
+</body>
+</html>

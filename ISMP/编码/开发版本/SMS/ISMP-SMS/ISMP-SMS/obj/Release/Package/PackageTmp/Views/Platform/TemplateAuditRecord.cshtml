@@ -1,0 +1,132 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/iframe.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/toastr.min.css">
+
+    <script type="text/javascript" src='../Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='../Scripts/jquery.easyui.min.js'></script>
+    <script type="text/javascript" src='../Scripts/easyui-lang-zh_CN.js'></script>
+    <script type="text/javascript" src="../Scripts/plugin/ismp_plugin.js"></script>
+    <script type="text/javascript" src="../Scripts/plugin/toastr.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Common/zh_ISMP.js"></script>
+
+    <style type="text/css">
+    .dailishang_edit td{padding-top: 15px;}
+    .dailishang_edit .textbox{width: 90%!important;}
+    .dailishang_edit input{width: 90%!important;}
+    .dailishang_edit input[type=radio]{width: 12%!important;}
+    .dailishang_edit td[colspan='3'] .textbox{width: 96%!important;}
+    .dailishang_edit select{width: 90%!important;}
+    .dailishang_edit {font-size: 14px;}
+    .pure-form select{height: 2.45em!important;}
+    .guishu {position: relative;}
+    .pure-form h3{width: 95%;margin-left:auto;margin-right:auto;}
+    #frmMore{color:#1CB394;margin-right: 22px;}
+    #LoginNameCheckResult{position: absolute;display: none;z-index: 9900000;outline: none;opacity: 1;filter: alpha(opacity=100);padding: 5px;border-width: 1px;border-style: solid;border-radius: 5px;-moz-border-radius: 5px 5px 5px 5px;-webkit-border-radius: 5px 5px 5px 5px;border-radius: 5px 5px 5px 5px;border-color:#cc9933;background-color: #ffffcc; font-size: 12px;margin: -30px 0 0 170px;}
+    .textbox{position: relative;}
+    .easyui-fluid { width: 100% !important; }
+    .easyui-fluid .textbox-icon { padding-top: 0px; }
+    </style>
+    <title>短信模版审核记录</title>
+</head>
+<body>
+    <div class="ismp_con">
+        <!-- 搜索条件 开始 -->
+        <div class="ismp_search">
+            <form id="frmSearch" class="pure-form pure-form-aligned">
+                <span class="searchinput">
+                    <label for="frmStartTime">开始时间：</label>
+                    <input id="frmStartTime" class="easyui-datetimebox" width="100" name="StartTime">
+                </span>
+                <span class="searchinput">
+                    <label for="frmEndTime">结束时间：</label>
+                    <input id="frmEndTime" class="easyui-datetimebox" width="100" name="EndTime">
+                </span>
+                <span class="searchinput">
+                    <label for="AuditResult">审核结果：</label>
+                    <label for="Radio_All"><input id="Radio_All" name="AuditResult" type="radio" value="全部" checked="checked" />全部</label>
+                    <label for="Radio_Success"><input id="Radio_Success" name="AuditResult" type="radio" value="审核通过" />审核通过</label>
+                    <label for="Radio_Fail"><input id="Radio_Fail" name="AuditResult" type="radio" value="审核失败" />审核失败</label>
+                </span>
+
+                <a href="#" class="pure-button ismp-button1 btn" onclick="searchData()"><i class="fa fa-search"></i> 查询</a>
+            </form>
+        </div>
+        <div style="position:absolute;top:63px;bottom:0px;left:1%;right:1%;">
+            <table id="grid"></table>
+        </div>
+    </div>
+</body>
+<script>
+    
+    $(function () {
+        InitGrid();
+    });
+
+    //初始化列表
+    function InitGrid() {
+        $('#grid').datagrid({
+            url: '../Platform/GetTemplateAuditRecord',
+            //queryParams: {  },
+            columns: [[
+                { field: 'AccountCode', title: '企业', width: 100 },
+                { field: 'TempletContent', title: '短信备案内容', width: 900 },
+                { field: 'SubmitTime', title: '提交时间', width: 150 },
+                { field: 'AuditTime', title: '审核时间', width: 150 },
+                {
+                    field: 'AuditState', title: '审核结果', width: 100, formatter: function (value, row, index) {
+                        switch (value) {
+                            case 0:
+                                return "待审核";
+                            case 1:
+                                return "审核成功";
+                            case 2:
+                                return "审核失败";
+                        }
+                    }
+                },
+                { field: 'Remark', title: '备注', width: 100 },
+                { field: 'UserCode', title: '审核人', width: 100 }
+            ]],
+            pagination: true,
+            pageNumber: 1,
+            singleSelect: true,
+            fit: true,
+            rownumbers: true,
+            nowrap: false   //自动换行
+        });
+    }
+
+    function reloadgrid() {
+        $('#grid').datagrid('reload');
+    }
+
+    //查询数据
+    function searchData() {
+        var page = $('#grid').datagrid('getPager');
+        $(page).pagination({ pageNumber: 1 });
+        $('#grid').datagrid('options').url = '../Platform/GetTemplateAuditRecord';
+        $('#grid').datagrid('options').queryParams = {};
+        var ds = $('#grid').datagrid('options').queryParams;
+        ds["StartTime"] = $('#frmStartTime').datetimebox("getValue");
+        ds["EndTime"] = $('#frmEndTime').datetimebox("getValue");
+        ds["AuditResult"] = $('input[name="AuditResult"]:checked').val();
+
+        reloadgrid();
+    }
+</script>
+</html>

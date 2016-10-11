@@ -1,0 +1,15 @@
+D:\temp\Old\SMS\project\ZHSMS\CMPPMAS\bin\Release\CMPPMAS.dll
+D:\temp\Old\SMS\project\ZHSMS\CMPPMAS\bin\Release\CMPPMAS.pdb
+D:\temp\Old\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.dll
+D:\temp\Old\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.pdb
+D:\temp\Old\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.csprojResolveAssemblyReference.cache
+D:\work\sms\OLD\SMS\project\ZHSMS\CMPPMAS\bin\Release\CMPPMAS.dll
+D:\work\sms\OLD\SMS\project\ZHSMS\CMPPMAS\bin\Release\CMPPMAS.pdb
+D:\work\sms\OLD\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.dll
+D:\work\sms\OLD\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.pdb
+D:\work\sms\OLD\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.csprojResolveAssemblyReference.cache
+D:\kf\sms\OLD\SMS\project\ZHSMS\CMPPMAS\bin\Release\CMPPMAS.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\CMPPMAS\bin\Release\CMPPMAS.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.csprojResolveAssemblyReference.cache
+D:\kf\sms\OLD\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\CMPPMAS\obj\Release\CMPPMAS.pdb

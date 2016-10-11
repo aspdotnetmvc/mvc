@@ -1,0 +1,12 @@
+D:\temp\Old\SMS\project\ZHSMS\ServiceModel\bin\Release\ServiceModel.dll
+D:\temp\Old\SMS\project\ZHSMS\ServiceModel\bin\Release\ServiceModel.pdb
+D:\temp\Old\SMS\project\ZHSMS\ServiceModel\obj\Release\ServiceModel.dll
+D:\temp\Old\SMS\project\ZHSMS\ServiceModel\obj\Release\ServiceModel.pdb
+D:\work\sms\OLD\SMS\project\ZHSMS\ServiceModel\bin\Release\ServiceModel.dll
+D:\work\sms\OLD\SMS\project\ZHSMS\ServiceModel\bin\Release\ServiceModel.pdb
+D:\work\sms\OLD\SMS\project\ZHSMS\ServiceModel\obj\Release\ServiceModel.dll
+D:\work\sms\OLD\SMS\project\ZHSMS\ServiceModel\obj\Release\ServiceModel.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\ServiceModel\bin\Release\ServiceModel.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\ServiceModel\bin\Release\ServiceModel.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\ServiceModel\obj\Release\ServiceModel.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\ServiceModel\obj\Release\ServiceModel.pdb

@@ -1,0 +1,12 @@
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\DAL.dll
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\DAL.pdb
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\DBUtility.dll
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\Model.dll
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\MySql.Data.dll
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\SMSModel.dll
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\SMSModel.pdb
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\DBUtility.pdb
+E:\SMS\project\ZHSMSManager\DAL\bin\Debug\Model.pdb
+E:\SMS\project\ZHSMSManager\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\SMS\project\ZHSMSManager\DAL\obj\Debug\DAL.dll
+E:\SMS\project\ZHSMSManager\DAL\obj\Debug\DAL.pdb

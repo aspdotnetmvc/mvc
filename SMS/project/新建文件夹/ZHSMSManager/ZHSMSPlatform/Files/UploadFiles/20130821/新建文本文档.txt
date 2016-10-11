@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<SeatFlow UniqueID="9b5a6eec58" Name="新建流程">
+    <Elements>
+        <WF11Element  UniqueID="27f45d3ebd" Title="应答1" WF11ElementType="ElementAnswer" Left="493" Top="61" ZIndex="0">
+        </WF11Element>
+        <WF11Element  UniqueID="449d21b60c" Title="放音1" WF11ElementType="ElementPlayBack" Left="476" Top="201" ZIndex="1">
+          <Property>
+            <PlayBackPath val="放音文件路径" />
+          </Property>
+        </WF11Element>
+        <WF11Element  UniqueID="aabe96f3db" Title="放音收号1" WF11ElementType="ElementPlayBackNumberRec" Left="479" Top="313" ZIndex="2">
+          <Property>
+            <Min_digits val="1" />
+            <Max_digits val="5" />
+            <Max_attempts val="1" />
+            <Timeout val="1" />
+            <Terminators val="#" />
+            <KeytonePath val="提示音" />
+            <ErroKeytonePath val="错误音提示" />
+            <Digit_regex val="正则表达式" />
+            <DigName val="1" />
+            <DigTimeout val="0" />
+            <FailTransfer val="110" />
+            <Digits_List digits="1" elementId="af1ebe9b99" elementName="呼叫1" elementType="ElementCall" />
+            <Digits_List digits="2" elementId="cf1d75fc68" elementName="IVR子流程1" elementType="ElementGotoIvrMenu" />
+            <Digits_List digits="3" elementId="9f1d19ea2c" elementName="队列1" elementType="ElementGotoQueue" />
+            <Digits_List digits="4" elementId="0b5607ff34" elementName="语音信箱1" elementType="ElementGotoVoiceMail" />
+            <Digits_List digits="5" elementId="bced246372" elementName="录音1" elementType="ElementRecording" />
+
+          </Property>
+        </WF11Element>
+        <WF11Element  UniqueID="af1ebe9b99" Title="呼叫1" WF11ElementType="ElementCall" Left="197" Top="489" ZIndex="3">
+          <Property>
+            <DestNumber val="120" />
+            <Displaytype val="XML" />
+            <Content val="default" />
+          </Property>
+        </WF11Element>
+        <WF11Element  UniqueID="cf1d75fc68" Title="IVR子流程1" WF11ElementType="ElementGotoIvrMenu" Left="383" Top="485" ZIndex="4">
+          <Property>
+            <UniqueID val="cf1d75fc68" />
+          </Property>
+        </WF11Element>
+        <WF11Element  UniqueID="9f1d19ea2c" Title="队列1" WF11ElementType="ElementGotoQueue" Left="755" Top="475" ZIndex="5">
+          <Property>
+            <Title val="队列1" />
+          </Property>
+        </WF11Element>
+        <WF11Element  UniqueID="0b5607ff34" Title="语音信箱1" WF11ElementType="ElementGotoVoiceMail" Left="911" Top="476" ZIndex="21">
+          <Property>
+            <Content val="XML" />
+            <Domain val="默认" />
+            <number val="122" />
+          </Property>        </WF11Element>
+        <WF11Element  UniqueID="bced246372" Title="录音1" WF11ElementType="ElementRecording" Left="587" Top="488" ZIndex="7">
+          <Property>
+            <RecordingPath val="录音文件路径" />
+            <MaxTime val="1" />
+            <Mute val="1" />
+            <MuteStop val="1" />
+          </Property>
+        </WF11Element>
+        <WF11Element  UniqueID="08ce6ab703" Title="连线" WF11ElementType="ElementLine" Left="546,537.5,537.5,529" Top="123,164,164,205" BeginID="27f45d3ebd" Flag="true" EndID="449d21b60c" ZIndex="8">
+        </WF11Element>
+        <WF11Element  UniqueID="ed254a2f2c" Title="连线" WF11ElementType="ElementLine" Left="529,530.5,530.5,532" Top="263,290,290,317" BeginID="449d21b60c" Flag="true" EndID="aabe96f3db" ZIndex="9">
+        </WF11Element>
+        <WF11Element  UniqueID="9a01224d32" Title="连线" WF11ElementType="ElementLine" Left="532,415.5,415.5,299" Top="375,448.5,448.5,522" BeginID="aabe96f3db" Flag="true" EndID="af1ebe9b99" ZIndex="10">
+        </WF11Element>
+        <WF11Element  UniqueID="844b33fc9c" Title="连线" WF11ElementType="ElementLine" Left="532,484,484,436" Top="375,432,432,489" BeginID="aabe96f3db" Flag="true" EndID="cf1d75fc68" ZIndex="11">
+        </WF11Element>
+        <WF11Element  UniqueID="8afef182ff" Title="连线" WF11ElementType="ElementLine" Left="532,645.5,645.5,759" Top="375,441.5,441.5,508" BeginID="aabe96f3db" Flag="true" EndID="9f1d19ea2c" ZIndex="12">
+        </WF11Element>
+        <WF11Element  UniqueID="2c07b95b9c" Title="连线" WF11ElementType="ElementLine" Left="532,723.5,723.5,915" Top="375,442,442,509" BeginID="aabe96f3db" Flag="true" EndID="0b5607ff34" ZIndex="13">
+        </WF11Element>
+        <WF11Element  UniqueID="899bb157e9" Title="连线" WF11ElementType="ElementLine" Left="532,561.5,561.5,591" Top="375,448,448,521" BeginID="aabe96f3db" Flag="true" EndID="bced246372" ZIndex="14">
+        </WF11Element>
+    </Elements>
+    <Items>
+      <Item>
+            <IsSub val="False" />
+            <SubName val="新建流程" />
+            <SubProcessId val="9b5a6eec58" />
+            <Order val="0" />
+            <elements val="27f45d3ebd,449d21b60c,aabe96f3db,af1ebe9b99,cf1d75fc68,9f1d19ea2c,0b5607ff34,bced246372,08ce6ab703,ed254a2f2c,9a01224d32,844b33fc9c,8afef182ff,2c07b95b9c,899bb157e9" />
+      </Item>
+    </Items>
+</SeatFlow>

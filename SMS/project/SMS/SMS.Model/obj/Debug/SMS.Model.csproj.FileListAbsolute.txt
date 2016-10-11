@@ -1,0 +1,7 @@
+D:\kf\sms\OLD\SMS\project\SMS\SMS.Model\bin\Debug\SMS.Model.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.Model\bin\Debug\SMS.Model.pdb
+D:\kf\sms\OLD\SMS\project\SMS\SMS.Model\bin\Debug\Newtonsoft.Json.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.Model\bin\Debug\Newtonsoft.Json.xml
+D:\kf\sms\OLD\SMS\project\SMS\SMS.Model\obj\Debug\SMS.Model.dll
+D:\kf\sms\OLD\SMS\project\SMS\SMS.Model\obj\Debug\SMS.Model.pdb
+D:\kf\sms\OLD\SMS\project\SMS\SMS.Model\obj\Debug\SMS.Model.csprojResolveAssemblyReference.cache

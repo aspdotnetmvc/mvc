@@ -1,0 +1,12 @@
+D:\temp\Old\ISMP\编码\开发版本\ISMP\ISMPInterface\bin\Release\ISMPInterface.dll
+D:\temp\Old\ISMP\编码\开发版本\ISMP\ISMPInterface\bin\Release\ISMPInterface.pdb
+D:\temp\Old\ISMP\编码\开发版本\ISMP\ISMPInterface\obj\Release\ISMPInterface.dll
+D:\temp\Old\ISMP\编码\开发版本\ISMP\ISMPInterface\obj\Release\ISMPInterface.pdb
+D:\work\sms\OLD\ISMP\编码\开发版本\ISMP\ISMPInterface\bin\Release\ISMPInterface.dll
+D:\work\sms\OLD\ISMP\编码\开发版本\ISMP\ISMPInterface\bin\Release\ISMPInterface.pdb
+D:\work\sms\OLD\ISMP\编码\开发版本\ISMP\ISMPInterface\obj\Release\ISMPInterface.dll
+D:\work\sms\OLD\ISMP\编码\开发版本\ISMP\ISMPInterface\obj\Release\ISMPInterface.pdb
+D:\kf\sms\OLD\ISMP\编码\开发版本\ISMP\ISMPInterface\bin\Release\ISMPInterface.dll
+D:\kf\sms\OLD\ISMP\编码\开发版本\ISMP\ISMPInterface\bin\Release\ISMPInterface.pdb
+D:\kf\sms\OLD\ISMP\编码\开发版本\ISMP\ISMPInterface\obj\Release\ISMPInterface.dll
+D:\kf\sms\OLD\ISMP\编码\开发版本\ISMP\ISMPInterface\obj\Release\ISMPInterface.pdb

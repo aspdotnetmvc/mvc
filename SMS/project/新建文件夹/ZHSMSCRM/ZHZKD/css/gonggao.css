@@ -1,0 +1,97 @@
+﻿@charset "utf-8";
+body {
+	margin: 0px;
+	padding: 0px;
+}
+ul{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.gonggao_box {
+	width: 100%;
+	background-color: #eeeeee;
+}
+.gonggao_box .gonggao_title {
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+	line-height: 38px;
+	background-color: #59B1E0;
+	text-indent: 22px;
+	height: 38px;
+	width: 100%;
+	color: #FFF;
+}
+.gonggao_box .gonggao_con {
+	width: 95%;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+	zoom:1;
+}
+.gonggao_box .gonggao_con .gg_con_title {
+	height: 30px;
+	width: 100%;
+	overflow:hidden;
+	zoom:1;
+	border: 1px solid #dddddd;
+	margin-bottom: 15px;
+	background-color: #FFF;
+}
+.gonggao_box .gonggao_con .gg_con_title a {
+	color: #333;
+	text-decoration: none;
+}
+.gonggao_box .gonggao_con .gg_con_title a:hover {
+	color: #389bd1;
+	text-decoration: none;
+}
+.gonggao_box .gonggao_con .gg_con_title .title {
+	display: block;
+	float: left;
+	margin-left: 15px;
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+	line-height: 30px;
+}
+.gonggao_box .gonggao_con .gg_con_title .time {
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+	line-height: 30px;
+	float: right;
+	margin-right: 20px;
+}
+.gonggao_box .gonggao_con .gg_con_box {
+	width: 100%;
+	border: 1px solid #dddddd;
+	margin-bottom: 15px;
+	background-color: #FFF;
+	display: none;
+}
+.gonggao_box .gonggao_con .gg_con_box .gg_open_title {
+	width: 98%;
+	margin-top: 15px;
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 16px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../images/login/gonggao_title_bj_1.jpg);
+	background-repeat: no-repeat;
+	background-position: right 5px;
+	background-color: #FFF;
+}
+.gonggao_box .gonggao_con .gg_con_box .gg_open_title .open_time {
+	font-family: "宋体", System;
+	font-size: 12px;
+	color: #999999;
+}
+.gonggao_box .gonggao_con .gg_con_box .gg_open_con {
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+	line-height: 25px;
+	width: 98%;
+	margin-top: 25px;
+	margin-right: auto;
+	margin-left: auto;
+}

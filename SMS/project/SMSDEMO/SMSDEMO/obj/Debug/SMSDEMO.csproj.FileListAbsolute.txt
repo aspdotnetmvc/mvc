@@ -1,0 +1,10 @@
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\obj\Debug\SMSDEMO.csprojResolveAssemblyReference.cache
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\obj\Debug\ZHSMSDEMO.fMain.resources
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\obj\Debug\SMSDEMO.Properties.Resources.resources
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\obj\Debug\SMSDEMO.csproj.GenerateResource.Cache
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\bin\Debug\SMSDEMO.exe.config
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\bin\Debug\SMSDEMO.exe
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\bin\Debug\SMSDEMO.pdb
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\bin\Debug\Newtonsoft.Json.dll
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\obj\Debug\SMSDEMO.exe
+D:\kf\sms\OLD\SMS\project\SMSDEMO\SMSDEMO\obj\Debug\SMSDEMO.pdb

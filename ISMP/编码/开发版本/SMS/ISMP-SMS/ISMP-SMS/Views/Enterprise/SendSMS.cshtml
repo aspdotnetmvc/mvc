@@ -1,0 +1,475 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <title>发送短信</title>
+    <script type="text/javascript">
+        var Numbers = '@ViewData["Numbers"]';
+        $(function () {
+            if (Numbers) {
+                $("#frmNumbers").val(Numbers);
+            }
+        });
+
+        function getNumbers() {
+            $("#frm").form("submit", {
+                url: "/File/GetUploadContent",
+                success: function (data) {
+                    var json = eval("(" + data + ")");
+                    if (json.success) {
+                        $("#frmNumbers").val(json.message);
+                    } else {
+                        $.messager.alert("提示", json.message, "info");
+                    }
+                }
+            });
+        }
+        function editSMS() {
+            var con = $("#frmContent").val();
+            var signature = $("#frmSignature").val();
+            $.ajax({
+                url: '/SMSUtil/GetSplitNumber',
+                type: 'POST',
+                data: { Content: con, Signature: signature },
+                success: function (text) {
+                    var json = eval("(" + text + ")");
+                    $('#conlen').html(json.ContentLength);
+                    $('#smsnum').html(json.SMSCount);
+                }
+            });
+        }
+        function SendSMS() {
+            if ($("#frmNumbers").val() == "") {
+                $.messager.alert("提示", "请输入电话号码", "error");
+                return;
+            }
+            if ($("#frmContent").val() == "") {
+                $.messager.alert("提示", "请输入短信内容", "error");
+                return;
+            }
+            if ($("#frmSignature").val() == "") {
+                $.messager.alert("提示", "企业签名不能为空", "error");
+                return;
+            }
+            $.post("/Enterprise/PreSubmitSMS", {
+                Numbers: $("#frmNumbers").val(),
+                Content: $("#frmContent").val(),
+                Signature: $("#frmSignature").val()
+
+            }, function (data) {
+                var json = eval("(" + data + ")");
+                if (json.success) {
+                    showpreview(json);
+                } else {
+                    $.messager.alert("提示", json.message, "info");
+                }
+            });
+        }
+        function showpreview(data) {
+            $("#winpreview").window("open");
+            $("#frmsubmit").form("clear");
+            $("#fstotalcount").text(data.TotalCount);
+
+            if (data.ErrorCount > 0) {
+                $("#trerrornum").show();
+                $("#fserrorcount").text(data.ErrorCount);
+                $("#fsErrorNumbers").val(data.ErrorNumbers);
+            } else {
+                $("#trerrornum").hide();
+            }
+            if (data.NotDefinedCount > 0) {
+                $("#trnotdefined").show();
+                $("#fsnotdefinedcount").text(data.NotDefinedCount);
+                $("#fsNotDefinedNumbers").val(data.NotDefinedNumbers);
+            } else {
+                $("#trnotdefined").hide();
+            }
+            if (data.MobileCount > 0) {
+                $("#trmobile").show();
+                $("#fsmobilecount").text(data.MobileCount);
+                $("#fsMobileNumbers").val(data.MobileNumbers);
+            } else {
+                $("#trmobile").hide();
+            }
+            if (data.UnicomCount > 0) {
+                $("#trunicom").show();
+                $("#fsunicomcount").text(data.UnicomCount);
+                $("#fsUnicomNumbers").val(data.UnicomNumbers);
+            } else {
+                $("#trunicom").hide();
+            }
+            if (data.TelecomCount > 0) {
+                $("#trtelecom").show();
+                $("#fstelecomcount").text(data.TelecomCount);
+                $("#fsTelecomNumbers").val(data.TelecomNumbers);
+            } else {
+                $("#trtelecom").hide();
+            }
+
+            $("#pcontent").text(data.SendContent);
+
+            if (data.HasKeywords) {
+                $("#pkeywords").show();
+                $("#skeywords").text(data.KeywordsList);
+            } else {
+                $("#pkeywords").hide();
+                $("#skeywords").text("");
+            }
+            $("#swordcount").text(data.SendContent.length);
+            $("#smssplit").text(data.SmsSplitCount);
+            $("#svalidnumbercount").text(data.MobileCount + data.TelecomCount + data.UnicomCount);
+            $("#sfeecount").text(data.SmsSplitCount * (data.MobileCount + data.TelecomCount + data.UnicomCount));
+        }
+
+        function viewNumbers(key) {
+
+            if (key == "error") {
+                $("#fvnumbers").val($("#fsErrorNumbers").val());
+            }
+            else if (key == "notdefined") {
+                $("#fvnumbers").val($("#fsNotDefinedNumbers").val());
+            }
+            else if (key == "mobile") {
+                $("#fvnumbers").val($("#fsMobileNumbers").val());
+            }
+            else if (key == "telecom") {
+                $("#fvnumbers").val($("#fsTelecomNumbers").val());
+            }
+            else if (key == "unicom") {
+                $("#fvnumbers").val($("#fsUnicomNumbers").val());
+            } else {
+                return;
+            }
+
+            $("#frmviewnumber").submit();
+        }
+
+
+        function dosubmit() {
+            if ($("#frmNumbers").val() == "") {
+                $.messager.alert("提示", "请输入电话号码", "error");
+                return;
+            }
+            if ($("#frmContent").val() == "") {
+                $.messager.alert("提示", "请输入短信内容", "error");
+                return;
+            }
+            if ($("#frmSignature").val() == "") {
+                $.messager.alert("提示", "企业签名不能为空", "error");
+                return;
+            }
+            //    $("#frmSubmit").prop("enabled", false);
+            $.post("/Enterprise/DoSendSMS", {
+                MobileNumbers: $("#fsMobileNumbers").val(),
+                TelecomNumbers: $("#fsTelecomNumbers").val(),
+                UnicomNumbers: $("#fsUnicomNumbers").val(),
+                Content: $("#frmContent").val(),
+                Signature: $("#frmSignature").val(),
+                SMSTimer: $("#frmSMSTimer").datetimebox("getValue"),
+                WapUrl: $("#frmWapUrl").val()
+
+            }, function (data) {
+                var json = eval("(" + data + ")");
+                if (json.success) {
+                    document.body.innerHTML = json.message + "<br/>" + " <a href=\"javascript:void(0)\" class=\"pure-button ismp-button6 btn marginleft\" onclick=\"location.replace(location.href)\">继续发送短信</a>";
+                } else {
+                    $.messager.alert("提示",json.message,"error");
+                }
+            });
+        }
+        function cancelsubmit() {
+            $("#winpreview").window("close");
+        }
+        function CheckKeywords() {
+            if ($("#frmContent").val() == "") {
+                $.messager.alert("提示", "请输入短信内容", "error");
+                return;
+            }
+            $.post("/Enterprise/CheckKeywords", { Content: $("#frmContent").val() },
+                function (data) {
+                    var jo = eval("(" + data + ")");
+                    if (jo.success) {
+                        $.messager.alert("提示", "没有敏感词！", "info");
+
+                    } else {
+                        $.messager.alert("提示", "此短信内容中包含敏感词:" + jo.message, "info");
+                    }
+                });
+
+        }
+
+        function checkErrorNum() {
+            if ($("#frmNumbers").val() == "") {
+                $.messager.alert("提示", "请输入号码", "error");
+                return;
+            }
+            $.post("/Enterprise/CheckErrorNumbers", { Numbers: $("#frmNumbers").val() },
+                function (data) {
+                    var jo = eval("(" + data + ")");
+                    if (jo.success) {
+                        $.messager.alert("提示", "此短信内容中不包错误号码", "info");
+
+                    } else {
+                        showerror(jo, "错误号码");
+                    }
+                });
+        }
+
+        function showerror(err, title) {
+            $("#winerror").window({ title: title });
+            $("#winerror").window("open");
+            $("#content").html("");
+            var msg = $("<p>" + err.message + "</p>");
+            $("#content").append(msg);
+            if (err.errorcode == 10) {
+                $("#showError").show();
+            } else {
+                $("#showError").hide();
+            }
+        }
+
+        function closewinerror() {
+            $("#winerror").window("close");
+        }
+        function Reset() {
+            $("#frm").form("reset");
+        }
+
+    </script>
+    <style>
+        .box {
+            margin-left: 10px;
+        }
+
+            .box tr td {
+                padding-top: 10px;
+            }
+
+            .box .textbox {
+                width: 68% !important;
+            }
+
+            .box .gaoji .textbox {
+                width: 78% !important;
+            }
+
+            .box .gaoji {
+                display: none;
+            }
+
+        #gaoji_btn {
+            color: #1258E6;
+        }
+    </style>
+</head>
+<body>
+    <form id="frm" enctype="multipart/form-data" method="post">
+
+        <table class="box">
+            <col align="right" />
+            <tr>
+                <td width="120">
+                    电话号码：
+                </td>
+                <td>
+                    <textarea id="frmNumbers" name="Numbers" cols="200" style="width:500px;height:200px;"></textarea>
+                </td>
+                <td rowspan="3" style="padding:10px;">
+                    <p>
+                        <h3>注意：</h3>
+                        1. 多个手机号码请以英文逗号隔开
+                        <br />
+                        2. 短信内容最多为 500 字，不包含签名。编辑短信内容时不要添加签名，系统预设，发送短信时自动添加
+                        <br />
+                        3. 短信计费长度含：内容+追加的字符+签名
+                        <br />
+                        4. 计费条数指当前信息是按几条短信计费
+                        <br />
+                        5. 普通短信计费条数为 70 字，长短信为 67 字
+                        <br />
+                        6. 按行业标准，短信发送最迟72小时后准确显示发送结果。
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    或 导入号码：
+                </td>
+                <td>
+                    <input id="frmFile" name="file" class="easyui-filebox" buttontext="选择文件" style="width:300px;" />
+                    <a href="javascript:void(0);" style="width:60px;" class="easyui-linkbutton" onclick="getNumbers()"> 读取号码</a>
+                </td>
+            </tr>
+            <tr>
+                <td>企业签名：</td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(ViewData["Signature"] as string))
+                    {
+                        <input id="frmSignature" name="Signature" style="width:200px;height:30px;" value="@ViewData["Signature"]" readonly="readonly" />
+                    }
+                    else
+                    {
+                        <input id="frmSignature" name="Signature" style="width: 200px; height: 30px;" onchange="editSMS()" />
+                    }
+                    无需【】， 系统自动添加【】
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    短信内容：
+                </td>
+                <td>
+                    <textarea id="frmContent" name="Content" cols="200" style="width:500px;height:200px;" onchange="editSMS()"></textarea>
+                    <p style='overflow: hidden;line-height: 30px;'>当前输入的字符数是:<span id="conlen" style="color:red">0</span>,要发送的短信条数为:<span id="smsnum" style="color:red">0</span><a href="javascript:void(0)" class="pure-button ismp-button5 btn" style='float:right' onclick="CheckKeywords()">检查敏感词</a></p>
+                </td>
+            </tr>
+            <tr style="display:none;">
+                <td colspan="2" style="padding-right: 149px;"><a href="javascript:showtd('#gaoji_btn')" id="gaoji_btn">高级选项 <i class="fa fa-sort-desc"></i></a></td>
+            </tr>
+            <tr class="gaoji">
+                <td>
+                    定时发送：
+                </td>
+                <td>
+                    <input type="text" id="frmSMSTimer" name="SMSTimer" class="easyui-datetimebox" style="width:300px;" /><br />不选择时间，默认立即发送
+                </td>
+            </tr>
+          
+
+            <tr>
+                <td colspan="2" align="center" style="padding-bottom:10px;">
+                    <a id="frmSubmit" href="javascript:void(0)" class="pure-button ismp-button4 btn marginleft" onclick="SendSMS()">提交</a>
+
+                    <a href="javascript:void(0);" class="pure-button ismp-button4 btn marginleft" onclick="checkErrorNum()">检查错误号码</a>
+
+                    <a href="javascript:void(0)" class="pure-button ismp-button5 btn marginleft" onclick="Reset()">重置</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="winerror" class="easyui-window" title="错误号码" style="width:600px;height:300px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <div id="content" style="padding:10px;font-size:14px;">
+
+        </div>
+        <p style="padding:10px;font-size:14px;color:red;">
+            检查出错误号码，系统将自动过滤错误号码，错误号码不进行提交所以不计费，也不影响正常号码提交。如果您希望继续发送以上号码，请点击"查看错误号码"进行修改，修改完成后复制到发送列表中即可。
+        </p>
+
+        <div class="margintop" style="text-align:center;">
+            <a id="showError" href='/Enterprise/GetErrorNumbers' class='pure-button ismp-button6 btn marginleft' target='_blank'>查看全部错误号码</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="closewinerror()">关闭</a>
+        </div>
+    </div>
+    <div id="winpreview" class="easyui-window" title="短信提交" style="width: 800px; height: 500px; padding-left: 20px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <form id="frmsubmit">
+            <div class="margintop">
+                <h3>
+                    本次提交号码数<span id="fstotalcount" color="red">100</span> 个,其中
+                </h3>
+                <table style="width:80%" align="center">
+                    <tr id="trerrornum">
+                        <td>错误号码</td>
+                        <td><span id="fserrorcount">0</span></td>
+                        <td>个</td>
+                        <td><a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="viewNumbers('error')">查看号码</a></td>
+                    </tr>
+                    <tr id="trnotdefined">
+                        <td>未知运营商号码</td>
+                        <td><span id="fsnotdefinedcount">0</span></td>
+                        <td>个</td>
+                        <td><a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="viewNumbers('notdefined')">查看号码</a></td>
+                    </tr>
+                    <tr id="trmobile">
+                        <td>移动号码</td>
+                        <td><span id="fsmobilecount">0</span></td>
+                        <td>个</td>
+                        <td><a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="viewNumbers('mobile')">查看号码</a></td>
+                    </tr>
+                    <tr id="trunicom">
+                        <td>联通号码</td>
+                        <td><span id="fsunicomcount">0</span></td>
+                        <td>个</td>
+                        <td><a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="viewNumbers('unicom')">查看号码</a></td>
+                    </tr>
+                    <tr id="trtelecom">
+                        <td>电信号码</td>
+                        <td><span id="fstelecomcount">0</span></td>
+                        <td>个</td>
+                        <td><a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="viewNumbers('telecom')">查看号码</a></td>
+                    </tr>
+                </table>
+                <input id="fsErrorNumbers" type="hidden" />
+                <input id="fsNotDefinedNumbers" type="hidden" />
+                <input id="fsMobileNumbers" type="hidden" />
+                <input id="fsUnicomNumbers" type="hidden" />
+                <input id="fsTelecomNumbers" type="hidden" />
+            </div>
+            <div class="margintop" style="text-align:left;">
+                <h3>短信内容预览：</h3>
+                <p id="pcontent">
+
+                </p>
+                <p style="padding:10px;font-size:14px;color:red;" id="pkeywords">
+                    内容中包含敏感词：<span id="skeywords"></span>，可能会导致短信发送失败，请联系客服人员。
+                </p>
+                <p style="padding:10px;font-size:14px;color:red;">
+                    本条短信内容+签名共计 <span id="swordcount" style="font-size:16px;font-weight:bold;">0</span>个字，按<span id="smssplit" style="font-size: 16px; font-weight: bold;">1</span>条计费，有效号码数 <span id="svalidnumbercount" style="font-size: 16px; font-weight: bold;">0</span>个，总计扣费<span id="sfeecount" style="font-size: 16px; font-weight: bold;">0</span>条。
+                </p>
+            </div>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="dosubmit()">确定</a>
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="cancelsubmit()">取消</a>
+            </div>
+        </form>
+        <form style="display:none;" id="frmviewnumber" action="/Enterprise/GetNumbersFile" method="post" target="_blank">
+            <input type="hidden" id="fvnumbers" name="Numbers" />
+        </form>
+    </div>
+    <div style="display:none" id="onsubmit">
+        <div id="onsubmitinfo" style="font-size:14px;">
+
+        </div>
+        <p style="padding:10px;font-size:14px;color:red;">
+            检查出错误号码，系统将自动过滤错误号码，错误号码不进行提交所以不计费，也不影响正常号码提交。如果您希望继续发送以上号码，请点击"查看错误号码"进行修改，修改完成后复制到发送列表中即可。
+        </p>
+        <div class="margintop" style="text-align:center;">
+            <a href='/Enterprise/GetErrorNumbers' class='pure-button ismp-button6 btn marginleft' target='_blank'>查看全部错误号码</a>
+            <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="location.replace(location.href)">继续发送短信</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function showtd(event) {
+        if ($(".gaoji").css("display") === "none") {
+            $(".gaoji").css("display", "table-row");
+            $(event).html("高级选项 <i class='fa fa-sort-asc'></i>");
+        } else {
+            $(".gaoji").css("display", "none");
+            $(event).html("高级选项 <i class='fa fa-sort-desc'></i>");
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/SGIPSendSMS.aspx" hash="fffffff63f94d806" filehash="322ce16bf21f" flags="110000" assembly="App_Web_wb2yzymr" type="ASP.sgipsendsms_aspx">
+    <filedeps>
+        <filedep name="/SGIPSendSMS.aspx" />
+    </filedeps>
+</preserve>

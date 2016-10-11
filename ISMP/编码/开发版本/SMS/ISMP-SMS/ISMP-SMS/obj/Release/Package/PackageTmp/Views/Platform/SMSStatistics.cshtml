@@ -1,0 +1,210 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>短信统计</title>
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#fqStartDate").datebox("setValue", GetDateStr(-7));
+            $("#fqEndDate").datebox("setValue", GetDateStr(-1));
+            doqry();
+        });
+
+
+
+        function doqry() {
+            if ($("#fqStartDate").datebox("getValue")) {
+
+            } else {
+                $.messager.alert("提示", "请选择开始日期", "info");
+                return;
+            }
+            if ($("#fqEndDate").datebox("getValue")) {
+
+            } else {
+                $.messager.alert("提示", "请选择截止日期", "info");
+                return;
+            }
+
+            $("#ftTotalChargeMoney").textbox("setValue", 0);
+            $("#ftTotalChargeCount").textbox("setValue", 0);
+            $("#ftTotalSendCount").textbox("setValue", 0);
+            $("#ftTotalBalance").textbox("setValue", 0);
+            $("#grid").datagrid({
+                url: "/Platform/SMSStatisticsData",
+                pageNumber: 1,
+                queryParams: {
+                    StartDate: $("#fqStartDate").datebox("getValue"),
+                    EndDate: $("#fqEndDate").datebox("getValue"),
+                    keyword: $("#fqKeywords").textbox("getValue"),
+                },
+                onLoadSuccess: function (data) {
+                    $("#ftTotalChargeMoney").textbox("setValue", data.TotalChargeMoney);
+                    $("#ftTotalChargeCount").textbox("setValue", data.TotalChargeCount);
+                    $("#ftTotalSendCount").textbox("setValue", data.TotalSendCount);
+                    $("#ftTotalBalance").textbox("setValue", data.TotalBalance);
+                }
+            });
+        }
+
+
+        function doqryOneDay() {
+            if ($("#fqStartDate").datebox("getValue")) {
+
+            } else {
+                $.messager.alert("提示", "请选择开始日期", "info");
+                return;
+            }
+            $("#fqEndDate").datebox("setValue", $("#fqStartDate").datebox("getValue"));
+            doqry();
+
+        }
+        function doqryOneWeek() {
+            if ($("#fqStartDate").datebox("getValue")) {
+
+            } else {
+                $.messager.alert("提示", "请选择开始日期", "info");
+                return;
+            }
+            $("#fqEndDate").datebox("setValue", formatterDate(addDate($("#fqStartDate").datebox("getValue"), 6)));
+            doqry();
+        }
+        function doqryOneMonth() {
+            if ($("#fqStartDate").datebox("getValue")) {
+
+            } else {
+                $.messager.alert("提示", "请选择开始日期", "info");
+                return;
+            }
+            // var dt = new Date();
+            var dt = new Date($("#fqStartDate").datebox("getValue"));
+            var mf = new Date(dt.getFullYear(), dt.getMonth(), 1);
+            var me = new Date(dt.getFullYear(), dt.getMonth() + 1, 0);
+            $("#fqStartDate").datebox("setValue", formatterDate(mf));
+            $("#fqEndDate").datebox("setValue", formatterDate(me));
+            doqry();
+        }
+
+        function addDate(dd, dadd) {
+            var a = new Date(dd);
+            a = a.valueOf();
+            a = a + dadd * 24 * 60 * 60 * 1000;
+            a = new Date(a);
+            return a;
+        }
+        function formatterDate(date) {
+            var day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
+            var month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : "0"
+            + (date.getMonth() + 1);
+            return date.getFullYear() + '-' + month + '-' + day;
+        };
+        function reset() {
+            $("#frmqry").form("clear");
+        }
+
+        function reloadgrid() {
+            $("#grid").datagrid("reload")
+        }
+        function GetDateStr(AddDayCount) {
+            var dd = new Date();
+            dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期
+            var y = dd.getFullYear();
+            var m = dd.getMonth() + 1;//获取当前月份的日期
+            var d = dd.getDate();
+            return y + "-" + m + "-" + d;
+        }
+    </script>
+    <style>
+        .textbox {
+            width: 200px !important;
+        }
+
+        .box td {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+	<div class="ismp_con">
+	    <div class="ismp_search">
+	        <form id="frmqry" class="pure-form pure-form-aligned">
+	            <span class="searchinput">
+	                <label for="fqKeywords">企业</label>
+	                <input id="fqKeywords" class="easyui-textbox" />
+	            </span>
+	            <span class="searchinput">
+	                <label for="fqStartDate">开始日期</label>
+	                <input id="fqStartDate" class="easyui-datebox" />
+	            </span>
+	            <span class="searchinput">
+	                <label for="fqEndDate">结束日期</label>
+	                <input id="fqEndDate" class="easyui-datebox" />
+	            </span>
+	            <a class="pure-button ismp-button4 btn" href="javascript:void(0)" onclick="doqry()"><i class="fa fa-search"></i> 查询</a>
+	            <a class="pure-button ismp-button4 btn" href="javascript:void(0)" onclick="doqryOneDay()"><i class="fa fa-search"></i> 查询一天</a>
+	            <a class="pure-button ismp-button4 btn" href="javascript:void(0)" onclick="doqryOneWeek()"><i class="fa fa-search"></i> 查询一周</a>
+	            <a class="pure-button ismp-button4 btn" href="javascript:void(0)" onclick="doqryOneMonth()"><i class="fa fa-search"></i> 查询一月</a>
+	        </form>
+	    </div>
+        <div class="ismp_search" style="margin-top:15px;">
+            <form id="frmtotal" class="pure-form pure-form-aligned">
+                <span class="searchinput">
+                    <label for="ftTotalChargeMoney">总充值金额</label>
+                    <input id="ftTotalChargeMoney" class="easyui-textbox" readonly="readonly" />
+                </span>
+                <span class="searchinput">
+                    <label for="ftTotalChargeCount">总充值条数</label>
+                    <input id="ftTotalChargeCount" class="easyui-textbox" readonly="readonly" />
+                </span>
+                <span class="searchinput">
+                    <label for="ftTotalSendCount">总发送条数</label>
+                    <input id="ftTotalSendCount" class="easyui-textbox" readonly="readonly" />
+                </span>
+                <span class="searchinput">
+                    <label for="ftTotalBalance">剩余条数</label>
+                    <input id="ftTotalBalance" class="easyui-textbox" readonly="readonly" />
+                </span>
+            </form>
+        </div>
+
+	    <div style="position:absolute;top:106px;bottom:0px;left:1%;right:1%;">
+            <table id="grid" class="easyui-datagrid" data-options="fitColumns:true,fit:true,rownumbers:true,pagination:true,showfooter:true,singleSelect:true,">
+                <thead>
+                    <tr>
+                        <th data-options="field:'EnterpriseCode',width:200">企业账号</th>
+                        <th data-options="field:'Name',width:200">企业名称</th>
+                        <th data-options="field:'ChargeMoney',width:100">充值金额</th>
+                        <th data-options="field:'ChargeCount',width:100">充值条数</th>
+                        <th data-options="field:'SendCount',width:100">发送条数</th>
+                        <th data-options="field:'Succeed',width:100">成功条数</th>
+                        <th data-options="field:'Balance',width:100">剩余条数</th>
+
+                    </tr>
+                </thead>
+            </table>
+	    </div>
+    </div>
+</body>
+</html>

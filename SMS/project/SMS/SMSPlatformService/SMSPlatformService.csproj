@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CB8E78A0-52CE-4E57-8CBB-64CE5AF76D51}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMSPlatformService</RootNamespace>
+    <AssemblyName>SMSPlatformService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountServer.cs" />
+    <Compile Include="CacheManager.cs" />
+    <Compile Include="DESEncrypt.cs" />
+    <Compile Include="EnterpriseBlackList.cs" />
+    <Compile Include="ISMPService.cs" />
+    <Compile Include="NewPlatformService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusReportService.cs" />
+    <Compile Include="SMSPlatformService.cs" />
+    <Compile Include="StatusReportProxy.cs" />
+    <Compile Include="SMSProxy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBTools\DBTools.csproj">
+      <Project>{fed9896f-e5a2-4f7c-8c4c-2381a6170984}</Project>
+      <Name>DBTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMS.DB\SMS.DB.csproj">
+      <Project>{de3b9085-2fb7-429b-ac31-00b590ed9f92}</Project>
+      <Name>SMS.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMS.Model\SMS.Model.csproj">
+      <Project>{2336878e-f17f-43b3-b109-570a1ff393f1}</Project>
+      <Name>SMS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMS.Util\SMS.Util.csproj">
+      <Project>{e2a9e84a-456b-42b6-9972-883536f6ebf0}</Project>
+      <Name>SMS.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSInterface\SMSInterface.csproj">
+      <Project>{f69595c5-2995-4581-8cc3-2f9752c5347c}</Project>
+      <Name>SMSInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSPlatform.DAL\SMSPlatform.DAL.csproj">
+      <Project>{dffe9c10-f4a2-4551-a1ff-3f7edbcf6b1f}</Project>
+      <Name>SMSPlatform.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSPlatformInterface\SMSPlatformInterface.csproj">
+      <Project>{a194c8b6-cb23-48b1-a709-5a05a78e5c34}</Project>
+      <Name>SMSPlatformInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StatusReportInterface\StatusReportInterface.csproj">
+      <Project>{5c40993a-d520-4614-b37e-650811a41451}</Project>
+      <Name>StatusReportInterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

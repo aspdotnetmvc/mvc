@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/SendSMSEx.aspx" hash="fffffff63f94d806" filehash="410d9b5f9448" flags="110000" assembly="App_Web_wb2yzymr" type="ASP.sendsmsex_aspx">
+    <filedeps>
+        <filedep name="/SendSMSEx.aspx" />
+    </filedeps>
+</preserve>

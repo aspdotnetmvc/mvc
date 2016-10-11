@@ -1,0 +1,9 @@
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\bin\Debug\GatewayInterface.dll
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\bin\Debug\GatewayInterface.pdb
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\bin\Debug\SMS.Model.dll
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\bin\Debug\Newtonsoft.Json.dll
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\bin\Debug\SMS.Model.pdb
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\bin\Debug\Newtonsoft.Json.xml
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\obj\Debug\GatewayInterface.dll
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\obj\Debug\GatewayInterface.pdb
+D:\kf\sms\OLD\SMS\project\SMS\GatewayInterface\obj\Debug\GatewayInterface.csprojResolveAssemblyReference.cache

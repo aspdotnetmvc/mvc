@@ -1,0 +1,10 @@
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\bin\Debug\LogClient.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\bin\Debug\LogClient.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\bin\Debug\MQHelper.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\bin\Debug\RabbitMQ.Client.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\bin\Debug\MessageTools.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\bin\Debug\MQHelper.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\bin\Debug\MessageTools.pdb
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\obj\Debug\LogClient.csprojResolveAssemblyReference.cache
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\obj\Debug\LogClient.dll
+D:\kf\sms\OLD\SMS\project\SMS\LogClient\obj\Debug\LogClient.pdb

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A363F0BD-2CE7-4CB1-98B6-8E3BC3ECA3A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISMPModel</RootNamespace>
+    <AssemblyName>ISMPModel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dapper.1.42\lib\net40\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\..\..\Common\MongoDBAccess\packages\MongoDB.Driver.1.10.1\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\..\..\Common\MongoDBAccess\packages\MongoDB.Driver.1.10.1\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\SMS\project\SMS\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="AgentProductConfig.cs" />
+    <Compile Include="Agent.cs" />
+    <Compile Include="AgentHierarchy.cs" />
+    <Compile Include="ChannelServant.cs" />
+    <Compile Include="ChannelManager.cs" />
+    <Compile Include="Credentials.cs" />
+    <Compile Include="AgentEmployee.cs" />
+    <Compile Include="ExcelColumnConfig.cs" />
+    <Compile Include="EnterprisePluginTemplate.cs" />
+    <Compile Include="EnterpriseTemplateDetail.cs" />
+    <Compile Include="HomeConfig.cs" />
+    <Compile Include="AliPayRechargeApply.cs" />
+    <Compile Include="RechargeApplyRecord.cs" />
+    <Compile Include="Plan.cs" />
+    <Compile Include="PlanType.cs" />
+    <Compile Include="ProductConfiguration.cs" />
+    <Compile Include="ProductFunction.cs" />
+    <Compile Include="MongBDBusinessDetail.cs" />
+    <Compile Include="Package.cs" />
+    <Compile Include="PaymentAccountLog.cs" />
+    <Compile Include="PaymentAccountTemplate.cs" />
+    <Compile Include="ProductAuditRecord.cs" />
+    <Compile Include="ProductModule.cs" />
+    <Compile Include="ProductPayType.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="EncryptTool.cs" />
+    <Compile Include="Enterprise.cs" />
+    <Compile Include="EnterpriseProduct.cs" />
+    <Compile Include="ExtendMethods.cs" />
+    <Compile Include="EnterpriseHierarchy.cs" />
+    <Compile Include="IContactInformation.cs" />
+    <Compile Include="DBPermission.cs" />
+    <Compile Include="OperateException.cs" />
+    <Compile Include="ParamList.cs" />
+    <Compile Include="PaymentAccountHierarchy.cs" />
+    <Compile Include="PaymentAccount.cs" />
+    <Compile Include="Permission .cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductOrder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultSet.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RPC_Result.cs" />
+    <Compile Include="SystemMessage.cs" />
+    <Compile Include="SystemNotice.cs" />
+    <Compile Include="SystemToDoList.cs" />
+    <Compile Include="Sys_Log.cs" />
+    <Compile Include="DoTaskData.cs" />
+    <Compile Include="Verification.cs" />
+    <Compile Include="WebParamList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISMPInterface\ISMPInterface.csproj">
+      <Project>{8e07a99b-5f22-4189-8ae9-9fa233dc3c82}</Project>
+      <Name>ISMPInterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

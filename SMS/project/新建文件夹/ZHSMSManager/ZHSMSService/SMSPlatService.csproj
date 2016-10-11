@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA7C54B1-9FD8-469E-AF23-6A179FBC93EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZHSMSService</RootNamespace>
+    <AssemblyName>ZHSMSService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Monitoring">
+      <HintPath>..\..\ZHSMS\StatusReportHost\bin\Release\Monitoring.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Common\CommonUtils\bin\Release\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountServer.cs" />
+    <Compile Include="CacheManager.cs" />
+    <Compile Include="DESEncrypt.cs" />
+    <Compile Include="EnterpriseBlackList.cs" />
+    <Compile Include="NewPlatformService.cs" />
+    <Compile Include="ISMPService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMSPlatformService.cs" />
+    <Compile Include="SMSProxy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonUtils\Utils.csproj">
+      <Project>{a1269393-9f77-49c7-a734-5643c6e5ff63}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SmsGUI\ServiceManageWin\MessageTools\MessageTools.csproj">
+      <Project>{d8dd162c-72cc-45ae-9b54-aa27f5d9ed4f}</Project>
+      <Name>MessageTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZHSMS\LogHelper\LogHelper.csproj">
+      <Project>{1a557d46-6394-4fc6-9f0e-33a175f299e5}</Project>
+      <Name>LogHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZHSMS\SMS.DB\SMS.DB.csproj">
+      <Project>{14cd3c1f-07b0-4ac1-8e62-2d6d821205a9}</Project>
+      <Name>SMS.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZHSMS\SMS.DTO\SMS.DTO.csproj">
+      <Project>{9f4f088d-cf30-43da-a35e-0e7e863bb9b3}</Project>
+      <Name>SMS.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZHSMS\SMS.Model\SMS.Model.csproj">
+      <Project>{ff058f8c-6516-4568-922d-068611be4754}</Project>
+      <Name>SMS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZHSMS\SMS.Util\SMS.Util.csproj">
+      <Project>{e2a9e84a-456b-42b6-9972-883536f6ebf0}</Project>
+      <Name>SMS.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZHSMS\SMSInterface\SMSInterface.csproj">
+      <Project>{57353e30-a494-4256-8fdc-53b90f40c982}</Project>
+      <Name>SMSInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{2ab5b21f-f2bf-4389-a878-799509633f53}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{7aaa58e9-f8dc-48d9-92ad-cdc0ad796a7a}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZHSMSPlatInterface\SMSPlatInterface.csproj">
+      <Project>{5922bfd6-f4ea-4829-a6b4-5c85dc578954}</Project>
+      <Name>SMSPlatInterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

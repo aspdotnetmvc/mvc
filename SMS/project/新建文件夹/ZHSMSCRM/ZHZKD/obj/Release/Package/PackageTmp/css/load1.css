@@ -1,0 +1,163 @@
+﻿@charset "utf-8";
+body{
+	margin: 0px;
+	padding: 0px;
+}
+.clear{
+	clear:both;
+	line-height: 0px;
+	margin: 0px;
+	padding: 0px;
+	height: 0px;
+	width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	list-style-type: none;
+	overflow: hidden;
+	zoom:1;
+}
+.input_txt{
+	font-family:"微软雅黑", "黑体", "宋体";
+	font-size:14px;
+	color:#c8c8c8;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    box-shadow:0 0 0 60px #fff inset;
+}
+.top {
+	background-image: url(../images/login/logo.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	height: 144px;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.middle {
+	background-color: #4ca5d7;
+	height: 589px;
+	width: 100%;
+}
+.middle .load_con {
+	background-image: url(../images/login/phone1.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	height: 589px;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+}
+.middle .load_con .load_box {
+	background-color: #eee;
+	height: 364px;
+	width: 296px;
+	position: absolute;
+	top: 90px;
+	right: 0px;
+	border-radius:5px;
+}
+.middle .load_con .load_box #num {
+	background-color: #FFF;
+	background-image: url(../images/login/num_ico.png);
+	background-repeat: no-repeat;
+	background-position: 10px 9px;
+	height: 36px;
+	width: 195px;
+	padding-left: 38px;
+	border: 1px solid #b3b3b3;
+	margin-top: 64px;
+	margin-left: 29px;
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 36px;
+}
+.middle .load_con .load_box #psw {
+	background-color: #FFF;
+	background-image: url(../images/login/psw_1.jpg);
+	background-repeat: no-repeat;
+	height: 36px;
+	width: 195px;
+	padding-left: 38px;
+	border: 1px solid #b3b3b3;
+	margin-top: 10px;
+	margin-left: 29px;
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 36px;
+}
+.middle .load_con .load_box .psw_jia{
+	background-color: #FFF;
+	background-image: url(../images/login/pw_ico.png);
+	background-repeat: no-repeat;
+	background-position: 10px 9px;
+	height: 36px;
+	width: 195px;
+	padding-left: 38px;
+	border: 1px solid #b3b3b3;
+	margin-top: 10px;
+	margin-left: 29px;
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 36px;
+}
+.middle .load_con .load_box #code {
+	background-color: #FFF;
+	background-image: url(../images/login/code_ico.png);
+	background-repeat: no-repeat;
+	background-position: 10px 9px;
+	height: 36px;
+	width: 111px;
+	padding-left: 38px;
+	border: 1px solid #b3b3b3;
+	margin-top: 10px;
+	margin-left: 29px;
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 36px;
+}
+.middle .load_con .load_box .code_img {
+	float: right;
+	height: 38px;
+	width: 75px;
+	margin-top: 10px;
+	background-color: #0CF;
+	margin-right: 32px;
+	*margin-top:-40px;
+}
+.middle .load_con .load_box .rem {
+	font-family: "宋体", System;
+	font-size: 12px;
+	display: block;
+	margin-top: 16px;
+	margin-left: 33px;
+	line-height: 10px;
+	height: 10px;
+	vertical-align: middle;
+}
+
+.middle .load_con .load_box .sub {
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+	color: #FFF;
+	background-color: #48b7e9;
+	height: 36px;
+	width: 234px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-radius:5px;
+	margin-top: 37px;
+	margin-left: 30px;
+}
+.bottom{
+	width: 1000px;
+	margin: 10px auto;
+	font-family:"微软雅黑", "黑体", "宋体";
+	font-size: 12px; 
+}

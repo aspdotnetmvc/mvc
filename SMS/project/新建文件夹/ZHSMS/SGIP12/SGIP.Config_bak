@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<SGIPSetting xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ServerIp>220.201.8.97</ServerIp>
+  <ServerPort>9001</ServerPort>
+  <LocalIP>0.0.0.0</LocalIP>
+  <LocalPort>8801</LocalPort>
+  <Password>sdzhhy</Password>
+  <SlidingWindowSize>1</SlidingWindowSize>
+  <SendCount>3</SendCount>
+  <TimeOut>30</TimeOut>
+  <SendSpan>45</SendSpan>
+  <SrcNodeSequence>10655024069</SrcNodeSequence>
+  <CorpId>41048</CorpId>
+  <FeeValue>0</FeeValue>
+  <FeeType>2</FeeType>
+  <ChargeNumber>000000000000000000000</ChargeNumber>
+  <ServiceType>SHGRP</ServiceType>
+  <LoginName>sdzhhy</LoginName>
+  <LocalLoginName>hysdzh</LocalLoginName>
+  <LocalLoginPassword>hysdzh</LocalLoginPassword>
+  <SrcID></SrcID>
+</SGIPSetting>

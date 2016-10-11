@@ -1,0 +1,43 @@
+body, html {
+	margin: 0px;
+	padding: 0px;
+	background-color: #fff;
+	position: relative;
+	z-index: 1;
+	font-size: 14px;
+}
+.top{width:100%;height:100px;}
+.top .top_con{width: 1000px;margin: 0 auto;}
+.top .top_con img{margin-top: 10px;}
+.login_bj{width: 100%;background: url(../../Images/load_bj.jpg) center;height:78%;position: relative;min-height:442px; }
+.login{width:1160px;height:500px;position:absolute;left:50%;top:50%;margin-top:-235px;margin-left:-580px;z-index:10}
+.login_body{float:right;width:392px}
+.login_mid{width:340px;padding:0 25px;margin:0 auto;margin-top:20px;height:425px;border:solid 1px #ebebec;background:url(../../Images/login_bg.png) left top repeat}
+.login_mid h2{margin:0;margin-top: 20px;padding:0;font-size:20px;color:#304269;font-weight:700}
+p.error_tips{text-align:left;color:#e13232;padding-top:13;margin-top:0;line-height:20px}
+.login_mid .login_input,.login_mid p.login_btn a{padding-left:10px;display:inline-block;width:328px;height:40px;font-size:14px;color:#999;line-height:40px;border:solid 1px #ebebec;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}
+.login_mid .login_mark{width:210px;margin-right:10px}
+.login_mid .img_mark{display:inline-block;vertical-align:top;width:102px;height:42px;overflow:hidden}
+.login_mid .img_mark img{display:inline-block;width:102px;height:32px;padding:5px 0;cursor:pointer}
+.login_mid p.forget_tips,.login_mid p.login_btn{text-align:center}
+.login_mid p.forget_tips{margin:20px 0;padding:0}
+.login_mid p.forget_tips a{color:#007fc1;font-weight:700;font-size:14px;text-decoration:underline}
+.login_mid p.login_btn a{width:338px;display:inline-block;border:none;background-color:#1ab394;text-align:center;color:#fff}
+.login_mid p.login_btn a:hover{background-color:#18a78a;}
+/*找回密码相关页*/
+.retrieve_password{position:absolute;width:600px;height:430px;top:50%;left:50%;margin-top:-215px;margin-left:-300px;z-index:10}
+.retrieve_password h1{margin:0;padding:0;width:100%;height:80px;background:url(../../Images/login_title.png) center center no-repeat}
+.retrieve_password_by{width:598px;height:348px;border:solid 1px #ebebec;background:url(../../Images/login_bg.png) left top repeat}
+.retrieve_password_by h2{text-align:left;font-size:18px;color:#676a6c;font-weight:400;padding:20px 30px;margin-top:0}
+.retrieve_password_by p{text-align:center;margin-top:50px;padding:0 130px;line-height:25px;color:#676a6c}
+.retrieve_password_by p.forget_phone{padding:0 10px}
+.retrieve_password_by p.forget_phone_tips{padding:0 50px;text-align:left;margin:0;color:#e13232}
+.forget_phone_mark{display:inline-block;vertical-align:top;width:140px;text-align:center;height:42px;line-height:42px;color:#fff;margin-left:10px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background-color:#f8ac59}
+.forget_input,.logforget_btn{padding-left:10px;display:inline-block;width:328px;height:40px;font-size:14px;color:#999;line-height:40px;border:solid 1px #ebebec;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}
+.logforget_btn{padding:0;text-align:center;color:#fff;background-color:#1ab394}
+.logforget_btn:hover{ background-color:#18a78a;}
+.mail_tips{color:#ff7800}
+
+/*页脚*/
+.foot{width:100%;height:3%;min-height: 40px;}
+.foot_body{position:relative;clear:both;width:1000px;margin:0 auto;color:#3e4b6b;font-size:16px;padding-top: 1%;}

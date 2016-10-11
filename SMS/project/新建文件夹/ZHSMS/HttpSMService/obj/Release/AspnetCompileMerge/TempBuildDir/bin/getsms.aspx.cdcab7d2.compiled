@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/GetSMS.aspx" hash="fffffff63f94d806" filehash="ffffcdb27babfbf1" flags="110000" assembly="App_Web_wb2yzymr" type="ASP.getsms_aspx">
+    <filedeps>
+        <filedep name="/GetSMS.aspx" />
+    </filedeps>
+</preserve>

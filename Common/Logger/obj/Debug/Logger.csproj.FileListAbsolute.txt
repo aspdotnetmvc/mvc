@@ -1,0 +1,16 @@
+E:\Common\Logger\bin\Debug\log4net.config
+E:\Common\Logger\bin\Debug\BXM.Logger.dll
+E:\Common\Logger\bin\Debug\BXM.Logger.pdb
+E:\Common\Logger\bin\Debug\log4net.dll
+E:\Common\Logger\bin\Debug\log4net.xml
+E:\Common\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+E:\Common\Logger\obj\Debug\BXM.Logger.dll
+E:\Common\Logger\obj\Debug\BXM.Logger.pdb
+D:\work\Common\Logger\bin\Debug\log4net.config
+D:\work\Common\Logger\bin\Debug\BXM.Logger.dll
+D:\work\Common\Logger\bin\Debug\BXM.Logger.pdb
+D:\work\Common\Logger\bin\Debug\log4net.dll
+D:\work\Common\Logger\bin\Debug\log4net.xml
+D:\work\Common\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+D:\work\Common\Logger\obj\Debug\BXM.Logger.dll
+D:\work\Common\Logger\obj\Debug\BXM.Logger.pdb

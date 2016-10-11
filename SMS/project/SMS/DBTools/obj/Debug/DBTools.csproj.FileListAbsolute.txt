@@ -1,0 +1,10 @@
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\bin\Debug\DBTools.dll.config
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\bin\Debug\DBTools.dll
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\bin\Debug\DBTools.pdb
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\bin\Debug\Dapper.dll
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\bin\Debug\MySql.Data.dll
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\bin\Debug\Dapper.pdb
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\bin\Debug\Dapper.xml
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\obj\Debug\DBTools.dll
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\obj\Debug\DBTools.pdb
+D:\kf\sms\OLD\SMS\project\SMS\DBTools\obj\Debug\DBTools.csprojResolveAssemblyReference.cache

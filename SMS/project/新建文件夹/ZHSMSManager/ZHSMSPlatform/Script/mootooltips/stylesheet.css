@@ -1,0 +1,56 @@
+/*
+body { background:#000000; font-family:Arial, Helvetica, sans-serif; }
+
+h1 { background:#333333; text-align:center; color:#FFFFFF; padding:10px; font-size:20px; }
+h2 { font-size:12px; font-style:italic; color:#333333; }
+
+*/
+#container {
+	display:block;
+	position:relative;
+	width:600px;
+	margin:0px auto 0px;
+	background:#FFF;
+	padding:20px;
+	font-size:12px;
+	line-height:18px;
+}
+
+
+#container p{
+	clear:both; 
+	float:none;
+	margin:10px 0px 10px;
+}
+
+/* tooltip design */
+.ToolTips { display:block; position:absolute; width:404px; }
+.ToolTips .sticky_close { display:block; position:absolute; top:1px; right:3px; background:url(images/fileclose.png); width:16px; height:16px; line-height:16px; font-size:0px; z-index:100000000; }
+.ToolTips .message { display:block; position:relative; background:url(images/tip_body.png) repeat-y; padding:0px 10px; }
+
+/* here we do a little switch. If the tooltip is positioned above the element hovered, it changes the classes on the header/footer divs in order to point at the element hovered */
+.ToolTips .dockBottomHeader, 
+.ToolTips .dockTopFooter { display:block; position:relative; background:url(images/dockBottomHeader.png) no-repeat bottom; height:33px;  }
+.ToolTips .dockTopFooter { background:url(images/dockTopFooter.png) no-repeat bottom; height:38px; }
+
+.ToolTips .dockBottomFooter,
+.ToolTips .dockTopHeader { display:block; position:relative; background:url(images/dockBottomFooter.png); height:14px; line-height:11px; font-size:0px; clear:both; }
+/* this one has more height to display the close button in case sticky tooltips are on */
+.ToolTips .dockTopHeader { background:url(images/dockTopHeader.png) bottom center no-repeat; height:20px; line-height:20px; font-size:0px; }
+
+* html .ToolTips .dockBottomHeader { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/dockBottomHeader.png'); }
+* html .ToolTips .dockBottomFooter { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/dockBottomFooter.png'); }
+* html .ToolTips .dockTopHeader { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/dockTopHeader.png'); }
+* html .ToolTips .dockTopFooter { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/dockTopFooter.png'); }
+* html .ToolTips .sticky_close {  background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/fileclose.png');  }
+
+/* this is just a div displaying the loading animated .gif */
+.loading { display:block; margin:0px auto 0px; background:url(images/ajax-loader.gif) center center no-repeat; width:31px; height:50px; }
+
+/* tip container */
+.tipContainer { display:none; }
+
+/* beautify the tooltip content */
+.ToolTips .message { font-size:12px; text-align:justify; }
+.ToolTips .message h3 { font-size:16px; margin:0px 0px 10px; padding:0px; color:#FF6600; }
+.ToolTips .message .rights { display:block; clear:both; margin:15px 0px 0px; text-align:right; font-size:11px; color:#666666; }

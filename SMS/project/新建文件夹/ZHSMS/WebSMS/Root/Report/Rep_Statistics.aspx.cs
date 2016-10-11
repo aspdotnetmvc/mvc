@@ -1,0 +1,184 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Xml.Linq;
+using SMSModel;
+using System.Data;
+using StatusReportInterface;
+
+namespace WebSMS.Root.Report
+{
+    public partial class Rep_Statistics : JudgeSession
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                load();
+            }
+        }
+
+        private void load()
+        {
+            string se = Request.QueryString["SerialNumber"].ToString();
+            DataTable dt = CreateTable();
+
+            RPCResult<ReportStatistics> r = PretreatmentProxy.GetStatusReportService().GetReportStatistics(Guid.Parse(se));
+            if (r.Success)
+            {
+                lbl_message.Visible = false;
+                ReportStatistics s = r.Value;
+                if (r.Value != null)
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["SerialNumber"] = s.SerialNumber;
+                    dr["Account"] = s.Account;
+                    dr["BeginSendTime"] = s.BeginSendTime;
+                    dr["FailureCount"] = s.FailureCount;
+                    dr["LastResponseTime"] = s.LastResponseTime;
+                  
+                    dr["SendCount"] = s.SendCount;
+                    dr["SplitNumber"] = s.SplitNumber;
+                    dr["Succeed"] = s.Succeed;
+                    dt.Rows.Add(dr);
+                }
+            }
+            lbl_message.Visible = false;
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            Session["dt"] = dt;
+
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        public int CurrentPage
+        {
+            get
+            {
+                if (ViewState["CurrentPage"] == null)
+                    return 0;
+                else
+                    return (int)ViewState["CurrentPage"];
+            }
+            set
+            {
+                ViewState["CurrentPage"] = value;
+            }
+        }
+        protected void PageDropDownList_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+            GridViewRow pagerRow = GridView1.BottomPagerRow;
+            DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+            GridView1.PageIndex = pageList.SelectedIndex;
+            this.CurrentPage = pageList.SelectedIndex;
+            load();
+        }
+        protected void GridView1_DataBound(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = GridView1.BottomPagerRow;
+                LinkButton linkBtnFirst = (LinkButton)pagerRow.Cells[0].FindControl("linkBtnFirst");
+                LinkButton linkBtnPrev = (LinkButton)pagerRow.Cells[0].FindControl("linkBtnPrev");
+                LinkButton linkBtnNext = (LinkButton)pagerRow.Cells[0].FindControl("linkBtnNext");
+                LinkButton linkBtnLast = (LinkButton)pagerRow.Cells[0].FindControl("linkBtnLast");
+                if (GridView1.PageIndex == 0)
+                {
+                    linkBtnFirst.Enabled = false;
+                    linkBtnPrev.Enabled = false;
+                }
+                else if (GridView1.PageIndex == GridView1.PageCount - 1)
+                {
+                    linkBtnLast.Enabled = false;
+                    linkBtnNext.Enabled = false;
+                }
+                else if (GridView1.PageCount <= 0)
+                {
+                    linkBtnFirst.Enabled = false;
+                    linkBtnPrev.Enabled = false;
+                    linkBtnNext.Enabled = false;
+                    linkBtnLast.Enabled = false;
+                }
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+                if (pageList != null)
+                {
+                    for (int i = 0; i < GridView1.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString() + "/" + GridView1.PageCount.ToString(), pageNumber.ToString());
+                        if (i == GridView1.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+                if (pageLabel != null)
+                {
+                    int currentPage = GridView1.PageIndex + 1;
+                    pageLabel.Text = "当前页： " + currentPage.ToString() +
+                      " / " + GridView1.PageCount.ToString();
+                }
+            }
+            catch
+            {
+            }
+        }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            load();
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            load();
+        }
+
+        public DataTable CreateTable()
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ID", Type.GetType("System.Int32"));
+            table.Columns[0].AutoIncrement = true;
+            table.Columns[0].AutoIncrementSeed = 1;
+            table.Columns[0].AutoIncrementStep = 1;
+            table.Columns.Add("SerialNumber", Type.GetType("System.String"));
+            table.Columns.Add("Account", Type.GetType("System.String"));
+            table.Columns.Add("BeginSendTime", Type.GetType("System.String"));
+            table.Columns.Add("FailureCount", Type.GetType("System.String"));
+            table.Columns.Add("LastResponseTime", Type.GetType("System.String"));
+            table.Columns.Add("Numbers", Type.GetType("System.String"));
+            table.Columns.Add("SendCount", Type.GetType("System.String"));
+            table.Columns.Add("SplitNumber", Type.GetType("System.String"));
+            table.Columns.Add("Succeed", Type.GetType("System.String"));
+
+
+            return table;
+
+
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+
+        }
+
+
+
+    }
+}

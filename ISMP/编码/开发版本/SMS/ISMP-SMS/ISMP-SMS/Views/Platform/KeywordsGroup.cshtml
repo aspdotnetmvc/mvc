@@ -1,0 +1,125 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <title>敏感词组</title>
+    <script type="text/javascript">
+        $(function () {
+            $('#grid').datagrid({
+                url: '/Platform/KeywordsGroupData',
+                queryParams: { },
+                columns: [[
+                    { field: 'KeywordsGroup', title: '敏感词组', width: 200 },
+                    { field: 'Remark', title: '备注', width: 400 },
+                    { field: 'caozuo' , title : '操作',width:100, formatter:operatoins}
+
+                ]],
+                pagination: true,
+                pageNumber: 1,
+                singleSelect: true,
+                fit: true,
+                rownumbers: true,
+                nowrap: false   //自动换行
+            });
+
+            $("#frmedit").form({
+                url: "/Platform/AddKeyWordsGroup",
+                onSubmit: function (param) {
+                    var isValid = $(this).form('validate');
+                    return isValid;
+                },
+                success: function (data) {
+                    var msg = eval("(" + data + ")");
+                    if (msg.success) {
+                        reset();
+                        reloadgrid();
+                    }
+                    $.messager.alert("提示", msg.message, msg.type);
+                }
+            });
+
+        });
+        function operatoins(val,row,index){
+            return  '<a href="javascript:void(0)" class="pure-button ismp-button5 btn" onclick="removerow(' + index + ')">删除</a>';
+        }
+        function removerow(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+
+                $.messager.confirm('删除确认', '确定要删除该记录吗?', function (r) {
+                    if (r) {
+                        //删除记录
+                        var jstr = $.ajax({
+                            url: "/Platform/DeleteKeywordsGroup",
+                            data: row,
+                            method: "post",
+                            async: false
+                        }).responseText;
+
+                        var msg = eval("(" + jstr + ")");
+                        if (msg.success) {
+                            $("#winedit").window("close");
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, "info");
+                    }
+                });
+
+
+            } else {
+                $.messager.alert("提示", "请选择要删除的行！", "info");
+            }
+        }
+        function submit() {
+            $("#frmedit").submit();
+        }
+        function reset() {
+            $("#frmedit").form("reset");
+        }
+   
+        function reloadgrid() {
+            $('#grid').datagrid('reload');
+        }
+
+      
+    </script>
+</head>
+<body>
+    <div class="ismp_search" style="margin-top:15px;padding-left:1%;font-size:14px;">
+        <form id="frmedit">
+            <label for="frmeidtRemark">敏感词组</label>
+            <input id="frmeditKeywordsGroup" class="easyui-textbox" name="KeywordsGroup" />
+            <label for="frmeidtRemark">备注</label>
+            <input id="frmeditRemark" class="easyui-textbox" name="Remark" />
+            <a id="frmSave" href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="submit()"><i class="fa fa-plus"></i> 添加</a>
+            <a id="frmCancel" href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="reset()"><i class="fa fa-reply"></i> 重置</a>
+        </form>
+    </div>
+
+    <div style="position: absolute; top: 69px; bottom: 1%; left: 1%; right: 1%;">
+        <table id="grid"></table>
+    </div>
+</body>
+</html>

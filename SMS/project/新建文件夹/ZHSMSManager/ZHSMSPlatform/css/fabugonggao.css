@@ -1,0 +1,179 @@
+@charset "utf-8";
+input{outline:none} 
+.clear{
+	line-height: 0px;
+	margin: 0px;
+	padding: 0px;
+	clear: both;
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+}
+.fabugonggao_box {
+	height: 800px;
+	width: 100%;
+}
+.fabugonggao_box .lianxiren {
+	background-color: #f0f8ff;
+	float: left;
+	width: 300px;
+	position: relative;
+}
+.fabugonggao_box .lianxiren .gonggao_search {
+	height: 23px;
+	width: 250px;
+	border: 1px solid #86c2e3;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #FFF;
+	overflow:hidden;
+	zoom:1;
+}
+.fabugonggao_box .lianxiren .gonggao_search .search_text {
+	float: left;
+	height: 23px;
+	width: 215px;
+	margin: 0px;
+	padding: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.fabugonggao_box .lianxiren .gonggao_search .search_button {
+	background-image: url(../images/login/search_fangdajing.jpg);
+	float: right;
+	height: 23px;
+	width: 35px;
+	*width: 30px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.fabugonggao_box .lianxiren .user_list {
+	padding: 0px;
+	list-style-type: none;
+	width: 300px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: auto;
+	overflow-x:hidden;
+}
+.fabugonggao_box .lianxiren .user_list li {
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	vertical-align: middle;
+	text-indent: 15px;
+}
+.fabugonggao_box .lianxiren .user_list li input {
+	vertical-align: middle;
+}
+.fabugonggao_box .lianxiren .lianxiren_bottom {
+	background-color: #ddefff;
+	width: 210px;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	height: 40px;
+	padding-top: 20px;
+}
+.fabugonggao_box .lianxiren .lianxiren_bottom label {
+	font-family: "宋体", System;
+	font-size: 12px;
+	margin-left: 30px;
+	display: block;
+	float: left;
+}
+.fabugonggao_box .lianxiren .lianxiren_bottom a {
+	background-color: #51a9d9;
+	height: 25px;
+	width: 89px;
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+	color: #FFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	display: block;
+	line-height: 25px;
+	text-decoration: none;
+	text-align: center;
+	float: right;
+	margin-right: 20px;
+}
+.fabugonggao_box .lianxiren .lianxiren_bottom a:hover{
+	background-color: #1c97da;
+}
+.fabugonggao_box .bianji_box {
+	float: left;
+	background-color: #eeeeee;
+}
+.fabugonggao_box .bianji_box .bianji {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 40px;
+	vertical-align: top;
+}
+.fabugonggao_box .bianji_box .bianji tr .title {
+	text-align: right;
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+}
+.fabugonggao_box .bianji_box .bianji tr .con {
+	width: 90%;
+	text-align: right;
+}
+.fabugonggao_box .bianji_box .bianji tr .con .title_con {
+	line-height: 24px;
+	background-color: #FFF;
+	height: 24px;
+	width: 98%;
+	border: 1px solid #8bc5e3;
+}
+.fabugonggao_box .bianji_box .bianji tr .con .jieshouzhe_con{
+	background-color: #FFF;
+	border: 1px solid #8bc6e3;
+	width: 98%;
+	float: right;
+	min-height:24px;
+	text-align: left;
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 24px;
+	height: 150px;
+	overflow: scroll;
+	overflow-x:hidden;
+}
+.fabugonggao_box .bianji_box .bianji tr .con textarea {
+	width: 98%;
+	border: 1px solid #8bc5e3;
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 24px;
+}
+.fabugonggao_box .bianji_box .fasong_btn {
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+	color: #FFF;
+	text-decoration: none;
+	background-color: #51a9d9;
+	display: block;
+	height: 25px;
+	width: 89px;
+	line-height: 25px;
+	text-align: center;
+	float: right;
+	margin-top: 15px;
+	margin-right: 50px;
+}
+.fabugonggao_box .bianji_box .fasong_btn:hover{
+	background-color:#1c97da;
+}

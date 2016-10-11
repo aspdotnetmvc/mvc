@@ -1,0 +1,9 @@
+E:\SMS\project\ZHSMS\MongoDBAccess\bin\Release\MongoDBAccess.dll
+E:\SMS\project\ZHSMS\MongoDBAccess\bin\Release\MongoDBAccess.pdb
+E:\SMS\project\ZHSMS\MongoDBAccess\bin\Release\MongoDB.Bson.dll
+E:\SMS\project\ZHSMS\MongoDBAccess\bin\Release\MongoDB.Driver.dll
+E:\SMS\project\ZHSMS\MongoDBAccess\bin\Release\SMSModel.dll
+E:\SMS\project\ZHSMS\MongoDBAccess\bin\Release\SMSModel.pdb
+E:\SMS\project\ZHSMS\MongoDBAccess\obj\Release\MongoDBAccess.csprojResolveAssemblyReference.cache
+E:\SMS\project\ZHSMS\MongoDBAccess\obj\Release\MongoDBAccess.dll
+E:\SMS\project\ZHSMS\MongoDBAccess\obj\Release\MongoDBAccess.pdb

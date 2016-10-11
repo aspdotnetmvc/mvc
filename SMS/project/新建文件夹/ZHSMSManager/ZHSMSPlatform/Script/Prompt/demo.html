@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+	<title>ymPrompt消息提示组件2.0版DEMO演示</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+	<script type="text/javascript" src="ymPrompt.js"></script>
+	<link rel="stylesheet" id='skin' type="text/css" href="skin/qq/ymPrompt.css" />
+	<style type="text/css">
+		*{
+			font-family:'宋体'
+		}
+		html{
+			height:100%;width:100%;
+		}
+		body{
+			margin:5px 10px
+		}
+		h1{text-align:center}
+		h3{
+			margin:10px 0 0;padding:0;
+			font-size:14px;line-height:25px
+		}
+		.demo{
+			font-size:14px;color:#00f
+		}
+		ul.demo{list-style:none}
+		li{
+			margin:10px 0
+		}
+		.demo div{
+			background:#eee;border:1px solid #999;color:#333;
+			line-height:20px;padding:3px 5px;font-size:12px;
+		}
+		.help ul li{
+			margin:2px 0;list-style-type:square
+		}
+	</style>
+	<script type="text/javascript">
+		//ymPrompt.alert({message:'页面初始化时弹出',title:'hello!'});
+		window.onload=function(){
+			var o=document.getElementById('chgSkin');
+			var css=document.getElementById('skin');
+			o.selectedIndex=0;
+			o.onchange=function(){
+				css.href='skin/'+this.options[this.selectedIndex].value+'/ymPrompt.css'
+			}
+			document.getElementById('b2').click()
+		}
+	</script>
+ </head>
+ <body>
+	<h1>ymPrompt消息提示组件2.0版DEMO演示</h1>	
+	<h3>页面IFRAME:</h3>
+	<iframe src="iframe.html" width="100%" height="60"></iframe><br />
+	<h3>页面文本:</h3>
+	页面文本1<br />
+	页面文本2
+	<h3>页面Select选择框</h3>	
+	<select>
+		<option>下拉选项1</option>
+		<option>下拉选项2</option>
+		<option>下拉选项3</option>
+	</select>
+	<h3 style='color:#f00'>更换皮肤：</h3>
+	<select id='chgSkin'>
+		<option value='qq'>QQ</option>
+		<option value='vista'>VISTA</option>
+		<option value='dmm-green'>dmm-Green</option>
+		<option value='bluebar'>bluebar</option>
+		<option value='black'>black</option>
+	</select>
+	<div style='display:none' id='txt'>
+		在web开发中，对于浏览器默认的消息提示框（如alert,confirm等）外观无法控制，为了实现更好的界面效果，于是模拟系统的消息提示框实现了该组件。在外观上可以通过css进行完全的控制。
+	</div>
+	<h3>组件调用方式1(传统参数传入方式)：</h3>
+	<ul class='demo'>
+		<li>
+			源码：<div>&lt;input type="button" value="信息提示" onclick="ymPrompt.alert('http://www.qq.com',null,null,'确认要提交吗?',handler)" /&gt;</div>
+			示例：<input type="button" value="信息提示" onclick="ymPrompt.alert('http://www.qq.com',null,null,'确认要提交吗?',handler)" />
+		</li>
+		<li>
+			源码：<div>&lt;input type="button" value="成功信息" onclick="ymPrompt.succeedInfo(document.getElementById('text').innerHTML,400,260,null,handler2)" /&gt;</div>
+			示例：<input type="button" id='b2' value="成功信息" onclick="ymPrompt.succeedInfo(document.getElementById('txt').innerHTML,400,260,null,handler2)" />
+		</li>
+		<li>
+			源码：<div>&lt;input type="button" value="失败信息" onclick="ymPrompt.errorInfo('操作失败！',null,null,null,handler)" /&gt;</div>
+			示例：<input type="button" value="失败信息" onclick="ymPrompt.errorInfo('操作失败！',null,null,null,handler)" />
+		</li>
+		<li>
+			源码：<div>&lt;input type="button" value="失败信息" onclick="ymPrompt.confirmInfo('信息确认框功能测试',null,null,null,handler)" /&gt;</div>
+			示例：<input type="button" value="询问信息" onclick="ymPrompt.confirmInfo('信息确认框功能测试',null,null,null,handler)" />
+		</li>
+	</ul>
+	<h3>组件调用方式2(JSON方式)：</h3>
+	<ul class='demo'>
+		<li>
+			源码：<div>&lt;input type="button" value="信息提示" onclick="ymPrompt.alert({message:'http://www.qq.com',title:'确认要提交吗?',handler:handler})" /&gt;
+			</div>
+			示例：<input type="button" value="信息提示" onclick="ymPrompt.alert({message:'http://www.qq.com',title:'确认要提交吗?',handler:handler})" />
+		</li>
+		<li>
+			源码：<div>&lt;input type="button" value="成功信息" onclick="ymPrompt.succeedInfo({message:'当前版本号：'+ymPrompt.version+'&lt;br /&gt;发布日期：'+ymPrompt.pubDate,width:400,height:260,handler:handler2})" /&gt;</div>
+			示例：<input type="button" value="成功信息" onclick="ymPrompt.succeedInfo({message:'当前版本号：'+ymPrompt.version+'<br />发布日期：'+ymPrompt.pubDate,width:400,height:260,handler:handler2})" />
+		</li>
+		<li>
+			源码：<div>&lt;input type="button" value="失败信息" onclick="ymPrompt.errorInfo({message:'操作失败！',handler:handler})" /&gt;</div>
+			示例：<input type="button" value="失败信息" onclick="ymPrompt.errorInfo({message:'操作失败！',handler:handler})" />
+		</li>
+		<li>
+			源码：<div>&lt;input type="button" value="失败信息" onclick="ymPrompt.confirmInfo({message:'信息确认框功能测试',handler:handler})" /&gt;</div>
+			示例：<input type="button" value="询问信息" onclick="ymPrompt.confirmInfo({message:'信息确认框功能测试',handler:handler})" />
+		</li>
+	</ul>
+	<h3>调用方法及参数说明</h3>
+	<ol class='help'>
+		<li>在页面中引入ymPrompt.js。如：&lt;script type="text/javascript" src="ymPrompt.js"&gt;&lt;/script&gt;</li>
+		<li>在页面中引入对应的皮肤文件的CSS，如：&lt;link rel="stylesheet" type="text/css" href="skin/qq/ymPrompt.css" /&gt;</li>
+		<li>根据您的需要调用相应的消息函数：
+			<ul>
+				<li>ymPrompt.alert(message,width,height,title,handler,maskAlphaColor,maskAlpha)  //消息提示类型</li>
+				<li>ymPrompt.succeedInfo(....) //成功信息类型</li>
+				<li>ymPrompt.errorInfo(...)  //错误信息类型</li>
+				<li>ymPrompt.confirmInfo(....) //询问消息类型</li>
+			</ul>
+			四个方法的参数个数及意义完全相同：
+			<ul>
+				<li><strong>message：</strong>消息组件要显示的内容，默认为“内容”。</li>
+				<li><strong>width：</strong>消息框的宽度，默认为300。</li>
+				<li><strong>height：</strong>消息框的高度，默认为185。</li>
+				<li><strong>title：</strong>消息组件标题，默认为“标题”</li>
+				<li><strong>handler：</strong>回调函数。当确定/取消/关闭按钮被点击时会触发该函数并传入点击的按钮标识。如ok代表确定，cancel代表取消，close代表关闭</li>
+				<li><strong>maskAlphaColor：</strong>遮罩的颜色，默认为黑色。 </li>
+				<li><strong>maskAlpha：</strong>遮罩的透明度，默认为0.1。 </li>
+			</ul>
+			参数传入方式包含两种：
+			<ul>
+				<li>第一种即传统的参数传入，按照顺序传入相应的参数值即可，对于不需要设定的值请传入null。如ymPrompt.alert('内容',null,null,'标题')</li>
+				<li>第二种即JSON的传入方式，需要指定字段名。如ymPrompt({title:'标题',message:'内容'})</li>
+			</ul>
+		</li>
+		<li><strong>其他说明：</strong>如果觉得“对象.方法”的调用方式比较麻烦，可以采用如下方式简化调用：
+			<br />在调用之前设定var Alert=ymPrompt.alert。之后就可以使用Alert()的方式进行调用。
+		</li>
+	</ol>
+	<script type="text/javascript">
+		var Alert=ymPrompt.alert;
+		function cancelFn(){
+			Alert("点击了'取消'按钮");
+		}
+		function okFn(){
+			Alert("点击了'确定'按钮");
+		}
+		function closeFn(){
+			Alert("点击了'关闭'按钮");
+		}
+		function handler(tp){
+			if(tp=='ok'){
+				//okFn();
+			}
+			if(tp=='cancel'){
+				//cancelFn();
+			}
+			if(tp=='close'){
+				//closeFn()
+			}
+		}
+		function handler2(tp){
+			if(tp=='ok'){
+				ymPrompt.confirmInfo("保存成功!是否打印税票？",null,null,"问询提示",function(tp){tp=='ok'?ticketPrevie("print"):loadImposeInfo()})
+			}
+			if(tp=='cancel'){
+				cancelFn();
+			}
+			if(tp=='close'){
+				closeFn()
+			}
+		}
+		function ticketPrevie(xx){
+			alert(xx)
+		}
+		function loadImposeInfo(){
+			alert("exit")
+		}
+	</script>
+ </body>
+</html>

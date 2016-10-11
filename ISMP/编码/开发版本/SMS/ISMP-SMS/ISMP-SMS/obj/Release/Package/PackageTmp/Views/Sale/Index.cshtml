@@ -1,0 +1,75 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/Scripts/jquery-easyui-1.4.3/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/Scripts/jquery-easyui-1.4.3/themes/icon.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <title>SMSSale</title>
+    <script type="text/javascript">
+        $(function () {
+            $("#frmedit").form({
+                url: "/Sale/SaleSubmit",
+                onSubmit: function () {
+
+                },
+                success: function (data) {
+                    var json = eval("(" + data + ")");
+                    if (json.success) {
+                        document.body.innerHTML = json.message;
+                    } else {
+                        $.messager.alert("提示", json.message, "info");
+                    }
+                   
+                }
+            });
+        });
+        function loadChannel() {
+            $("#frmeditSMSChanel").combobox({
+                url: "/Sale/GetChannels"
+            });
+        }
+        function save() {
+            $("#frmedit").submit();
+        }
+        function cancel() {
+
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form id="frmedit">
+            <table>
+                <tr>
+                    <td>企业短信签名:</td>
+                    <td><input type="text" class="easyui-textbox" name="Signature" />
+                     <span style="font-size:12px;">备注：签名不需要添加“【】”</span></td>
+                </tr>
+                <tr>
+                    <td>充值条数:</td>
+                    <td><input type="text" class="easyui-numberbox" name="SMSNumber" /></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="save()">开通</a>
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" id="frmeditEnterpriseAccountID" name="EnterpriseAccountID" value="@ViewData["EnterpriseAccountID"]" />
+            <input type="hidden" id="frmeditEnterpriseCode" name="EnterpriseCode" value="@ViewData["EnterpriseCode"]" />
+            <input type="hidden" id="frmeditAgentAccountID" name="AgentAccountID" value="@ViewData["AgentAccountID"]" />
+        </form>
+    </div>
+</body>
+</html>

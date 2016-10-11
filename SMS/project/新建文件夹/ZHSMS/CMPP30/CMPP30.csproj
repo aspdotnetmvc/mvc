@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9AE859C6-F74A-48DB-A42A-D3E5DD05DEC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMPP</RootNamespace>
+    <AssemblyName>CMPP30</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CMPPSetting.cs" />
+    <Compile Include="CMPP_QUERY.cs" />
+    <Compile Include="CMPP_COMMAND.cs" />
+    <Compile Include="CMPP30.cs" />
+    <Compile Include="CMPPEncoding.cs" />
+    <Compile Include="CMPP_ACTIVE_TEST_RESP.cs" />
+    <Compile Include="CMPP_CANCEL.cs" />
+    <Compile Include="CMPP_CANCEL_RESP.cs" />
+    <Compile Include="CMPP_CONNECT.cs" />
+    <Compile Include="CMPP_CONNECT_RESP.cs" />
+    <Compile Include="CMPP_DELIVER.cs" />
+    <Compile Include="CMPP_DELIVER_RESP.cs" />
+    <Compile Include="CMPP_HEAD.cs" />
+    <Compile Include="CMPP_REPORT.cs" />
+    <Compile Include="CMPP_SUBMIT.cs" />
+    <Compile Include="CMPP_SUBMIT_RESP.cs" />
+    <Compile Include="Convert.cs" />
+    <Compile Include="ICMPP_MESSAGE.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CMPP_QUERY_RESP.cs" />
+    <Compile Include="SlidingWindow.cs" />
+    <Compile Include="Sequence.cs" />
+    <Compile Include="CMPP_ACTIVE_TEST.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\SocketClient\SocketClient.csproj">
+      <Project>{e551891d-f4f3-45fb-8cd1-f49177bcdbe0}</Project>
+      <Name>SocketClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SmsGUI\ServiceManageWin\MessageTools\MessageTools.csproj">
+      <Project>{d8dd162c-72cc-45ae-9b54-aa27f5d9ed4f}</Project>
+      <Name>MessageTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GatewayInterface\GatewayInterface.csproj">
+      <Project>{fb367d02-2c85-4247-aded-d5cc858ffeb3}</Project>
+      <Name>GatewayInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSModel\SMSModel.csproj">
+      <Project>{c72246fb-d27f-4c92-b04f-f2ff1606ef50}</Project>
+      <Name>SMSModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSUtils\SMSUtils.csproj">
+      <Project>{bec8a3df-afcf-4dc6-bdb3-5a0dc157c5dc}</Project>
+      <Name>SMSUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMPP.Config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,11 @@
+E:\SMS\project\ZHSMSManager\DBUtility\bin\Debug\DBUtility.dll
+E:\SMS\project\ZHSMSManager\DBUtility\bin\Debug\DBUtility.pdb
+E:\SMS\project\ZHSMSManager\DBUtility\bin\Debug\MySql.Data.dll
+E:\SMS\project\ZHSMSManager\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+E:\SMS\project\ZHSMSManager\DBUtility\obj\Debug\DBUtility.dll
+E:\SMS\project\ZHSMSManager\DBUtility\obj\Debug\DBUtility.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMSManager\DBUtility\bin\Debug\DBUtility.dll
+D:\kf\sms\OLD\SMS\project\ZHSMSManager\DBUtility\bin\Debug\DBUtility.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMSManager\DBUtility\bin\Debug\MySql.Data.dll
+D:\kf\sms\OLD\SMS\project\ZHSMSManager\DBUtility\obj\Debug\DBUtility.dll
+D:\kf\sms\OLD\SMS\project\ZHSMSManager\DBUtility\obj\Debug\DBUtility.pdb

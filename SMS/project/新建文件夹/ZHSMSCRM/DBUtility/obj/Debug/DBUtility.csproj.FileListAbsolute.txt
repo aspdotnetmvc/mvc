@@ -1,0 +1,6 @@
+E:\SMS\project\ZHSMSCRM\DBUtility\bin\Debug\DBUtility.dll
+E:\SMS\project\ZHSMSCRM\DBUtility\bin\Debug\DBUtility.pdb
+E:\SMS\project\ZHSMSCRM\DBUtility\bin\Debug\MySql.Data.dll
+E:\SMS\project\ZHSMSCRM\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+E:\SMS\project\ZHSMSCRM\DBUtility\obj\Debug\DBUtility.dll
+E:\SMS\project\ZHSMSCRM\DBUtility\obj\Debug\DBUtility.pdb

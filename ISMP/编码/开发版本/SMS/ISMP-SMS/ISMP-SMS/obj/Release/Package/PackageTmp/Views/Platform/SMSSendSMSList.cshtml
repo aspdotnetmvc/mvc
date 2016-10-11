@@ -1,0 +1,324 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/iframe.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/toastr.min.css">
+
+    <script type="text/javascript" src='../Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='../Scripts/jquery.easyui.min.js'></script>
+    <script type="text/javascript" src='../Scripts/easyui-lang-zh_CN.js'></script>
+    <script type="text/javascript" src="../Scripts/plugin/ismp_plugin.js"></script>
+    <script type="text/javascript" src="../Scripts/plugin/toastr.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Common/zh_ISMP.js"></script>
+
+    <style type="text/css">
+        .dailishang_edit td {
+            padding-top: 15px;
+        }
+
+        .dailishang_edit .textbox {
+            width: 90% !important;
+        }
+
+        .searchinput span.textbox {
+            width: 200px !important;
+            margin-top: 10px !important;
+        }
+
+        .dailishang_edit input {
+            width: 90% !important;
+        }
+
+            .dailishang_edit input[type=radio] {
+                width: 12% !important;
+            }
+
+        .dailishang_edit td[colspan='3'] .textbox {
+            width: 96% !important;
+        }
+
+        .dailishang_edit select {
+            width: 90% !important;
+        }
+
+        .dailishang_edit {
+            font-size: 14px;
+        }
+
+        .pure-form select {
+            height: 2.45em !important;
+        }
+
+        .guishu {
+            position: relative;
+        }
+
+        .pure-form h3 {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #frmMore {
+            color: #1CB394;
+            margin-right: 22px;
+        }
+
+        #LoginNameCheckResult {
+            position: absolute;
+            display: none;
+            z-index: 9900000;
+            outline: none;
+            opacity: 1;
+            filter: alpha(opacity=100);
+            padding: 5px;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 5px;
+            -moz-border-radius: 5px 5px 5px 5px;
+            -webkit-border-radius: 5px 5px 5px 5px;
+            border-radius: 5px 5px 5px 5px;
+            border-color: #cc9933;
+            background-color: #ffffcc;
+            font-size: 12px;
+            margin: -30px 0 0 170px;
+        }
+
+        .textbox {
+            position: relative;
+        }
+
+        .easyui-fluid {
+            width: 100% !important;
+        }
+
+            .easyui-fluid .textbox-icon {
+                padding-top: 0px;
+            }
+    </style>
+    <title>短信发送记录</title>
+</head>
+<body>
+    <div class="ismp_con">
+        <!-- 搜索条件 开始 -->
+        <div class="ismp_search">
+            <form id="frmSearch" class="pure-form pure-form-aligned">
+                <span class="searchinput">
+                    <label for="frmStartTime">开始时间：</label>
+                    <input id="frmStartTime" class="easyui-datetimebox" width="200" name="StartTime">
+                </span>
+                <span class="searchinput">
+                    <label for="frmEndTime">结束时间：</label>
+                    <input id="frmEndTime" class="easyui-datetimebox" width="200" name="EndTime">
+                </span>
+                <span class="searchinput">
+                    <label for="frmChannel">发送通道：</label>
+                    <input id="frmChannel" class="easyui-textbox" width="200" name="Channel">
+                </span>
+                <br />
+                <span class="searchinput">
+                    <label for="frmContent">短信内容：</label>
+                    <input id="frmContent" class="easyui-textbox" width="200" name="Content">
+                </span>
+                <span class="searchinput">
+                    <label for="frmSignature">企业签名：</label>
+                    <input id="frmSignature" class="easyui-textbox" width="200" name="Signature">
+                </span>
+
+                <a href="#" class="pure-button ismp-button1 btn" onclick="doqry()"><i class="fa fa-search"></i> 查询</a>
+            </form>
+        </div>
+    </div>
+    <div style="position:absolute;top:100px;bottom:0px;left:1%;right:1%;">
+        <table id="grid"></table>
+    </div>
+
+
+    <div id="winview" class="easyui-window" title="短信明细" style="width:900px;height:450px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false">
+        <div class="easyui-layout" fit="true">
+            <div region="north" height="50" style="padding-left:20px;padding-top:10px;">
+                <form id="frmqryMore">
+                    <label>状态</label>
+                    <select id="fqmStatus" class="easyui-combobox" name="Status" style="width:200px !important;">
+                        <option value="all">全部</option>
+                        <option value="success">成功号码</option>
+                        <option value="fail">失败号码</option>
+                    </select>
+                    <label>号码</label>
+                    <input id="fqmNumber" class="easyui-textbox" style="width:200px !important;" />
+                    <input type="hidden" id="fqmSerialNumber" />
+                    <input type="hidden" id="fqmSendTime" />
+                    <a href="#" class="pure-button ismp-button1 btn" onclick="doqryViewMore()">查询</a>
+                </form>
+
+            </div>
+            <div region="center">
+                <table id="moregrid" class="easyui-datagrid" data-options="fit:true,rownumbers:true,pagination:true,showfooter:true,singleSelect:true">
+                    <thead>
+                        <tr>
+                            <th data-options="field:'SerialNumber',width:200,hidden:true">网关返回序列号</th>
+                            <th data-options="field:'Number',width:100">电话号码</th>
+                            <th data-options="field:'SendTime',width:150">发送时间</th>
+                            <th data-options="field:'ResponseTime',width:150">状态报告返回时间</th>
+                            <th data-options="field:'StatusCode',width:70">状态码</th>
+                            <th data-options="field:'Description',width:100">状态描述</th>
+                            <th data-options="field:'Succeed',width:70,formatter:SucceedFormatter">发送成功</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="winnumber" class="easyui-window" title="号码" style="width:600px;height:300px;word-break:break-all;padding:20px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false">
+    </div>
+</body>
+<script>
+
+    $(function () {
+        $('#frmStartTime').datetimebox('setValue', GetDateStr(-1));
+        InitGrid();
+    });
+
+    //初始化列表
+    function InitGrid() {
+        $('#grid').datagrid({
+            url: '/Platform/SMSSendSMSListData',
+            queryParams: {
+                StartTime: $("#frmStartTime").datetimebox("getValue")
+            },
+            columns: [[
+                { field: 'EnterpriseLoginName', title: '企业账号', width: 120 },
+                { field: 'EnterpriseName', title: '企业名称', width: 150 },
+                { field: 'Content', title: '短信内容', width: 300 },
+                { field: 'Signature', title: '短信签名', width: 100 },
+                { field: 'SendTime', title: '提交时间', width: 150 },
+                { field: 'NumberCount', title: '号码数', width: 80 },
+                { field: 'Channel', title: '发送通道', width: 100 },
+                { field: 'SplitNumber', title: '计费条数', width: 80 },
+                { field: 'FeeTotalCount', title: '总扣费数', width: 100 },
+                { field: 'FailureCount', title: '失败号码数', width: 100 },
+                { field: 'FeeBack', title: '返费条数', width: 100 },
+                { field: 'AuditType', title: '审核类型', width: 100 },
+                { field: 'Status', title: '状态', width: 100 },
+                 { field: 'caozuo', title: '操作', width: 200, formatter: operations }
+            ]],
+            pagination: true,
+            pageNumber: 1,
+            singleSelect: true,
+            fit: true,
+            rownumbers: true,
+            nowrap: false,   //自动换行
+            loadFilter: function (data) {
+                if (data && data.success == false) {
+                    $.messager.alert("提示", data.message, data.type);
+                    return { total: 0, rows: null };
+                }
+                return data;
+            }
+        });
+    }
+
+    function doqry() {
+        $('#grid').datagrid({
+            queryParams: {
+                StartTime: $("#frmStartTime").datetimebox("getValue"),
+                EndTime: $("#frmEndTime").datetimebox("getValue"),
+                keywords: $("#frmContent").textbox("getValue"),
+                Signature: $("#frmSignature").textbox("getValue"),
+                Channel: $("#frmChannel").textbox("getValue")
+            },
+            pageNumber: 1
+        });
+    }
+
+    function GetDateStr(AddDayCount) {
+        var dd = new Date();
+        dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期
+        var y = dd.getFullYear();
+        var m = dd.getMonth() + 1;//获取当前月份的日期
+        var d = dd.getDate();
+        return y + "-" + m + "-" + d + " 00:00:00";
+    }
+    function operations(val, row, index) {
+        return '<a href="javascript:void(0)" class="pure-button ismp-button1 btn"  onclick="viewMore(' + index + ')">查看状态报告</a>'
+        + '<a href="javascript:void(0)" class="pure-button ismp-button1 btn"  onclick="viewNumber(' + index + ')">查看号码</a>';
+    }
+
+    function StatusFormatter(val, row, index) {
+        if (row.Account == "待审核") {
+            return "待审核";
+        } else if (row.Account == "待发送") {
+            return "待发送";
+        }
+        return "已发送";
+    }
+    function ZeroTimerFormatter(val, row, index) {
+        if (val == "0001-01-01 00:00:00") {
+            return "";
+        }
+        return val;
+    }
+    function viewMore(index) {
+        var row = $("#grid").datagrid("getRows")[index];
+        if (row) {
+            $("#winview").window("open");
+            $("#fqmSerialNumber").val(row.ID);
+            $("#fqmSendTime").val(row.SendTime);
+            doqryViewMore();
+        } else {
+            $.messager.alert("提示", "请选择行！", "info");
+        }
+
+    }
+    function doqryViewMore() {
+
+        $("#moregrid").datagrid({
+            url: "/Enterprise/SMSStatusMoreData",
+            pageNumber: 1,
+            queryParams: {
+                SerialNumber: $("#fqmSerialNumber").val(),
+                SendTime: $("#fqmSendTime").val(),
+                Number: $("#fqmNumber").textbox("getValue"),
+                Status: $("#fqmStatus").combobox("getValue")
+            }
+        });
+    }
+
+
+    function closeViewMore() {
+        $("#winview").window("close");
+    }
+
+    function SucceedFormatter(val, row, index) {
+        if (val == true) {
+            return "是";
+        } else {
+            return "否";
+        }
+    }
+    function viewNumber(index) {
+        var row = $("#grid").datagrid("getRows")[index];
+        if (row) {
+            $("#winnumber").window("open");
+            $.post('/Platform/GetSMSNumbersBySMSID', { SMSID: row.ID }, function (data) {
+                $('#winnumber').html(data);
+            });
+        } else {
+            $.messager.alert("提示", "请选择行！", "info");
+        }
+    }
+</script>
+</html>

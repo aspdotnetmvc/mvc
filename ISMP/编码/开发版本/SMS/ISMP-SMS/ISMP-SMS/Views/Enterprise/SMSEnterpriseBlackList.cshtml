@@ -1,0 +1,249 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <title>短信企业黑名单管理</title>
+    <script type="text/javascript">
+        var Param;
+        $(function () {
+            Param = eval("(" + $('#paramJson').val() + ")");
+
+            $('#grid').datagrid({
+                url: '../Enterprise/GetEnterpriseBlackList',
+                pageNumber: 1,
+                queryParams: {AccountCode: Param.AccountCode },
+                columns: [[
+                    {
+                        field: 'Number', title: '黑名单号码', align: 'center', width: 800, formatter: function (value, row, index) {
+                            return row;
+                        }
+                    },
+                    {
+                        field: 'Operate', title: '操作', width: 100, align:'center', formatter: function (value, row, index) {
+                            var ohtml = '';
+                            ohtml += '&nbsp;<a href="javaScript:void(0)" class="pure-button ismp-button5 btn" onclick="delBlackNumber(' + index + ')" >删除</a>';
+                            return ohtml;
+                        }
+                    }
+                ]],
+                pagination: true,
+                singleSelect: true,
+                fit: true,
+                rownumbers: true,
+                nowrap: false   //自动换行
+            });
+
+            $("#formBlackList").form({
+                url: "/Enterprise/AddEnterpriseBlackNumber",
+                onSubmit: function (param) {
+                    param["AccountCode"] = Param.AccountCode;
+                    var isValid = $(this).form('validate');
+                    return isValid;
+                },
+                success: function (data) {
+                    var msg = eval("(" + data + ")");
+                    if (msg.success) {
+                        $('#BlackNumber').textbox("setValue", "");
+                        reloadgrid();
+                    }
+                    $.messager.alert("提示", msg.message, msg.type);
+                }
+            });
+
+        });
+
+        function addANumber() {
+            var content = $('#BlackNumber').textbox("getValue");
+            if (content.trim() == "") {
+                $.messager.alert("提示", "请输入号码！", null);
+                return;
+            }
+            if (!IsNumberLegal(content.trim())) {
+                $.messager.alert("提示", "请输入正确的手机号码！", null);
+                return;
+            }
+            $("#formBlackList").submit();
+        }
+
+        function searchBlackNumber() {
+            var page = $('#grid').datagrid('getPager');
+            $(page).pagination({ pageNumber: 1 });
+            $('#grid').datagrid('options').url = '../Enterprise/GetEnterpriseBlackList';
+            $('#grid').datagrid('options').queryParams = { AccountCode: Param.AccountCode };
+            var ds = $('#grid').datagrid('options').queryParams;
+
+            ds["Number"] = $("#frmSearchNumber").textbox("getValue");
+
+            $('#grid').datagrid('reload');
+        }
+
+        function reloadgrid() {
+            $('#grid').datagrid('reload');
+        }
+
+        function delBlackNumber(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+                $.messager.confirm('删除确认', '确定要删除该黑名单号吗?', function (r) {
+                    if (r) {
+                        //删除记录
+                        var jstr = $.ajax({
+                            url: "/Enterprise/DelEnterpriseBlackNumber",
+                            data: { Number: row, AccountCode: Param.AccountCode },
+                            method: "post",
+                            async: false
+                        }).responseText;
+
+                        var msg = eval("(" + jstr + ")");
+                        if (msg.success) {
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, msg.type);
+                    }
+                });
+            } else {
+                $.messager.alert("提示", "请选择号码！", "info");
+            }
+        }
+
+        function importNumber() {
+            $('#Dlg_ImportBlackNumber').show();
+            $('#Dlg_ImportBlackNumber').dialog({ modal: true });
+            $('#txtBlackNumber').val("");
+        }
+
+        function ImportAction() {
+            var msg = $('#txtBlackNumber').val().trim();
+            if (msg == "") {
+                $.messager.alert("提示", "请输入号码！", null);
+                return;
+            }
+
+            var list = msg.replace(/,/ig, "");//删除","
+            list = msg.replace(/\n/ig, ",");
+            msg = "";
+            var strArray = new Array();
+            strArray = list.split(",");
+            for (i = 0; i < strArray.length ;) {
+                if (strArray[i].trim() == "") {
+                    strArray.splice(i,1);
+                    continue;
+                }
+                msg += IsNumberLegal(strArray[i]) ? "" : strArray[i] + "、";
+                i++;
+            }
+            if (msg.length > 0) {
+                $.messager.alert("提示", "号码“" + msg + "”格式错误！", null);
+                return;
+            }
+            if (strArray.length <= 0) {
+                $.messager.alert("提示", "无有效数据！", null);
+                return;
+            }
+            list = strArray.join(",");
+
+            //请求操作
+            var jstr = $.ajax({
+                url: "/Enterprise/AddEnterpriseBlackNumber",
+                data: { Number: list, AccountCode: Param.AccountCode },
+                method: "post",
+                async: false
+            }).responseText;
+
+            var msg = eval("(" + jstr + ")");
+            if (msg.success) {
+                $('#Dlg_ImportBlackNumber').dialog('close');
+                reloadgrid();
+            }
+            $.messager.alert("提示", msg.message, msg.type);
+        }
+
+        function ImportCancel() {
+            $('#Dlg_ImportBlackNumber').dialog('close');
+        }
+
+        function IsNumberLegal(tel) {
+            var reg = /^0?1[34578][0-9]{9}$/;
+            if (reg.test(tel)) {
+                return true;
+            } else {
+                return false;
+            };
+        }
+
+    </script>
+</head>
+<body>
+    <div class="ismp_con">
+        <div class="ismp_search">
+            <form id="formBlackList" class="pure-form pure-form-aligned">
+                    <label for="frmSearchNumber">号码：</label>
+                    <input id="frmSearchNumber" class="easyui-textbox juese" width="100" name="SearchNumber">
+
+                <a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="searchBlackNumber()"><i class="fa fa-search"></i> 查询</a>
+                <a id="frmCancel" href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="importNumber()"><i class="fa fa-plus"></i> 添加</a>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <!--<h5>黑名单列表</h5>
+        <div>
+            <form id="frmSearch" class="pure-form pure-form-aligned">
+                <span class="searchinput">
+                    <label for="frmSearchNumber">号码：</label>
+                    <input id="frmSearchNumber" class="easyui-textbox" width="100" name="SearchNumber">
+                </span>
+
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="searchBlackNumber()"><i class="fa fa-search"></i>查询</a>
+            </form>
+        </div>-->
+        <div style="position: absolute; top: 60px; bottom: 1%; left: 1%; right: 2%;">
+            <table id="grid"></table>
+        </div>
+    </div>
+    <div id="Dlg_ImportBlackNumber" title="添加企业黑名单" style="display: none">
+        <div style="width: 360px; height: 200px; padding: 10px">
+            <table cellpadding="0" cellspacing="1" style="width: 360px;">
+                <tr>
+                    <td style="line-height: 200%; padding: 5px;">
+                        <textarea id="txtBlackNumber" style="width: 300px;height: 150px; "></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="color:red">备注：多个号码，请将号码以“回车符”分开。</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="text-align: center;">
+            <a id="frmSave" href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="ImportAction()">确定</a>
+            <a id="frmCancel" href="javascript:void(0)" class="pure-button ismp-button5 btn" onclick="ImportCancel()">取消</a>
+        </div>
+    </div>
+    <input id="paramJson" type="hidden" value="@ViewData["ParamObject"]">
+</body>
+</html>

@@ -1,0 +1,30 @@
+.bc1{/*background-color: #293846!important;*/background-color: #304268!important;}
+.bc2{background-color: #f9ab58!important;}
+.bc3{background-color: #1cb394!important;}
+.ismp-button1{background-color: #4f7fe1!important;color:#fff!important;}
+.ismp-button2{background-color: #ed5564!important;color:#fff!important;}
+.ismp-button3{background-color: #2c88d2!important;color:#fff!important;}
+.ismp-button6{background-color: #f88311!important;color:#fff!important;}
+.ismp-button4{background-color: #4e7fe1!important;color:#fff!important;border:1px solid #4e7fe1!important;padding: .3em 1em!important;}
+.ismp-button5{background-color: #f9664a!important;color:#fff!important;border:1px solid #f9664a!important;padding: .3em 1em!important;}
+.ismp-button4:hover{background-color: #3a67bf!important;background-image:none!important;color:#fff!important;}
+.ismp-button5:hover{background-color: #e14f33!important;background-image:none!important;color:#fff!important;}
+.topcolor{background-color: #f3f3f5!important;}
+.nav li.active{border-color: #F98310!important;}
+.anhui{background-color: #474b57!important;}
+.red_ziti{color:#ed5564!important;}
+.white_ziti{color:#fff!important;}
+.green_ziti{color:#1ab394!important;}
+.activebor{border-bottom: 2px solid #1AB394!important;}
+.activebc{background: #d90002;color: #fff!important;}
+.activebc i{color: #fff!important;}
+.activebc .link{color: #fff!important;}
+.bss_left .ismp-menu .item .menu-children .item .c-link:hover{color: #fff!important;}
+.pure-button-primary,.pure-button-selected,a.pure-button-primary,a.pure-button-selected{background-color:#4f7fe1!important;color:#fff!important;}
+.bss_right .bss_main .ismp_con .ismp-fenye ul li .pure-button-active{color:#1AB394!important;}
+.bss_right .bss_main .ismp_con .data-list td .more_con li:hover{color: #1AB394}
+.bss_right .ismp_tab ul li.action{background:#2f4050;color: #a7b0c1;}
+.window .window-header{background: #30426a!important;}/*easyui中*/
+.l-btn:hover{background:#EAEAEA!important;border: 1px solid #BBBBBB!important;}/*easyui中点击按钮之后按钮的背景和边框颜色*/
+.combo-arrow{background-color:#4f7fe1!important;}/*easyui中点日期控件下拉控件的背景颜色颜色*/
+.inputblur{color: #A9A9A9}

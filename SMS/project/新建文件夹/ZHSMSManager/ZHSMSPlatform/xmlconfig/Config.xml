@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Roots>
+  <Root id="System" imgurl="~/Images/settings2584_16x16.gif" name="系统设置" value="" target="" visible="1">
+    <Child id="System.Account" url="../Root/Account/AccountManage.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">帐号管理</Child>
+    <Child id="System.Role" url="../Root/Account/RoleManage.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">角色管理</Child>
+    <Child id="System.Ae" url="../Root/Account/AccountEnter.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">企业分管</Child>
+  </Root>
+  <Root id="Notice" imgurl="~/Images/settings2584_16x16.gif" name="公告管理" value="" target="" visible="1">
+    <Child id="Notice.Send" url="../Root/Notice/NoticeSend.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">公告发送</Child>
+    <Child id="Notice.Manage" url="../Root/Notice/NoticeManage.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">公告列表</Child>
+    <Child id="Notice.Notice" url="../Root/Notice/Notice.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">公告管理</Child>
+  </Root>
+  <Root id="Enterprise" imgurl="~/Images/settings2584_16x16.gif" name="企业用户管理" value="" target="" visible="1">
+    <Child id="Enterprise.Account" url="../Root/Enterprise/EnterpriseAdd.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">企业开户</Child>
+    <Child id="AuditEnterprise.Manage" url="../Root/Enterprise/AuditEnterpriseManage.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">企业开户审核</Child>
+    <Child id="AgentEnterprise.Manage" url="../Root/Enterprise/AgentEnterpriseManage.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">代理商</Child>
+    <Child id="AgentLowerEnterprise.Manage" url="../Root/Enterprise/AgentLowerEnterpriseManage.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">代理商终端用户</Child>
+    <Child id="NoAgentLowerEnterprise.Manage" url="../Root/Enterprise/NoAgentLevelEnterpriseManage.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">终端用户</Child>
+  </Root>
+  <Root id="Gateway" imgurl="~/Images/settings2584_16x16.gif" name="平台参数配置" value="" target="" visible="1">
+    <Child id="Gateway.Manage" url="../Root/GatewayConfig/GatewayConfigManage.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">网关配置管理</Child>
+    <Child id="Channel.Manage" url="../Root/GatewayConfig/ChannelManage.aspx" imgurl="~/Images/access_16x16.gif" description="" value="" target="" visible="1">短信通道管理</Child>
+  </Root>
+  <Root id="Backlist" imgurl="~/Images/settings2584_16x16.gif" name="黑名单" value="" target="" visible="1">
+    <Child id="Backlist.Add" url="../Root/Backlist/Back_Add.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">黑名单添加</Child>
+    <Child id="Backlist.Back" url="../Root/Backlist/Back_List.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">黑名单列表</Child>
+  </Root>
+  <Root id="Keywords" imgurl="~/Images/settings2584_16x16.gif" name="敏感词" value="" target="" visible="1">
+    <Child id="Keywords.Manage" url="../Root/Keywords/KeywordsMange.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">敏感词管理</Child>
+  </Root>
+  <Root id="Esms" imgurl="~/Images/settings2584_16x16.gif" name="短信审核" value="" target="" visible="1">
+    <Child id="Esms.Audit" url="../Root/SMSM/SMS_Audit.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">短信审核</Child>
+    <Child id="Templet.Audit" url="../Root/SMSM/Templet_Audit.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">模板审核</Child>
+  </Root>
+  <Root id="EnterpriseSms" imgurl="~/Images/settings2584_16x16.gif" name="短信管理" value="" target="" visible="1">
+    <Child id="EnterpriseSms.List" url="../SMSM/SMS_List.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">短信未发送列表</Child>
+    <Child id="EnterpriseSms.MOList" url="../SMSM/MOList.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">用户上行短信</Child>
+    <Child id="EnterpriseSms.AuditFailure" url="../SMSM/AuditFailure.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">已审核失败短信</Child>
+    <Child id="EnterpriseSms.Statistics" url="../Report/Rep_StatisticsList.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">短信状态报告</Child>
+  </Root>
+  <Root id="Report" imgurl="~/Images/settings2584_16x16.gif" name="报表" value="" target="" visible="1">
+    <Child id="Report.LevelModifyRecords" url="../Root/Report/Rep_LevelModifyRecordsList.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">优先级调整记录</Child>
+    <Child id="Report.AuditRecords" url="../Root/Report/Rep_AuditRecordsList.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">审核记录</Child>
+    <Child id="Templet.Audit" url="../Root/SMSM/SMSTempletAudit.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">模板审核记录</Child>
+    <Child id="Report.SMSStatics" url="../Root/Report/SMSStatics.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">短信成功率</Child>
+    <Child id="Finance.Index" url="../Root/Finance/FinanceDetails.aspx" imgurl="~/Images/access_16x16.gif" description="描述" value="值" target="" visible="1">短信营收统计</Child>
+  </Root>
+</Roots>

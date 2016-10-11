@@ -1,0 +1,97 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>历史状态报告</title>
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#frmqryStartTime").datebox("setValue", GetDateStr(-30));
+            $("#frmqryEndTime").datebox("setValue", GetDateStr(-3));
+           doqry();
+        });
+
+        function doqry() {
+            if ($("#frmqryStartTime").datebox("getValue") == "") {
+                $.messager.alert("提示","请选择开始日期","info");
+                return;
+            }
+            if ($("#frmqryEndTime").datebox("getValue") == "") {
+                $.messager.alert("提示", "请选择截止日期", "info");
+                return;
+            }
+            $("#grid").datagrid({
+                url: "/Enterprise/SMSStatusHistoryData",
+                pageNumber: 1,
+                queryParams: {
+                    Number: $("#frmqryNumber").textbox("getValue"),
+                    StartTime: $("#frmqryStartTime").datebox("getValue"),
+                    EndTime: $("#frmqryEndTime").datebox("getValue"),
+                    EnterpriseCode: $("#frmqryEnterpriseCode").val()
+                }
+            });
+        }
+
+        function GetDateStr(AddDayCount) {
+            var dd = new Date();
+            dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期
+            var y = dd.getFullYear();
+            var m = dd.getMonth() + 1;//获取当前月份的日期
+            var d = dd.getDate();
+            return y + "-" + m + "-" + d;
+        }
+    </script>
+</head>
+<body>
+	<div class="ismp_con">
+	    <div class="ismp_search">
+	        <form id="frmqry" class="pure-form pure-form-aligned">
+	            <label for="frmqryStartTime">开始日期：</label> <input class="easyui-datebox juese" id="frmqryStartTime" required="true"/>
+	            <label for="frmqryEndTime">截止日期：</label> <input class="easyui-datebox juese" id="frmqryEndTime" required="true" />
+	            <label for="frmqryNumber">发送号码：</label> <input class="easyui-textbox juese" id="frmqryNumber" />
+	            <a href="javascript:void(0)" class="pure-button ismp-button1 btn" onclick="doqry()"><i class="fa fa-search"></i> 查询</a>
+                <input type="hidden" id="frmqryEnterpriseCode" value="@ViewData["EnterpriseCode"]"/>
+	        </form>
+	    </div>
+	</div>
+    <div style="position: absolute; top: 61px; bottom: 1%; left: 1%; right: 1%;">
+        <table id="grid" class="easyui-datagrid" data-options="fit:true,rownumbers:true,pagination:true,showfooter:true,singleSelect:true">
+            <thead>
+                <tr>
+                    <th data-options="field:'SerialNumber',width:200">业务流水号</th>
+                    <th data-options="field:'Telephones',width:200">电话号码</th>
+                    <th data-options="field:'SMSContent',width:200">短信内容</th>
+                    <th data-options="field:'BeginSendTime',width:120">开始发送时间</th> 
+                    <th data-options="field:'Numbers',width:50">号码数</th>
+                    <th data-options="field:'SendCount',width:50">发送条数</th>
+                    <th data-options="field:'SplitNumber',width:50">拆分条数</th>
+                    <th data-options="field:'Succeed',width:50">成功条数</th>
+                    <th data-options="field:'FailureCount',width:50">失败条数</th>
+                    <th data-options="field:'Account',width:50,hidden:true"></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

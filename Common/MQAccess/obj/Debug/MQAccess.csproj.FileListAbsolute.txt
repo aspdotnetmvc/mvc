@@ -1,0 +1,7 @@
+E:\Common\MQAccess\bin\Debug\MQAccess.dll
+E:\Common\MQAccess\bin\Debug\MQAccess.pdb
+E:\Common\MQAccess\bin\Debug\RabbitMQ.Client.dll
+E:\Common\MQAccess\bin\Debug\RabbitMQ.Client.xml
+E:\Common\MQAccess\obj\Debug\MQAccess.csprojResolveAssemblyReference.cache
+E:\Common\MQAccess\obj\Debug\MQAccess.dll
+E:\Common\MQAccess\obj\Debug\MQAccess.pdb

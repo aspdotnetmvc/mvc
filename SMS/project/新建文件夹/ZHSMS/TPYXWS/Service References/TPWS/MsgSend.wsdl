@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendMsgExt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DesNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Channel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExeNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMsgExtResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMsgExtResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DesNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Channel" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMsgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendVoiceCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DesNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VoiceCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Channel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendVoiceCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendVoiceCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBalanceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMoExt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="minId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMoExtResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMoExtResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMo2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMo2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMo2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReport2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReport2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReport2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="batchNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendMsgExtSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMsgExt" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgExtSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMsgExtResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMsg" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendVoiceCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:SendVoiceCode" />
+  </wsdl:message>
+  <wsdl:message name="SendVoiceCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:SendVoiceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMoExtSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMoExt" />
+  </wsdl:message>
+  <wsdl:message name="GetMoExtSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMoExtResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMo2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetMo2" />
+  </wsdl:message>
+  <wsdl:message name="GetMo2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetMo2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetMoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMo" />
+  </wsdl:message>
+  <wsdl:message name="GetMoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReport2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetReport2" />
+  </wsdl:message>
+  <wsdl:message name="GetReport2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetReport2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReport" />
+  </wsdl:message>
+  <wsdl:message name="GetReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgExtHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="DesNo" type="s:string" />
+    <wsdl:part name="Msg" type="s:string" />
+    <wsdl:part name="Channel" type="s:string" />
+    <wsdl:part name="ExeNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgExtHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="DesNo" type="s:string" />
+    <wsdl:part name="Msg" type="s:string" />
+    <wsdl:part name="Channel" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendVoiceCodeHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="DesNo" type="s:string" />
+    <wsdl:part name="VoiceCode" type="s:string" />
+    <wsdl:part name="Channel" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendVoiceCodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoExtHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="minId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoExtHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMo2HttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMo2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReport2HttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReport2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportHttpGetIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="batchNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgExtHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="DesNo" type="s:string" />
+    <wsdl:part name="Msg" type="s:string" />
+    <wsdl:part name="Channel" type="s:string" />
+    <wsdl:part name="ExeNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgExtHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="DesNo" type="s:string" />
+    <wsdl:part name="Msg" type="s:string" />
+    <wsdl:part name="Channel" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendVoiceCodeHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="DesNo" type="s:string" />
+    <wsdl:part name="VoiceCode" type="s:string" />
+    <wsdl:part name="Channel" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendVoiceCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoExtHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="minId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoExtHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMo2HttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMo2HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReport2HttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReport2HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportHttpPostIn">
+    <wsdl:part name="userCode" type="s:string" />
+    <wsdl:part name="userPass" type="s:string" />
+    <wsdl:part name="batchNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="MsgSendSoap">
+    <wsdl:operation name="SendMsgExt">
+      <wsdl:input message="tns:SendMsgExtSoapIn" />
+      <wsdl:output message="tns:SendMsgExtSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <wsdl:input message="tns:SendMsgSoapIn" />
+      <wsdl:output message="tns:SendMsgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendVoiceCode">
+      <wsdl:input message="tns:SendVoiceCodeSoapIn" />
+      <wsdl:output message="tns:SendVoiceCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input message="tns:GetBalanceSoapIn" />
+      <wsdl:output message="tns:GetBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMoExt">
+      <wsdl:input message="tns:GetMoExtSoapIn" />
+      <wsdl:output message="tns:GetMoExtSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMo2">
+      <wsdl:input message="tns:GetMo2SoapIn" />
+      <wsdl:output message="tns:GetMo2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMo">
+      <wsdl:input message="tns:GetMoSoapIn" />
+      <wsdl:output message="tns:GetMoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport2">
+      <wsdl:input message="tns:GetReport2SoapIn" />
+      <wsdl:output message="tns:GetReport2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <wsdl:input message="tns:GetReportSoapIn" />
+      <wsdl:output message="tns:GetReportSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MsgSendHttpGet">
+    <wsdl:operation name="SendMsgExt">
+      <wsdl:input message="tns:SendMsgExtHttpGetIn" />
+      <wsdl:output message="tns:SendMsgExtHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <wsdl:input message="tns:SendMsgHttpGetIn" />
+      <wsdl:output message="tns:SendMsgHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendVoiceCode">
+      <wsdl:input message="tns:SendVoiceCodeHttpGetIn" />
+      <wsdl:output message="tns:SendVoiceCodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input message="tns:GetBalanceHttpGetIn" />
+      <wsdl:output message="tns:GetBalanceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMoExt">
+      <wsdl:input message="tns:GetMoExtHttpGetIn" />
+      <wsdl:output message="tns:GetMoExtHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMo2">
+      <wsdl:input message="tns:GetMo2HttpGetIn" />
+      <wsdl:output message="tns:GetMo2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMo">
+      <wsdl:input message="tns:GetMoHttpGetIn" />
+      <wsdl:output message="tns:GetMoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport2">
+      <wsdl:input message="tns:GetReport2HttpGetIn" />
+      <wsdl:output message="tns:GetReport2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <wsdl:input message="tns:GetReportHttpGetIn" />
+      <wsdl:output message="tns:GetReportHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MsgSendHttpPost">
+    <wsdl:operation name="SendMsgExt">
+      <wsdl:input message="tns:SendMsgExtHttpPostIn" />
+      <wsdl:output message="tns:SendMsgExtHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <wsdl:input message="tns:SendMsgHttpPostIn" />
+      <wsdl:output message="tns:SendMsgHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendVoiceCode">
+      <wsdl:input message="tns:SendVoiceCodeHttpPostIn" />
+      <wsdl:output message="tns:SendVoiceCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input message="tns:GetBalanceHttpPostIn" />
+      <wsdl:output message="tns:GetBalanceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMoExt">
+      <wsdl:input message="tns:GetMoExtHttpPostIn" />
+      <wsdl:output message="tns:GetMoExtHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMo2">
+      <wsdl:input message="tns:GetMo2HttpPostIn" />
+      <wsdl:output message="tns:GetMo2HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMo">
+      <wsdl:input message="tns:GetMoHttpPostIn" />
+      <wsdl:output message="tns:GetMoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport2">
+      <wsdl:input message="tns:GetReport2HttpPostIn" />
+      <wsdl:output message="tns:GetReport2HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <wsdl:input message="tns:GetReportHttpPostIn" />
+      <wsdl:output message="tns:GetReportHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MsgSendSoap" type="tns:MsgSendSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendMsgExt">
+      <soap:operation soapAction="http://tempuri.org/SendMsgExt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <soap:operation soapAction="http://tempuri.org/SendMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendVoiceCode">
+      <soap:operation soapAction="http://tempuri.org/SendVoiceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <soap:operation soapAction="http://tempuri.org/GetBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMoExt">
+      <soap:operation soapAction="http://tempuri.org/GetMoExt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMo2">
+      <soap:operation soapAction="http://tempuri.org/GetMo2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMo">
+      <soap:operation soapAction="http://tempuri.org/GetMo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport2">
+      <soap:operation soapAction="http://tempuri.org/GetReport2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <soap:operation soapAction="http://tempuri.org/GetReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MsgSendSoap12" type="tns:MsgSendSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendMsgExt">
+      <soap12:operation soapAction="http://tempuri.org/SendMsgExt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <soap12:operation soapAction="http://tempuri.org/SendMsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendVoiceCode">
+      <soap12:operation soapAction="http://tempuri.org/SendVoiceCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <soap12:operation soapAction="http://tempuri.org/GetBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMoExt">
+      <soap12:operation soapAction="http://tempuri.org/GetMoExt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMo2">
+      <soap12:operation soapAction="http://tempuri.org/GetMo2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMo">
+      <soap12:operation soapAction="http://tempuri.org/GetMo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport2">
+      <soap12:operation soapAction="http://tempuri.org/GetReport2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <soap12:operation soapAction="http://tempuri.org/GetReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MsgSendHttpGet" type="tns:MsgSendHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="SendMsgExt">
+      <http:operation location="/SendMsgExt" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <http:operation location="/SendMsg" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendVoiceCode">
+      <http:operation location="/SendVoiceCode" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <http:operation location="/GetBalance" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMoExt">
+      <http:operation location="/GetMoExt" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMo2">
+      <http:operation location="/GetMo2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMo">
+      <http:operation location="/GetMo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport2">
+      <http:operation location="/GetReport2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <http:operation location="/GetReport" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MsgSendHttpPost" type="tns:MsgSendHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SendMsgExt">
+      <http:operation location="/SendMsgExt" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <http:operation location="/SendMsg" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendVoiceCode">
+      <http:operation location="/SendVoiceCode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <http:operation location="/GetBalance" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMoExt">
+      <http:operation location="/GetMoExt" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMo2">
+      <http:operation location="/GetMo2" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMo">
+      <http:operation location="/GetMo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport2">
+      <http:operation location="/GetReport2" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <http:operation location="/GetReport" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MsgSend">
+    <wsdl:port name="MsgSendSoap" binding="tns:MsgSendSoap">
+      <soap:address location="http://121.199.48.186:1210/Services/MsgSend.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MsgSendSoap12" binding="tns:MsgSendSoap12">
+      <soap12:address location="http://121.199.48.186:1210/Services/MsgSend.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MsgSendHttpGet" binding="tns:MsgSendHttpGet">
+      <http:address location="http://121.199.48.186:1210/Services/MsgSend.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MsgSendHttpPost" binding="tns:MsgSendHttpPost">
+      <http:address location="http://121.199.48.186:1210/Services/MsgSend.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

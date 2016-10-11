@@ -1,0 +1,5 @@
+E:\Common\Monitoring\bin\Debug\Monitoring.dll
+E:\Common\Monitoring\bin\Debug\Monitoring.pdb
+E:\Common\Monitoring\obj\Debug\Monitoring.csprojResolveAssemblyReference.cache
+E:\Common\Monitoring\obj\Debug\Monitoring.dll
+E:\Common\Monitoring\obj\Debug\Monitoring.pdb

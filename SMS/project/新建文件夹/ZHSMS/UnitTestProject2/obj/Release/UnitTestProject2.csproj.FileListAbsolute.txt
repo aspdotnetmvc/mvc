@@ -1,0 +1,12 @@
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\UnitTestProject2.dll
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\UnitTestProject2.pdb
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\SMS.Model.dll
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\SMS.Util.dll
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\Newtonsoft.Json.dll
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\SMS.Model.pdb
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\SMS.Util.pdb
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\Newtonsoft.Json.pdb
+E:\SMS\project\ZHSMS\UnitTestProject2\bin\Release\Newtonsoft.Json.xml
+E:\SMS\project\ZHSMS\UnitTestProject2\obj\Release\UnitTestProject2.csprojResolveAssemblyReference.cache
+E:\SMS\project\ZHSMS\UnitTestProject2\obj\Release\UnitTestProject2.dll
+E:\SMS\project\ZHSMS\UnitTestProject2\obj\Release\UnitTestProject2.pdb

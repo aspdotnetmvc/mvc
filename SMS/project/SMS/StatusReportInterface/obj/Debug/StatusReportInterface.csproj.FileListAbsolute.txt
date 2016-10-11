@@ -1,0 +1,9 @@
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\bin\Debug\StatusReportInterface.dll
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\bin\Debug\StatusReportInterface.pdb
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\bin\Debug\SMS.Model.dll
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\bin\Debug\Newtonsoft.Json.dll
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\bin\Debug\SMS.Model.pdb
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\bin\Debug\Newtonsoft.Json.xml
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\obj\Debug\StatusReportInterface.dll
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\obj\Debug\StatusReportInterface.pdb
+D:\kf\sms\OLD\SMS\project\SMS\StatusReportInterface\obj\Debug\StatusReportInterface.csprojResolveAssemblyReference.cache

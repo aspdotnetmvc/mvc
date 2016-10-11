@@ -1,0 +1,6 @@
+D:\kf\sms\OLD\SMS\project\ZHSMSManager\ZHSMSPlatHost\obj\Release\SMSPlatHost.csprojResolveAssemblyReference.cache
+D:\kf\sms\OLD\SMS\project\ZHSMSManager\ZHSMSPlatHost\obj\Release\ZHSMSPlatHost.exe
+D:\kf\sms\OLD\发布\SMS\PlatformHost\ZHSMSPlatHost.exe.config
+D:\kf\sms\OLD\发布\SMS\PlatformHost\ZHSMSPlatHost.exe
+D:\kf\sms\OLD\发布\SMS\PlatformHost\ZHSMSPlatHost.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMSManager\ZHSMSPlatHost\obj\Release\ZHSMSPlatHost.pdb

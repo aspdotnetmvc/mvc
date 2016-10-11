@@ -1,0 +1,9 @@
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\bin\Release\ServiceLoader.dll
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\bin\Release\ServiceLoader.pdb
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\bin\Release\IService.dll
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\bin\Release\MessageTools.dll
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\bin\Release\MessageTools.pdb
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\bin\Release\IService.pdb
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\obj\Release\ServiceLoader.csprojResolveAssemblyReference.cache
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\obj\Release\ServiceLoader.dll
+E:\SMS\project\SmsGUI\ServiceManageWin\ServiceLoader\obj\Release\ServiceLoader.pdb

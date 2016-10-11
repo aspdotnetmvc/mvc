@@ -1,0 +1,16 @@
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongDBBigDataTest.exe.config
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\obj\Release\MongDBBigDataTest.csprojResolveAssemblyReference.cache
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\obj\Release\MongDBBigDataTest.Form1.resources
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\obj\Release\MongDBBigDataTest.Properties.Resources.resources
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\obj\Release\MongDBBigDataTest.csproj.GenerateResource.Cache
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongDBBigDataTest.exe
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongDBBigDataTest.pdb
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongoDB.Bson.dll
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongoDB.dll
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongoDB.Driver.Core.dll
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongoDB.Driver.dll
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongoDB.pdb
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongoDB.Bson.xml
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\bin\Release\MongoDB.Driver.xml
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\obj\Release\MongDBBigDataTest.exe
+D:\work\SMS\project\ZHSMS\MongDBBigDataTest\obj\Release\MongDBBigDataTest.pdb

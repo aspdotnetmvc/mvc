@@ -1,0 +1,14 @@
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.dll
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.pdb
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Bson.dll
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Driver.Core.dll
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Driver.dll
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Driver.GridFS.dll
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Driver.Legacy.dll
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Bson.xml
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Driver.xml
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Driver.GridFS.xml
+E:\OSChina\OpenL\MongoDB\bin\Debug\MongoDB.Driver.Legacy.xml
+E:\OSChina\OpenL\MongoDB\obj\Debug\MongoDB.csprojResolveAssemblyReference.cache
+E:\OSChina\OpenL\MongoDB\obj\Debug\MongoDB.dll
+E:\OSChina\OpenL\MongoDB\obj\Debug\MongoDB.pdb

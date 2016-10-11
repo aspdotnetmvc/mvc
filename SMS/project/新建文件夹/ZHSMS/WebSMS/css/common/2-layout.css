@@ -1,0 +1,343 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+------------------------------------------------------------*/
+body {
+	text-align:center;
+	line-height: 1.5;
+	background: url(../../Images/common/body_bg.jpg) repeat-x;
+}
+#container {
+	margin: 0 auto;
+	width: 1000px;
+	text-align: left;
+}
+#main {
+}
+* html #main {
+	zoom: 1;
+}
+*+html #main {
+	zoom: 1;
+}
+#main:after {
+	height: 0;
+	visibility: hidden;
+	content: ".";
+	display: block;
+	clear: both;
+}
+#header {
+	text-align: left;
+	height: 109px;
+	padding-right: 2px;
+	background: url(../../Images/common/header_bg.jpg) no-repeat;
+}
+#header h1 {
+	margin: 35px 0 0 160px;
+	float: left;
+}
+#header .headerR {
+	width: 180px;
+	float: right;
+	overflow: hidden;
+	text-align: right;
+	color: #FFF;
+}
+#header .headerR p {
+	padding: 10px 10px 0 0;
+	
+	margin-bottom: 10px;
+}
+#header .headerR p img {
+	margin-left : 15px;
+}
+#header .headerR p a {
+	text-decoration: none;
+	color: #0C5800;
+	font-size: 12px;
+}
+.flaBox {
+	margin-bottom: 18px;
+	position: relative;
+	height: 212px;
+}
+.flaBox a#big_img img {
+	position:absolute;
+}
+.flaBox a#big_img img.imgnone {
+	display:none;
+}
+.flaBox ul {
+	position: absolute;
+	top: 200px;
+	left: 25px;
+}
+.flaBox ul li {
+	margin-right: 4px;
+	float: left;
+}
+#pageGuid li {
+	float: left;
+}
+#pageGuid li a {
+	color: #F00;
+}
+.banner {
+}
+.subox {
+	width: 1000px;
+	clear: both;
+	height: 33px;
+	background: url(../../Images/common/subox_bg.jpg) repeat-x;
+	margin-bottom: 8px;
+}
+.subox p {
+	padding: 8px 0 0 10px;
+}
+.subox p span {
+	color: #FF0101;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+p.titlep
+{
+	font-size: 14px;
+	font-weight: bold;
+	color: #000;
+	padding : 8px 0 0 70px;
+}
+/*------------------------------------------------------------
+	#globalNavi 
+------------------------------------------------------------*/
+#globalNavi {
+	clear: both;
+	height: 36px;
+	background: url( ../../Images/common/navi_bg.jpg) repeat-x;
+	margin-bottom: 8px;
+}
+#globalNavi ul {
+}
+
+#globalNavi ul li.navileft
+{
+background: url( ../../Images/common/navi_left.jpg) no-repeat;
+	height: 36px;
+	width: 2px;
+}
+
+#globalNavi ul li.navicen {
+	background: url( ../../Images/common/navi_cen.jpg) no-repeat;
+	height: 35px;
+	width: 2px;
+}
+
+#globalNavi ul li.naviright {
+	background: url( ../../Images/common/navi_right.jpg) no-repeat right;
+	height: 36px;
+	width: 428px;
+	color: #FFF;
+	text-align: right;
+}
+
+#globalNavi ul li.naviright p
+{
+	background: none !important;
+	padding-right: 20px;
+}
+
+#globalNavi ul li.naviright p img
+{
+	margin-left: 15px;
+}
+
+#globalNavi ul li {
+	display: block;
+	float: left;
+	width: 95px;
+	font-size: 14px;
+	text-align: center;
+	height: 32px;
+}
+#globalNavi ul li a {
+	display: block;
+	text-decoration: none;
+	width: 95px;
+	height: 29px;
+	padding-top: 7px;
+	color: #FFF;
+	background: url(../../Images/common/navi_off.jpg) 10px 6px no-repeat;
+}
+#globalNavi ul li a:hover {
+	width: 95px;
+	height: 30px;
+	padding-top: 6px;
+	color: #FFF !important;
+	background: url(../../Images/common/navi_now.jpg) no-repeat top;
+}
+#globalNavi ul li a span{text-decoration:none;}
+#globalNavi ul li a .en{display:none;}
+#globalNavi ul li a:hover .en{display:inline;}
+#globalNavi ul li a:hover .cn{display:none;}
+/*------------------------------------------------------------
+	main
+------------------------------------------------------------*/
+
+#main {
+	margin-bottom: 10px;
+}
+/*------------------------------------------------------------
+	conts
+------------------------------------------------------------*/
+#conts {
+	clear: both;
+	width: 738px;
+	float: right;
+}
+
+#mainleft {
+	clear: both;
+	width: 738px;
+	float: left;
+}
+
+#mainright
+{
+	width: 246px;
+	overflow: hidden;
+	float: right;
+}
+
+/*------------------------------------------------------------
+	sideBar
+------------------------------------------------------------*/
+#sideBar {
+	width: 250px;
+	float: left;
+	background: url(../../Images/common/side_bg.jpg) repeat-y right;
+}
+#sideBar .sidebox {
+	padding: 1px;
+	margin-bottom: 10px;
+}
+
+#sideBar .sidebox .sideList {
+	width: 233px;
+	overflow: hidden;
+}
+#sideBar .sidebox .sideList {
+	overflow: hidden;
+}
+#sideBar .sidebox .sideList li {
+	height: 40px;
+	margin-bottom: 5px;
+	background: url(../../Images/common/sideli_off.jpg) no-repeat bottom;
+}
+#sideBar .sidebox .sideList li:hover{
+	color: #000 !important;
+	background: url(../../Images/common/sideli.jpg) no-repeat;
+}
+#sideBar .sidebox .sideList li a {
+	text-indent: 70px;
+	height: 25px;
+	font-size: 14px;
+	padding-top: 7px;
+	display: block;
+	color: #262626;
+	font-weight: bold;
+	text-decoration: none;
+}
+#sideBar .sidebox .sidebm {
+	width: 235px;
+	height: 77px;
+	background: url(../../Images/common/sidelist_bg.jpg) no-repeat;
+}
+#sideBar .sidebox .contitle {
+	width: 235px;
+	height: 45px;
+	background: url(../../Images/common/contacttitle.jpg) no-repeat;
+}
+
+#sideBar .sidebox .contitle p
+{
+color: #034B97;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 15px 0 0 30px;
+}
+
+#sideBar .sidebox .conList {
+	width: 235px;
+	overflow: hidden;
+	background: url(../../Images/common/side_bg.jpg) repeat-y;
+}
+
+#sideBar .sidebox .conList ul
+{ 
+width: 200px;
+	margin: 0 auto;
+	background: url(../../Images/common/side_bg.gif) no-repeat right bottom;
+}
+
+#sideBar .sidebox .conList ul li {
+	
+	height: 20px;
+	font-size: 13px;
+	padding-top: 5px;
+}
+#sideBar .sidebox .conList ul li.coname
+{
+	color: #000;
+}
+
+#sideBar .sidebox .conList ul li.sidetel
+{
+	font-size: 16px;
+	font-weight: bold;
+	color: #DB6501;
+}
+
+#sideBar .sidebox .conList ul li.sidenu
+{
+	color: #012559;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#sideBar .sidebox .conbm {
+	width: 235px;
+	height: 19px;
+	background: url(../../Images/common/sidelist_bg2.jpg) no-repeat;
+}
+/*------------------------------------------------------------
+	友情链接
+------------------------------------------------------------*/
+#link {
+	background: url(../../Images/common/link_bg.jpg) no-repeat;
+	color: #FFF;
+	padding: 8px 0 0 15px;
+	height: 35px;
+}
+#link a {
+	color: #CCC;
+	text-decoration: none;
+}
+/*------------------------------------------------------------
+	footer 
+------------------------------------------------------------*/
+#footer {
+    /*position:absolute; */
+    bottom:0;
+	text-align: center;
+    width:100%;
+	height: 100px;
+	padding-top: 10px;
+	background: url(../../Images/common/footer_bg.jpg) repeat-x;
+}
+
+#footer p {
+	line-height: 25px;
+}
+#footer p a {
+	text-decoration: none;
+}

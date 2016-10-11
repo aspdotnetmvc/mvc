@@ -1,0 +1,15 @@
+D:\Workspace\SMWebService\SMWebService\bin\SMWebService.dll
+D:\Workspace\SMWebService\SMWebService\bin\SMWebService.pdb
+D:\Workspace\SMWebService\SMWebService\bin\Model.dll
+D:\Workspace\SMWebService\SMWebService\bin\Monitoring.dll
+D:\Workspace\SMWebService\SMWebService\bin\Newtonsoft.Json.dll
+D:\Workspace\SMWebService\SMWebService\bin\ServiceModel.dll
+D:\Workspace\SMWebService\SMWebService\bin\SMSModel.dll
+D:\Workspace\SMWebService\SMWebService\bin\ZHSMSPlatInterface.dll
+D:\Workspace\SMWebService\SMWebService\bin\ServiceModel.pdb
+D:\Workspace\SMWebService\SMWebService\bin\Model.pdb
+D:\Workspace\SMWebService\SMWebService\bin\ZHSMSPlatInterface.pdb
+D:\Workspace\SMWebService\SMWebService\obj\Debug\SMWebService.csprojResolveAssemblyReference.cache
+D:\Workspace\SMWebService\SMWebService\obj\Debug\SMWebService.dll
+D:\Workspace\SMWebService\SMWebService\obj\Debug\SMWebService.pdb
+D:\Workspace\SMWebService\SMWebService\bin\SMSModel.pdb

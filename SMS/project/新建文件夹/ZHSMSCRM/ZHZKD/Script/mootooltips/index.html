@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MooTooltips - MooTools 1.2 tooltip</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<script language="javascript" type="text/javascript" src="script/mootools-1.2.1-core.js"></script>
+<script language="javascript" type="text/javascript" src="script/mootools-1.2-more.js"></script>
+<script language="javascript" type="text/javascript" src="script/MooTooltips.js"></script>
+<script language="javascript" type="text/javascript">
+	window.addEvent('load', function(){
+		new MooTooltips({
+			hovered:'.tipper',		// the element that when hovered shows the tip
+			extra:{  
+				0: {
+					'id':'extra',
+					'text':'this text is added manually using the extra.text parameter.',
+					'position':-1,
+					'sticky':false
+				},
+				1: {
+					'id':'other_extra',
+					'ajax':'ajax.php',
+					'ajax_message': 'Loading... please wait.',
+					'position':1,
+					'sticky':false
+				}
+			},
+			ToolTipClass:'ToolTips',	// tooltip display class
+			toolTipPosition:-1, // -1 top; 1: bottom - set this as a default position value if none is set on the element
+			sticky:false,		// remove tooltip if closed
+			fromTop: 0,		// distance from mouse or object
+			fromLeft: -55,	// distance from left
+			duration: 300,		// fade effect transition duration
+			fadeDistance: 20    // the distance the tooltip starts the morph
+		});		
+	});
+</script>
+</head>
+
+<body>
+<div id="container">
+	
+    <h1>MooTooltips - JavaScript tooltip with MooTools 1.2</h1>
+    <p>
+    	MooTooltips is a tooltip plugin developed for MooTools 1.2.1. It can display tooltip messages from HTML elements, Ajax calls or text added manually.
+        Tooltip parameters can be passed either when instantiating the class or on the <em>rel</em> element parameter. If for example you want to set on an anchor a tooltip taken from an HTML element, on that anchor you have to set: <strong class="tipper" rel="{content:'tooltip1'}">rel="{content:'id of the element holding the tooltip content'}"</strong> and you're done. Hover over the bolded text to see an example.  
+    </p>
+    
+    <p>
+    	By default tooltips appear below the hovered element and are not sticky. If you need to set the tooltip to stick and appear above the hovered element, you need to set two more parameters. Here's an example: <strong class="tipper" rel="{content:'tooltip2',sticky:true,position:-1}">rel="{content:'id of the element holding the tooltip content', sticky:true, position:-1}"</strong>.<br />
+		You can set in the same class instance different behaviour for each tooltip you set.       
+    </p>
+    
+     <p>
+    	For form elements ( you need to trigger the tooltip on focus instead of mouse over ), set on the element the parameter focus to true.<br />
+		<form method="post" action="#">
+        	<input type="text" class="tipper" name="some_name" value="click on this" rel="{content:'focus_tooltip', focus:true}" />
+        </form>
+        <div id="focus_tooltip" style="display:none">Put here what you need to say on focus event.</div>
+    </p>
+    
+    <p>
+    	The script gives you the possibility to display tooltips either by passing the parameters on the element <em>rel</em> parameter or by setting them manually when instanciating the class. When creating a class instance, you can set both types, inline tips and manually set ones.<br />
+		To add extra tolltips not specified in the element <em>rel</em>, you need to pass it some values in the <em>extra</em> parameter.<br />		
+    </p>
+    
+    <p>
+    	For every new tooltip you want to add as extra, you'll need to pass: 
+        <ul>
+        	<li>the id of the element displaying the tooltip ( using the <em>id</em> parameter )</li>
+            <li>the content of the tooltip; this can come:
+            	<ul> 
+                	<li>from an HTML element(you pass the id of that element using the <em>content</em> parameter) <strong>OR</strong> <li>
+                    <li>some text you want to enter ( you pass it in the <em>text</em> parameter ) <strong>OR</strong></li>
+                    <li>using AJAX calls ( you pass the url to the <em>ajax</em> parameter )</li>
+                </ul>    
+            </li>
+            <li>the position of the tooltip: 1 - below the element, -1 - above the element ( using the <em>position</em> parameter )</li>
+            <li>sticky or not ( using the <em>sticky</em> parameter )</li>
+        </ul> 
+    </p>
+    
+    <div id="extra_tips">
+    	<h3>Demos</h3>
+        <p>Extra element with AJAX call. <a href="#" id="other_extra">Move mouse here.</a></p>
+    
+        <p>This tip displays content from a hidden div. <a href="#" class="tipper" rel="{content:'tipContainer1',position:-1}">See it in action.</a></p>
+        
+        
+        <p>Here we have a simple <span style="color:#FF6600" class="tipper" rel="{content:'tipContainer2',position:-1,target:'targeted'}">text element</span> to display the tooltip. It displays the tooltip on a remote element.</p>
+        
+        <p>Element added extra. Hover over <a id="extra" href="#">here</a>.</p>
+        
+    </div> 
+    
+    <div id="tooltip1" style="display:none;">This is a tooltip with the minimal settings on it. It displays beneath the hovered element and doesn't stick around.</div>
+    <div id="tooltip2" style="display:none;">This one is sticky and appears above the hovered element.</div> 
+    
+    <!-- extra examples -->
+    <div class="tipContainer" id="tipContainer1">
+        <h3>Sloth</h3>
+        <div style="float:left; width:180px; height:240px; display:block; position:relative; margin-right:10px;">
+            <img src="images/180px-Bradypus.jpg" width="180" height="240" alt="Brown-throated Three-toed Sloth" /></div>
+        The living sloths comprise six species of medium-sized mammals that live in Central and South America belonging to the families Megalonychidae and Bradypodidae, part of the order Pilosa. The sloth's taxonomic suborder is Folivora, while some call it Phyllophaga. Both names mean "leaf-eaters".
+        <div class="rights">full source: <a href="http://en.wikipedia.org/wiki/Sloth">http://en.wikipedia.org/wiki/Sloth</a></div>
+    </div>        
+    <div class="tipContainer" id="tipContainer2">Hey, I'm remote. Neat!</div>        
+    <div style="margin-top:160px; clear:both;" id="targeted">I'm the remote display element. Here's where the tooltip will appear if you hover the orange text.</div> 
+     
+</div>
+</body>
+</html>

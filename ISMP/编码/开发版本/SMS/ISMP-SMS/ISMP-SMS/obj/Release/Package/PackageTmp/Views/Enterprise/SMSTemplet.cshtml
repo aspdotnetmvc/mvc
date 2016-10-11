@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <title>短信模版管理</title>
+    <script type="text/javascript">
+        var Param;
+        $(function () {
+            Param = eval("(" + $('#paramJson').val() + ")");
+
+            $('#grid').datagrid({
+                url: '../Enterprise/GetTempletList',
+                queryParams: { AccountCode: Param.AccountCode },
+                columns: [[
+                    { field: 'TempletContent', title: '报备内容', width: 400 },
+                    { field: 'SubmitTime', title: '报备时间', width: 200 },
+                    { field: 'AuditTime', title: '审核时间', width: 200 },
+                    {
+                        field: 'AuditState', title: '审核状态', width: 100, formatter: function (value, row, index) {
+                            switch (value) {
+                                case 0:
+                                    return "待审核";
+                                case 1:
+                                    return "审核成功";
+                                case 2:
+                                    return "审核失败";
+                            }
+                        }
+                    },
+                    { field: 'Remark', title: '备注', width: 150 },
+                    {
+                        field: 'Operate', title: '操作', width: 100, formatter: function (value, row, index) {
+                            if (row.AuditState == 0) return '';//待审核状态不能删除
+                            var ohtml = '';
+                            ohtml += '&nbsp;<a href="javaScript:void(0)" class="pure-button ismp-button5 btn" onclick="delTemplet(' + index + ')" >删除</a>';
+                            return ohtml;
+                        }
+                    }
+                ]],
+                pagination: true,
+                pageNumber: 1,
+                singleSelect: true,
+                fit: true,
+                rownumbers: true,
+                nowrap: false,  //自动换行
+                striped: true,  //隔行变色
+                loadFilter: function (data) {
+                    if (data && data.success == false) {
+                        $.messager.alert("提示", data.message, data.type);
+                        return { total: 0, rows: null };
+                    }
+                    return data;
+                }
+            });
+
+            $("#formTempletContent").form({
+                url: "/Enterprise/AddTemplet",
+                onSubmit: function (param) {
+                    param["AccountCode"] = Param.AccountCode;
+                    param["AccountName"] = Param.AccountName;
+                    param["AccountId"] = Param.AccountId;
+                    var isValid = $(this).form('validate');
+                    return isValid;
+                },
+                success: function (data) {
+                    var msg = eval("(" + data + ")");
+                    if (msg.success) {
+                        reset();
+                        reloadgrid();
+                    }
+                    $.messager.alert("提示", msg.message, msg.type);
+                }
+            });
+
+        });
+
+        function submit() {
+            var content = $('#TempletContent').val();
+            if (content.trim() == "") {
+                $.messager.alert("提示", "请输入短信内容", null);
+                return;
+            }
+            $("#formTempletContent").submit();
+        }
+
+        function reset() {
+            $('#TempletContent').val("");
+        }
+
+        function reloadgrid() {
+            $('#grid').datagrid('reload');
+        }
+
+        function delTemplet(index) {
+            var row = $('#grid').datagrid("getRows")[index];
+            if (row) {
+                $.messager.confirm('删除确认', '确定要删除该模版吗?', function (r) {
+                    if (r) {
+                        //删除记录
+                        var jstr = $.ajax({
+                            url: "/Enterprise/DelTemplet",
+                            data: { TempletID: row.TempletID, AccountCode: Param.AccountCode },
+                            method: "post",
+                            async: false
+                        }).responseText;
+
+                        var msg = eval("(" + jstr + ")");
+                        if (msg.success) {
+                            reloadgrid();
+                        }
+                        $.messager.alert("提示", msg.message, msg.type);
+                    }
+                });
+            } else {
+                $.messager.alert("提示", "请选择模版！", "info");
+            }
+        }
+
+        function CheckKeywords() {
+            if ($("#TempletContent").val() == "") {
+                $.messager.alert("提示", "请输入短信内容", "error");
+                return;
+            }
+            $.post("/Enterprise/CheckKeywords", { Content: $("#TempletContent").val() },
+                function (data) {
+                    var jo = eval("(" + data + ")");
+                    if (jo.success) {
+                        $.messager.alert("提示", "此短信内容中不包含敏感词", "info");
+
+                    } else {
+                        $.messager.alert("提示", "此短信内容中包含敏感词:" + jo.message, "info");
+                    }
+                });
+
+        }
+
+    </script>
+    <style type="text/css">
+    .box{margin-left: 1%;}
+    .box h5{margin-top: 10px;margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h5>短信模版</h5>
+        <div>
+            <form id="formTempletContent">
+                <textarea id="TempletContent" name="TempletContent" style="width: 98%; height: 110px; "></textarea>
+                <p style="color:red">@ViewData["Example"]</p>
+            </form>
+        </div>
+        <div class="pure-g marginbottom">
+            <div class="pure-u-8-24"></div>
+            <div class="pure-u-8-24"></div>
+            <div class="pure-u-7-24" style="text-align: right;">
+                <a href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="CheckKeywords()">检查敏感词</a>
+                <a id="frmSave" href="javascript:void(0)" class="pure-button ismp-button4 btn" onclick="submit()">提交</a>
+                <a id="frmCancel" href="javascript:void(0)" class="pure-button ismp-button5 btn" onclick="reset()">重置</a>
+            </div>
+            <div class="pure-u-1-24"></div>
+        </div>
+    </div>
+    <div class="box">
+        <h5>模板备案列表</h5>
+        <div style="position: absolute; top: 280px; bottom: 1%; left: 1%; right: 1%;">
+            <table id="grid"></table>
+        </div>
+    </div>
+    <input id="paramJson" type="hidden" value="@ViewData["ParamObject"]">
+</body>
+</html>

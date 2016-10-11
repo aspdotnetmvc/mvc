@@ -1,0 +1,158 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/iframe.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/toastr.min.css">
+
+    <script type="text/javascript" src='../Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='../Scripts/jquery.easyui.min.js'></script>
+    <script type="text/javascript" src='../Scripts/easyui-lang-zh_CN.js'></script>
+    <script type="text/javascript" src="../Scripts/plugin/ismp_plugin.js"></script>
+    <script type="text/javascript" src="../Scripts/plugin/toastr.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Common/zh_ISMP.js"></script>
+
+    <style type="text/css">
+    .dailishang_edit td{padding-top: 15px;}
+    .dailishang_edit input[type=radio]{width: 6%!important;}
+    .dailishang_edit td[colspan='3'] .textbox{width: 96%!important;}
+    .dailishang_edit select{width: 90%!important;}
+    .dailishang_edit {font-size: 14px;}
+    .pure-form select{height: 2.45em!important;}
+    .guishu {position: relative;}
+    .pure-form h3{width: 95%;margin-left:auto;margin-right:auto;}
+    #frmMore{color:#1CB394;margin-right: 22px;}
+    #LoginNameCheckResult{position: absolute;display: none;z-index: 9900000;outline: none;opacity: 1;filter: alpha(opacity=100);padding: 5px;border-width: 1px;border-style: solid;border-radius: 5px;-moz-border-radius: 5px 5px 5px 5px;-webkit-border-radius: 5px 5px 5px 5px;border-radius: 5px 5px 5px 5px;border-color:#cc9933;background-color: #ffffcc; font-size: 12px;margin: -30px 0 0 170px;}
+    .textbox{position: relative;}
+    </style>
+    <title>短信模版审核</title>
+</head>
+<body>
+    <div class="ismp_con">
+        <form id="frmedit" class="pure-form">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <th align="right" width="80px">
+                        企业：
+                    </th>
+                    <td>
+                        <label>@ViewData["AccountCode"]</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        模版内容：
+                    </th>
+                    <td>
+                        <label>@ViewData["TempletContent"]</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        短信签名：
+                    </th>
+                    <td>
+                        <label>@ViewData["Signature"]</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        提交时间：
+                    </th>
+                    <td>
+                        <label>@ViewData["SubmitTime"]</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        审核备注：
+                    </th>
+                    <td>
+                        <textarea id="txtFailMsg" rows="4" style="width: 100%" placeholder="审核失败必填"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a id="btnSuccess" href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="AuditSucess()">审核成功</a>
+                <a id="btnFail" href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="AuditFail()">审核失败</a>
+            </div>
+        </form>
+    </div>
+    <input id="Id" type="hidden" value="@ViewData["Identifier"]">
+    <input id="IsDisplayDetail" type="hidden" value="@ViewData["IsDisplayDetail"]">
+</body>
+<script>
+
+    $(function () {
+        if ($('#IsDisplayDetail').val() == '1') {
+            $('#btnSuccess').remove();
+            $('#btnFail').remove();
+        }
+    });
+
+    //审核成功
+    function AuditSucess() {
+        var msg = $('#txtFailMsg').val();
+
+        $.messager.confirm('审核确认', '确定审核成功吗?', function (r) {
+            if (r) {
+                var url = "/Platform/AuditTempletResult";
+                var sdata = {TempletID: $('#Id').val(), AuditMsg: msg, Status: 1};
+                $zh.ajax(sdata, url, function (data) {
+                    if (data) {
+                        $.messager.alert("提示", data.message, data.type, function () {
+                            if (data.success) {
+                                document.body.innerHTML = "操作完成，请关闭当前页面！";
+                            }
+                        });
+                    } else {
+                        $.messager.alert("提示", "操作返回异常", "info");
+                    }
+                }
+                );
+            }
+        });
+
+    }
+    //审核失败
+    function AuditFail() {
+        var msg = $('#txtFailMsg').val();
+        if (!msg || $.trim(msg) == "") {
+            $.messager.alert("提示", "请填写备注！", "info");
+            return;
+        }
+
+        $.messager.confirm('审核确认', '确定审核失败吗?', function (r) {
+            if (r) {
+                var url = "/Platform/AuditTempletResult";
+                var sdata = { TempletID: $('#Id').val(), AuditMsg: msg, Status: 0 };
+                $zh.ajax(sdata, url, function (data) {
+                    if (data) {
+                        $.messager.alert("提示", data.message, data.type, function () {
+                            if (data.success) {
+                                document.body.innerHTML = "操作完成，请关闭当前页面！";
+                            }
+                        });
+                    } else {
+                        $.messager.alert("提示", "操作返回异常", "info");
+                    }
+                }
+                );
+            }
+        });
+
+    }
+</script>
+</html>

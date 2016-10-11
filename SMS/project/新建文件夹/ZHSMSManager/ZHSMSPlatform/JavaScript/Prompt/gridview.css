@@ -1,0 +1,114 @@
+﻿/*定义GridView控件的外观*/
+.gridview{
+	text-align: left;
+	_min-width:700px;
+	clear:both;
+	margin-left:0px;
+	border-color: transparent;  
+	font-family: 微软雅黑; 
+}
+.gridview .textBoxNoneStyle{
+	border-width:1px;
+	width:95%;
+	text-align:left;
+}
+.gridview th {
+    text-align: center;
+    color: #585858;
+    line-height: 240%;
+    font-size: 12px;
+    /*background-color:#a2dbf5;*/
+    background-color:#7DCFF5;
+}
+.gridview td {
+    padding: 6px 0 5px 0;
+    text-align: center;
+    color: #717171;
+    line-height: 200%;
+}
+.gridview table{
+	border: solid 0px  #cacaca;
+	width:100%;
+}
+/*定义GridView控件链接的字体大小，颜色*/
+.gridview A:link,#gridview A
+{
+	font-size: 12px;
+	color: #717171;
+	text-decoration: none;
+}
+.gridview A:hover
+{
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration:underline;
+	border:none;
+	font-weight:bold;
+	
+}
+
+.gridview .gvHeadBg
+{
+	background-image: url('Images/gridviewHeadBg.png' );
+	background-repeat: repeat-x;
+	background-position: center;
+	height: 31px;
+	color: #1b7503;
+	font-weight:bold;
+	text-align:left;
+}
+.gridview .gvRow
+{
+	background-image: url('Images/boder.jpg' );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	height: 20px;
+	padding: 5px;
+	color: #1b7503;
+	
+}
+.gridview .gvHeadLeft
+{
+	background-image: url('Images/gvHeadLeft.jpg' );
+	background-position: left;
+	background-repeat: no-repeat;
+
+	
+}
+.gridview .gvHeadRight
+{
+	background-image: url('Images/gvHeadRight.jpg' );
+	background-position: right;
+	background-repeat: no-repeat;
+}
+.gridview .hborder
+{
+	/*
+	background-image:url('Images/hborder.jpg');
+	background-position:left;
+	background-repeat:repeat-y;
+	*/
+	border-left: solid 1px #bad2ba;
+	border-right: solid 1px #bad2ba;	
+
+}
+.gridview .hborderRight
+{
+	border-right: solid 1px #bad2ba;
+}
+
+.gridview .headerBorder
+{
+	border-left: solid 1px #bad2ba;
+	border-right: solid 1px #bad2ba;
+}
+
+/*没有内容时显示的提示信息样式，暂时用*/
+.gridview .noInfo
+{
+	width: 370px;
+	height: 286px;
+	padding: 0px;
+	text-align: left;
+	margin: auto;
+}

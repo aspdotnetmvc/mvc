@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBEE0370-C4BB-4A20-86F6-CBBC860939E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMSThiftModel</RootNamespace>
+    <AssemblyName>SMSThiftModel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="AccountAuditType.cs" />
+    <Compile Include="AccountPriorityType.cs" />
+    <Compile Include="AuditRecord.cs" />
+    <Compile Include="AuditType.cs" />
+    <Compile Include="Channel.cs" />
+    <Compile Include="DictionaryC.cs" />
+    <Compile Include="FailureSMS.cs" />
+    <Compile Include="FilterType.cs" />
+    <Compile Include="GatewayConfiguration.cs" />
+    <Compile Include="Keywords.cs" />
+    <Compile Include="LevelModifyRecord.cs" />
+    <Compile Include="LevelType.cs" />
+    <Compile Include="MOSMS.cs" />
+    <Compile Include="PrepaidRecord.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportStatistics.cs" />
+    <Compile Include="RPCAccountSMSStatisticsListResult.cs" />
+    <Compile Include="RPCAuditRecordListResult.cs" />
+    <Compile Include="RPCChannelListResult.cs" />
+    <Compile Include="RPCDictionaryResult.cs" />
+    <Compile Include="RPCFailureSMSListResult.cs" />
+    <Compile Include="RPCGatewayConfigListResult.cs" />
+    <Compile Include="RPCKeywordsListResult.cs" />
+    <Compile Include="RPCLevelModifyRecordListResult.cs" />
+    <Compile Include="RPCListResult.cs" />
+    <Compile Include="RPCMOSMSListResult.cs" />
+    <Compile Include="RPCPrepaidRecordListResult.cs" />
+    <Compile Include="RPCReportStatisticListResult.cs" />
+    <Compile Include="RPCResult.cs" />
+    <Compile Include="RPCSMSListResult.cs" />
+    <Compile Include="RPCStatusReportListResult.cs" />
+    <Compile Include="SGIPSubmit.cs" />
+    <Compile Include="SMS.cs" />
+    <Compile Include="SMSSendResult.cs" />
+    <Compile Include="SMSStatistics.cs" />
+    <Compile Include="StatusReport.cs" />
+    <Compile Include="StatusReportType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ACSMSModel.thrift" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Thrift\src\Thrift.csproj">
+      <Project>{499eb63c-d74c-47e8-ae48-a2fc94538e9d}</Project>
+      <Name>Thrift</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

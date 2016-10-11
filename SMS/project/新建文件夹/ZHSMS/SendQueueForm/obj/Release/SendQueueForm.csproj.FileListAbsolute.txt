@@ -1,0 +1,3 @@
+D:\temp\Old\SMS\project\ZHSMS\SendQueueForm\obj\Release\SendQueueForm.Form1.resources
+D:\temp\Old\SMS\project\ZHSMS\SendQueueForm\obj\Release\SendQueueForm.Properties.Resources.resources
+D:\temp\Old\SMS\project\ZHSMS\SendQueueForm\obj\Release\SendQueueForm.csproj.GenerateResource.Cache

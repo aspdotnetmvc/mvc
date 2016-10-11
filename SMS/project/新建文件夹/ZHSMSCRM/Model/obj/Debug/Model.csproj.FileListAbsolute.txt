@@ -1,0 +1,7 @@
+E:\SMS\project\ZHSMSCRM\Model\bin\Debug\Model.dll
+E:\SMS\project\ZHSMSCRM\Model\bin\Debug\Model.pdb
+E:\SMS\project\ZHSMSCRM\Model\bin\Debug\SMSModel.dll
+E:\SMS\project\ZHSMSCRM\Model\bin\Debug\SMSModel.pdb
+E:\SMS\project\ZHSMSCRM\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+E:\SMS\project\ZHSMSCRM\Model\obj\Debug\Model.dll
+E:\SMS\project\ZHSMSCRM\Model\obj\Debug\Model.pdb

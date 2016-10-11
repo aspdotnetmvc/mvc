@@ -1,0 +1,270 @@
+﻿/*定义GridView控件的外观*/
+
+#gridview
+{
+	text-align: center;
+
+	_min-width:700px;
+	clear:both;
+
+	margin-left:0px;
+
+}
+
+#gridview .textBoxNoneStyle
+{
+	border-width:1px;
+
+	width:95%;
+	text-align:center;
+}
+
+#gridview table
+{
+	
+	/*filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc,Direction=0,strength=0);*/
+	border: solid 0px  #cacaca;
+	width:100%;
+
+}
+/*定义GridView控件链接的字体大小，颜色*/
+#gridview A:link,#gridview A
+{
+	font-size: 12px;
+	color: #1A7702;
+	text-decoration: none;
+}
+#gridview A:hover
+{
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration:underline;
+	border:none;
+	font-weight:bold;
+	
+}
+/*
+#gridview A:visited
+{
+	font-size: 12px;
+	color: #1A7702;
+	text-decoration: underline;
+}
+*/
+
+#gridview .gvHeadBg
+{
+	background-image: url('Images/gridviewHeadBg.png' );
+	background-repeat: repeat-x;
+	background-position: center;
+	height: 31px;
+	color: #1b7503;
+	font-weight:bold;
+	text-align:center;
+}
+#gridview .gvRow
+{
+	background-image: url('Images/boder.jpg' );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	height: 20px;
+	padding: 5px;
+	color: #1b7503;
+	
+}
+#gridview .gvHeadLeft
+{
+	background-image: url('Images/gvHeadLeft.jpg' );
+	background-position: left;
+	background-repeat: no-repeat;
+
+	
+}
+#gridview .gvHeadRight
+{
+	background-image: url('Images/gvHeadRight.jpg' );
+	background-position: right;
+	background-repeat: no-repeat;
+}
+#gridview .hborder
+{
+	/*
+	background-image:url('Images/hborder.jpg');
+	background-position:left;
+	background-repeat:repeat-y;
+	*/
+	border-left: solid 1px #bad2ba;
+	border-right: solid 1px #bad2ba;	
+
+}
+#gridview .hborderRight
+{
+	border-right: solid 1px #bad2ba;
+}
+
+#gridview .headerBorder
+{
+	border-left: solid 1px #bad2ba;
+	border-right: solid 1px #bad2ba;
+}
+
+/*没有内容时显示的提示信息样式，暂时用*/
+#gridview .noInfo
+{
+	width: 370px;
+	height: 286px;
+	padding: 0px;
+	text-align: center;
+	margin: auto;
+}
+
+#gridview #PagerStyle
+{
+	margin-top:10px;
+}
+
+/*拍拍网风格*/
+#gridview #PagerStyle .paginator
+{
+	font: 11px Arial, Helvetica, sans-serif;
+	padding: 10px 20px 10px 0;
+	margin: 0px;
+}
+#gridview #PagerStyle .paginator a
+{
+	padding: 1px 6px;
+	border: solid 1px #ddd;
+	background: #fff;
+	text-decoration: none;
+	margin-right: 2px;
+}
+#gridview #PagerStyle .paginator a:visited
+{
+	padding: 1px 6px;
+	border: solid 1px #ddd;
+	background: #fff;
+	text-decoration: none;
+}
+#gridview #PagerStyle .paginator .cpb
+{
+	padding: 1px 6px;
+	font-weight: bold;
+	font-size: 13px;
+	border: none;
+}
+#gridview #PagerStyle .paginator a:hover
+{
+	color: #fff;
+	background: #ffa501;
+	border-color: #ffa501;
+	text-decoration: none;
+}
+
+/*淘宝风格*/
+#gridview #PagerStyle .paginator
+{
+	font: 12px Arial, Helvetica, sans-serif;
+	padding: 10px 20px 10px 0;
+	margin: 0px;
+}
+#gridview #PagerStyle .paginator a
+{
+	border: solid 1px #ccc;
+	color: #0063dc;
+	cursor: pointer;
+	text-decoration: none;
+}
+#gridview #PagerStyle .paginator a:visited
+{
+	padding: 1px 6px;
+	border: solid 1px #ddd;
+	background: #fff;
+	text-decoration: none;
+}
+#gridview #PagerStyle .paginator .cpb
+{
+	border: 1px solid #F50;
+	font-weight:bold;
+	color: #F50;
+	background-color: #ffeee5;
+}
+#gridview #PagerStyle .paginator a:hover
+{
+	border: solid 1px #F50;
+	color: #f60;
+	text-decoration: none;
+}
+#gridview #PagerStyle .paginator a, .paginator a:visited, .paginator .cpb, .paginator a:hover
+{
+	float: left;
+	height: 16px;
+	line-height: 16px;
+	min-width: 10px;
+	_width: 10px;
+	margin-right: 5px;
+	text-align: center;
+	white-space: nowrap;
+	font-size: 12px;
+	font-family: Arial,SimSun;
+	padding: 0 3px;
+}
+
+/*网易风格*/
+/*属性设置：CssClass="anpager" CurrentPageButtonClass="cpb"*/
+#gridview #PagerStyle .anpager .cpb
+{
+	background: #1F3A87 none repeat scroll 0 0;
+	border: 1px solid #CCCCCC;
+	color: #FFFFFF;
+	font-weight: bold;
+	margin: 5px 4px 0 0;
+	padding: 4px 5px 0;
+}
+#gridview #PagerStyle .anpager a
+{
+	background: #FFFFFF none repeat scroll 0 0;
+	border: 1px solid #CCCCCC;
+	color: #1F3A87;
+	margin: 5px 4px 0 0;
+	padding: 4px 5px 0;
+	text-decoration: none;
+}
+#gridview #PagerStyle .anpager a:hover
+{
+	background: #1F3A87 none repeat scroll 0 0;
+	border: 1px solid #1F3A87;
+	color: #FFFFFF;
+}
+
+
+/*迅雷风格*/
+/*CssClass="pages" CurrentPageButtonClass="cpb"*/
+#gridview #PagerStyle .pages
+{
+	color: #999;
+}
+#gridview #PagerStyle .pages a, .pages .cpb
+{
+	text-decoration: none;
+	float: left;
+	padding: 0 5px;
+	border: 1px solid #ddd;
+	background: #ffff;
+	margin: 0 2px;
+	font-size: 11px;
+	color: #000;
+}
+#gridview #PagerStyle .pages a:hover
+{
+	background-color: #E61636;
+	color: #FFFFFF;
+	border: 1px solid #E61636;
+	text-decoration: none;
+}
+#gridview #PagerStyle .pages .cpb
+{
+	font-weight: bold;
+	color: #fff;
+	background: #E61636;
+	border: 1px solid #E61636;
+}

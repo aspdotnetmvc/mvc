@@ -1,0 +1,902 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{78B1355B-3EF2-4138-A376-0E3DCABF49A1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSMS</RootNamespace>
+    <AssemblyName>WebSMS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SilverlightApplicationList>
+    </SilverlightApplicationList>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\project\zhoss\CommonLibrarys\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="org.in2bits.MyXls, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\org.in2bits.MyXls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\calendar.css" />
+    <Content Include="css\common\0-import.css" />
+    <Content Include="css\common\1-default.css" />
+    <Content Include="css\common\2-layout.css" />
+    <Content Include="css\common\3-styles.css" />
+    <Content Include="css\common\_notes\dwsync.xml" />
+    <Content Include="css\image1.gif" />
+    <Content Include="css\image2.gif" />
+    <Content Include="css\Index.css" />
+    <Content Include="css\jquery\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="css\jquery\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="css\jquery\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="css\jquery\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="css\jquery\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="css\jquery\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="css\jquery\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="css\jquery\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="css\jquery\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="css\jquery\images\ui-icons_222222_256x240.png" />
+    <Content Include="css\jquery\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="css\jquery\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="css\jquery\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="css\jquery\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\jquery\jquery-ui-1.9.2.custom.css" />
+    <Content Include="css\meneame.jpg" />
+    <Content Include="css\pagination.css" />
+    <Content Include="dll\Newtonsoft.Json.dll" />
+    <Content Include="dll\org.in2bits.MyXls.dll" />
+    <Content Include="JavaScript\Prompt\gridview.css" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\ask.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\btn_bg.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\close.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\content_bg.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\err.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\info.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\right.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\title_bg_left.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\title_bg_right.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win-b.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win-l.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win-lb.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win-r.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win-rb.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win_b.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win_l.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win_lb.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win_r.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\images\win_rb.gif" />
+    <Content Include="JavaScript\Prompt\skin\qq\ymPrompt.css" />
+    <Content Include="JavaScript\Prompt\ymPrompt.js" />
+    <Content Include="Js\calendar_notepad.js" />
+    <Content Include="Js\css\tip-twitter\tip-twitter.css" />
+    <Content Include="Js\css\tip-twitter\tip-twitter_arrows.gif" />
+    <Content Include="Js\css\tip-violet\tip-violet.css" />
+    <Content Include="Js\css\tip-violet\tip-violet.png" />
+    <Content Include="Js\css\tip-violet\tip-violet_arrows.png" />
+    <Content Include="Js\css\tip-yellow\tip-yellow.css" />
+    <Content Include="Js\css\tip-yellow\tip-yellow.png" />
+    <Content Include="Js\css\tip-yellow\tip-yellow_arrows.png" />
+    <Content Include="Js\imgscroll.js" />
+    <Content Include="Js\jquery.1.7.1.js" />
+    <Content Include="Js\jquery.calendar.notepad.min.js" />
+    <Content Include="Js\jquery.poshytip.js" />
+    <Content Include="Js\time.js" />
+    <Content Include="Root\ACC\Account_Add.aspx" />
+    <Content Include="Root\ACC\Account_List.aspx" />
+    <Content Include="Root\ACC\Account_Pwd.aspx" />
+    <Content Include="Root\ACC\Account_Audit.aspx" />
+    <Content Include="Root\ACC\Account_Priority.aspx" />
+    <Content Include="Root\ACC\Account_Prepaid.aspx" />
+    <Content Include="Root\ACC\PrepaidRecord_List.aspx" />
+    <Content Include="Root\Back\Back_List.aspx" />
+    <Content Include="Root\Back\Back_Add.aspx" />
+    <Content Include="Root\CC.aspx" />
+    <Content Include="Root\images\arrow_left.png" />
+    <Content Include="Root\images\bg-login.gif" />
+    <Content Include="Root\images\btn_bg.gif" />
+    <Content Include="Root\images\folder.gif" />
+    <Content Include="Root\images\folder_open.gif" />
+    <Content Include="Root\images\foot_bg.gif" />
+    <Content Include="Root\images\head_bg.gif" />
+    <Content Include="Root\images\head_bg_line.gif" />
+    <Content Include="Root\images\home.gif" />
+    <Content Include="Root\images\ico-0.png" />
+    <Content Include="Root\images\ico-0_.png" />
+    <Content Include="Root\images\ico-1.png" />
+    <Content Include="Root\images\ico-1_.png" />
+    <Content Include="Root\images\ico-2.png" />
+    <Content Include="Root\images\ico-2_.png" />
+    <Content Include="Root\images\ico-3.png" />
+    <Content Include="Root\images\ico-3_.png" />
+    <Content Include="Root\images\ico-4.png" />
+    <Content Include="Root\images\ico-4_.png" />
+    <Content Include="Root\images\ico-5.png" />
+    <Content Include="Root\images\ico-5_.png" />
+    <Content Include="Root\images\ico-6.png" />
+    <Content Include="Root\images\ico-show-img.png" />
+    <Content Include="Root\images\ico-show-txt.png" />
+    <Content Include="Root\images\icon_asc.gif" />
+    <Content Include="Root\images\icon_attach.png" />
+    <Content Include="Root\images\icon_audit.gif" />
+    <Content Include="Root\images\icon_channel.png" />
+    <Content Include="Root\images\icon_comment.gif" />
+    <Content Include="Root\images\icon_correct.png" />
+    <Content Include="Root\images\icon_del.gif" />
+    <Content Include="Root\images\icon_del2.gif" />
+    <Content Include="Root\images\icon_desc.gif" />
+    <Content Include="Root\images\icon_disable.png" />
+    <Content Include="Root\images\icon_log.png" />
+    <Content Include="Root\images\icon_manaer.png" />
+    <Content Include="Root\images\icon_mark.png" />
+    <Content Include="Root\images\icon_msg.gif" />
+    <Content Include="Root\images\icon_no.png" />
+    <Content Include="Root\images\icon_plugin.png" />
+    <Content Include="Root\images\icon_setting.png" />
+    <Content Include="Root\images\icon_site.gif" />
+    <Content Include="Root\images\icon_templet.png" />
+    <Content Include="Root\images\icon_user.png" />
+    <Content Include="Root\images\icon_view.gif" />
+    <Content Include="Root\images\ie_update.jpg" />
+    <Content Include="Root\images\li_bg.gif" />
+    <Content Include="Root\images\loading.gif" />
+    <Content Include="Root\images\loading2.gif" />
+    <Content Include="Root\images\login_bg.gif" />
+    <Content Include="Root\images\login_btn_bg.gif" />
+    <Content Include="Root\images\login_logo.png" />
+    <Content Include="Root\images\memeber.gif" />
+    <Content Include="Root\images\menu_icons.gif" />
+    <Content Include="Root\images\msg_icon.gif" />
+    <Content Include="Root\images\nav_icon.gif" />
+    <Content Include="Root\images\noimg.gif" />
+    <Content Include="Root\images\style.css" />
+    <Content Include="Root\images\t.gif" />
+    <Content Include="Root\images\tools_bg.gif" />
+    <Content Include="Root\images\tools_btn_bg.gif" />
+    <Content Include="Root\images\tools_icon.gif" />
+    <Content Include="Root\images\upbtn_bg.gif" />
+    <Content Include="Root\images\upfile_bg.gif" />
+    <Content Include="Root\index.aspx" />
+    <Content Include="Root\js\function.js" />
+    <Content Include="Root\Keywords\Keywords_Add.aspx" />
+    <Content Include="Root\Keywords\Keywords_List.aspx" />
+    <Content Include="Root\Login.aspx" />
+    <Content Include="Root\Report\Rep_StatusList.aspx" />
+    <Content Include="Root\Report\Rep_Status.aspx" />
+    <Content Include="Root\Report\Rep_StatisticsList.aspx" />
+    <Content Include="Root\Report\Rep_Statistics.aspx" />
+    <Content Include="Root\Report\Rep_AuditRecordsList.aspx" />
+    <Content Include="Root\Report\Rep_AuditRecords.aspx" />
+    <Content Include="Root\Report\Rep_LevelModifyRecord.aspx" />
+    <Content Include="Root\Report\Rep_LevelModifyRecordsList.aspx" />
+    <Content Include="Root\SMSM\SMS_Audit.aspx" />
+    <Content Include="Root\SMSM\SMS_Send.aspx" />
+    <Content Include="Root\SMSM\SMS_Level.aspx" />
+    <Content Include="Root\SMSM\AuditFailure.aspx" />
+    <Content Include="Root\SMSM\SMS_List.aspx" />
+    <Content Include="Root\SMSM\MOList.aspx" />
+    <Content Include="Root\TestM\Accout_ModuleTest.aspx" />
+    <Content Include="Root\TestM\AuditFailure_Test.aspx" />
+    <Content Include="Root\TestM\SMS_AuditListTest.aspx" />
+    <Content Include="Root\TestM\SMS_LevelTest.aspx" />
+    <Content Include="Root\TestM\SMS_SendTest.aspx" />
+    <Content Include="scripts\calendar.js" />
+    <Content Include="scripts\formValidator\datepicker\calendar.js" />
+    <Content Include="scripts\formValidator\datepicker\config.js" />
+    <Content Include="scripts\formValidator\datepicker\lang\en.js" />
+    <Content Include="scripts\formValidator\datepicker\lang\zh-cn.js" />
+    <Content Include="scripts\formValidator\datepicker\lang\zh-tw.js" />
+    <Content Include="scripts\formValidator\datepicker\My97DatePicker.htm" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\bg.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\btnbg.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\datepicker.css" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\down.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\left.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\navLeft.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\navRight.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\qs.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\right.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\up.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\datePicker.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\datepicker.css" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\down.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\left.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\navLeft.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\navRight.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\qs.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\right.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\up.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\WdatePicker.css" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\bg.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\datepicker.css" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\down.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\left.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\navLeft.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\navRight.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\qs.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\right.gif" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\up.jpg" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\ymbg.jpg" />
+    <Content Include="scripts\formValidator\datepicker\WdatePicker.js" />
+    <Content Include="scripts\formValidator\DateTimeMask.js" />
+    <Content Include="scripts\formValidator\formValidator.js" />
+    <Content Include="scripts\formValidator\formValidatorRegex.js" />
+    <Content Include="scripts\formValidator\images\bt.gif" />
+    <Content Include="scripts\formValidator\images\onCorrect.gif" />
+    <Content Include="scripts\formValidator\images\onError.gif" />
+    <Content Include="scripts\formValidator\images\onFocus.gif" />
+    <Content Include="scripts\formValidator\images\onLoad.gif" />
+    <Content Include="scripts\formValidator\images\onShow.gif" />
+    <Content Include="scripts\formValidator\images\onSuccess.gif" />
+    <Content Include="scripts\formValidator\jquery_last.js" />
+    <Content Include="scripts\formValidator\style.css" />
+    <Content Include="scripts\formValidator\style\tidymode.css" />
+    <Content Include="scripts\formValidator\style\validator.css" />
+    <Content Include="scripts\formValidator\style\validatorAuto.css" />
+    <Content Include="scripts\formValidator\style\validatorTidyMode.css" />
+    <Content Include="scripts\formValidator\tab.png" />
+    <Content Include="scripts\formValidator\ui.tabs.css" />
+    <Content Include="scripts\formValidator\ui.tabs.js" />
+    <Content Include="scripts\jquery\jquery-1.3.2.min.js" />
+    <Content Include="scripts\jquery\jquery-1.5.2.min.js" />
+    <Content Include="scripts\jquery\jquery-1.8.js" />
+    <Content Include="scripts\jquery\jquery-ui-1.8.12.custom.min.js" />
+    <Content Include="scripts\jquery\jquery-ui-1.9.min.js" />
+    <Content Include="scripts\jquery\jquery.form.js" />
+    <Content Include="scripts\jquery\jquery.jqzoom.js" />
+    <Content Include="scripts\jquery\jquery.metadata.js" />
+    <Content Include="scripts\jquery\jquery.pagination.js" />
+    <Content Include="scripts\jquery\jquery.validate.min.js" />
+    <Content Include="scripts\jquery\jquery_ui_datepicker.js" />
+    <Content Include="scripts\jquery\messages_cn.js" />
+    <Content Include="scripts\swfupload\swfupload.handlers.js" />
+    <Content Include="scripts\swfupload\swfupload.js" />
+    <Content Include="scripts\swfupload\swfupload.queue.js" />
+    <Content Include="scripts\swfupload\swfupload.swf" />
+    <Content Include="scripts\ui\js\ligerBuild.min.js" />
+    <Content Include="scripts\ui\js\ligerBuild.source.js" />
+    <Content Include="scripts\ui\js\plugins\ligerAccordion.js" />
+    <Content Include="scripts\ui\js\plugins\ligerButton.js" />
+    <Content Include="scripts\ui\js\plugins\ligerCheckBox.js" />
+    <Content Include="scripts\ui\js\plugins\ligerComboBox.js" />
+    <Content Include="scripts\ui\js\plugins\ligerDateEditor.js" />
+    <Content Include="scripts\ui\js\plugins\ligerDialog.js" />
+    <Content Include="scripts\ui\js\plugins\ligerDrag.js" />
+    <Content Include="scripts\ui\js\plugins\ligerEasyTab.js" />
+    <Content Include="scripts\ui\js\plugins\ligerForm.js" />
+    <Content Include="scripts\ui\js\plugins\ligerGrid.js" />
+    <Content Include="scripts\ui\js\plugins\ligerLayout.js" />
+    <Content Include="scripts\ui\js\plugins\ligerMenu.js" />
+    <Content Include="scripts\ui\js\plugins\ligerMenuBar.js" />
+    <Content Include="scripts\ui\js\plugins\ligerMessageBox.js" />
+    <Content Include="scripts\ui\js\plugins\ligerNoSelect.js" />
+    <Content Include="scripts\ui\js\plugins\ligerRadio.js" />
+    <Content Include="scripts\ui\js\plugins\ligerResizable.js" />
+    <Content Include="scripts\ui\js\plugins\ligerSpinner.js" />
+    <Content Include="scripts\ui\js\plugins\ligerTab.js" />
+    <Content Include="scripts\ui\js\plugins\ligerTextBox.js" />
+    <Content Include="scripts\ui\js\plugins\ligerTip.js" />
+    <Content Include="scripts\ui\js\plugins\ligerToolBar.js" />
+    <Content Include="scripts\ui\js\plugins\ligerTree.js" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-all.css" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-common.css" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-dialog.css" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-form.css" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-grid.css" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-layout.css" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-menu.css" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-tab.css" />
+    <Content Include="scripts\ui\skins\Aqua\css\ligerui-tree.css" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-done.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-error.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-l-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-l.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-question.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-r-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-r.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn-warn.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-btn.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-close-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-close.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-lefttop.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-righttop.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\box-top.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\box\tabs-item-left-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\common\loading.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-panel-title-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-panel-title-pressed.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-panel-title.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-tab-title-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-tab-title-pressed.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-tab-title.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-text.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-text.jpg" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-trigger-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-trigger-pressed.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\bg-trigger.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\btn-l.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\btn-r.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\btn.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\button-bg-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\button-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\checkbox.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\checkboxandradio.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\dateeditor-bar-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\dateeditor-header-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\controls\radio.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dateeditor\icon-first.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dateeditor\icon-last.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dateeditor\icon-next.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dateeditor\icon-prev.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-bc.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-bl.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-br.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-button.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-button.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-cl.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-close.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-cr.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-done.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-error.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-icons.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-question.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-tc.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-title-icon.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-tl.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-tr.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\dialog-warn.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\ie6\dialog-bc.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\ie6\dialog-cl.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\ie6\dialog-cr.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\dialog\ie6\dialog-tc.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\form\verify-corner.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\box-lefttop.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\box-righttop.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\grid-checkbox-checked.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\grid-checkbox.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\grid-detail-close.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\grid-detail-open.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\grid-line.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\grid-tree-close.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\grid-tree-open.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\header-bg-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\header-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\header2-bg.jpg" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\loading.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\popup-line.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\popup-row-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\grid\popup-row-over.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\bar-button-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\checkbox-checked.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\checkbox.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-close-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-close.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-close18X18.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-done.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-down.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-drop.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-edited.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-first.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-last.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-line.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-load.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-load.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-milestone.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-next.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-prev.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-remark15X15.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-sort-asc.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-sort-desc.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-up.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\icon-warn.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\icon\magnifier.png" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\accordion-content.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\accordion-header-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\accordion-header.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\layout-header-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\layout-header.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\layout-sidebar-header.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\mini-bottom.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\mini-left.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\mini-right.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\mini-top.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\panel-content.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\panel-header-over.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\panel-header.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\tabs-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\tabs-item-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\tabs-item-left-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\tabs-item-over-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\tabs-item-right-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\tabs-tools.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\togglebar.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\menu\menu-item-arrow.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\menu\menu-item-down.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\menu\menu-item-over-l.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\menu\menu-item-over-m.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\menu\menu-item-over-r.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\menu\menu-line-x.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\menu\menu-line-y.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\bar-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\header-bg.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\header-bg.jpg" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\header2-bg.jpg" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-btn-l.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-btn-r.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-btn.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-header.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-menu-item-down.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-menu.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-menu.jpg" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-toolbar.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-toolbar.jpg" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-tools-sprites.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\panel\panel-tools.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\folder-open.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\folder.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\loading.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree-leaf.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree-level.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree-noline.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree-status-close.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree-status-open.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree-status.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree.gif" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree.png" />
+    <Content Include="scripts\ui\skins\icons\add.gif" />
+    <Content Include="scripts\ui\skins\icons\archives.gif" />
+    <Content Include="scripts\ui\skins\icons\attibutes.gif" />
+    <Content Include="scripts\ui\skins\icons\back.gif" />
+    <Content Include="scripts\ui\skins\icons\bluebook.gif" />
+    <Content Include="scripts\ui\skins\icons\bookpen.gif" />
+    <Content Include="scripts\ui\skins\icons\busy.gif" />
+    <Content Include="scripts\ui\skins\icons\calendar.gif" />
+    <Content Include="scripts\ui\skins\icons\candle.gif" />
+    <Content Include="scripts\ui\skins\icons\coffee.gif" />
+    <Content Include="scripts\ui\skins\icons\comment.gif" />
+    <Content Include="scripts\ui\skins\icons\communication.gif" />
+    <Content Include="scripts\ui\skins\icons\config.gif" />
+    <Content Include="scripts\ui\skins\icons\customers.gif" />
+    <Content Include="scripts\ui\skins\icons\cut.gif" />
+    <Content Include="scripts\ui\skins\icons\database.gif" />
+    <Content Include="scripts\ui\skins\icons\delete.gif" />
+    <Content Include="scripts\ui\skins\icons\discuss.gif" />
+    <Content Include="scripts\ui\skins\icons\edit.gif" />
+    <Content Include="scripts\ui\skins\icons\graywarn.gif" />
+    <Content Include="scripts\ui\skins\icons\greenwarn.gif" />
+    <Content Include="scripts\ui\skins\icons\help.gif" />
+    <Content Include="scripts\ui\skins\icons\home.gif" />
+    <Content Include="scripts\ui\skins\icons\lock.gif" />
+    <Content Include="scripts\ui\skins\icons\logout.gif" />
+    <Content Include="scripts\ui\skins\icons\mailbox.gif" />
+    <Content Include="scripts\ui\skins\icons\memeber.gif" />
+    <Content Include="scripts\ui\skins\icons\modify.gif" />
+    <Content Include="scripts\ui\skins\icons\msn.gif" />
+    <Content Include="scripts\ui\skins\icons\myaccount.gif" />
+    <Content Include="scripts\ui\skins\icons\ok.gif" />
+    <Content Include="scripts\ui\skins\icons\outbox.gif" />
+    <Content Include="scripts\ui\skins\icons\pager.gif" />
+    <Content Include="scripts\ui\skins\icons\photograph.gif" />
+    <Content Include="scripts\ui\skins\icons\plus.gif" />
+    <Content Include="scripts\ui\skins\icons\prev.gif" />
+    <Content Include="scripts\ui\skins\icons\print.gif" />
+    <Content Include="scripts\ui\skins\icons\process.gif" />
+    <Content Include="scripts\ui\skins\icons\qq.gif" />
+    <Content Include="scripts\ui\skins\icons\refresh.gif" />
+    <Content Include="scripts\ui\skins\icons\right.gif" />
+    <Content Include="scripts\ui\skins\icons\role.gif" />
+    <Content Include="scripts\ui\skins\icons\save-disabled.gif" />
+    <Content Include="scripts\ui\skins\icons\save.gif" />
+    <Content Include="scripts\ui\skins\icons\search.gif" />
+    <Content Include="scripts\ui\skins\icons\search2.gif" />
+    <Content Include="scripts\ui\skins\icons\settings.gif" />
+    <Content Include="scripts\ui\skins\icons\true.gif" />
+    <Content Include="scripts\ui\skins\icons\up.gif" />
+    <Content Include="scripts\ui\skins\ligerui-icons.css" />
+    <Content Include="Temp\HtmlPage1.html" />
+    <Content Include="Upload\TextFile1.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Message.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Root\ACC\Account_Add.aspx.cs">
+      <DependentUpon>Account_Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Add.aspx.designer.cs">
+      <DependentUpon>Account_Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\ACC\Account_List.aspx.cs">
+      <DependentUpon>Account_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\ACC\Account_List.aspx.designer.cs">
+      <DependentUpon>Account_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Pwd.aspx.cs">
+      <DependentUpon>Account_Pwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Pwd.aspx.designer.cs">
+      <DependentUpon>Account_Pwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Audit.aspx.cs">
+      <DependentUpon>Account_Audit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Audit.aspx.designer.cs">
+      <DependentUpon>Account_Audit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Priority.aspx.cs">
+      <DependentUpon>Account_Priority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Priority.aspx.designer.cs">
+      <DependentUpon>Account_Priority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Prepaid.aspx.cs">
+      <DependentUpon>Account_Prepaid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\ACC\Account_Prepaid.aspx.designer.cs">
+      <DependentUpon>Account_Prepaid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\ACC\PrepaidRecord_List.aspx.cs">
+      <DependentUpon>PrepaidRecord_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\ACC\PrepaidRecord_List.aspx.designer.cs">
+      <DependentUpon>PrepaidRecord_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Back\Back_List.aspx.cs">
+      <DependentUpon>Back_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Back\Back_List.aspx.designer.cs">
+      <DependentUpon>Back_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Back\Back_Add.aspx.cs">
+      <DependentUpon>Back_Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Back\Back_Add.aspx.designer.cs">
+      <DependentUpon>Back_Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\CC.aspx.cs">
+      <DependentUpon>CC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\CC.aspx.designer.cs">
+      <DependentUpon>CC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\JudgeSession.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Keywords\Keywords_Add.aspx.cs">
+      <DependentUpon>Keywords_Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Keywords\Keywords_Add.aspx.designer.cs">
+      <DependentUpon>Keywords_Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Keywords\Keywords_List.aspx.cs">
+      <DependentUpon>Keywords_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Keywords\Keywords_List.aspx.designer.cs">
+      <DependentUpon>Keywords_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\PretreatmentProxy.cs" />
+    <Compile Include="Root\Report\Rep_StatusList.aspx.cs">
+      <DependentUpon>Rep_StatusList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Report\Rep_StatusList.aspx.designer.cs">
+      <DependentUpon>Rep_StatusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Report\Rep_Status.aspx.cs">
+      <DependentUpon>Rep_Status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Report\Rep_Status.aspx.designer.cs">
+      <DependentUpon>Rep_Status.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Report\Rep_StatisticsList.aspx.cs">
+      <DependentUpon>Rep_StatisticsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Report\Rep_StatisticsList.aspx.designer.cs">
+      <DependentUpon>Rep_StatisticsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Report\Rep_Statistics.aspx.cs">
+      <DependentUpon>Rep_Statistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Report\Rep_Statistics.aspx.designer.cs">
+      <DependentUpon>Rep_Statistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Report\Rep_AuditRecordsList.aspx.cs">
+      <DependentUpon>Rep_AuditRecordsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Report\Rep_AuditRecordsList.aspx.designer.cs">
+      <DependentUpon>Rep_AuditRecordsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Report\Rep_AuditRecords.aspx.cs">
+      <DependentUpon>Rep_AuditRecords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Report\Rep_AuditRecords.aspx.designer.cs">
+      <DependentUpon>Rep_AuditRecords.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Report\Rep_LevelModifyRecord.aspx.cs">
+      <DependentUpon>Rep_LevelModifyRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Report\Rep_LevelModifyRecord.aspx.designer.cs">
+      <DependentUpon>Rep_LevelModifyRecord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\Report\Rep_LevelModifyRecordsList.aspx.cs">
+      <DependentUpon>Rep_LevelModifyRecordsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\Report\Rep_LevelModifyRecordsList.aspx.designer.cs">
+      <DependentUpon>Rep_LevelModifyRecordsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\SMSM\Handler1.ashx.cs">
+      <DependentUpon>Handler1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\SMSM\SMS_Audit.aspx.cs">
+      <DependentUpon>SMS_Audit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\SMSM\SMS_Audit.aspx.designer.cs">
+      <DependentUpon>SMS_Audit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\SMSM\SMS_Send.aspx.cs">
+      <DependentUpon>SMS_Send.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\SMSM\SMS_Send.aspx.designer.cs">
+      <DependentUpon>SMS_Send.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\SMSM\SMS_Level.aspx.cs">
+      <DependentUpon>SMS_Level.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\SMSM\SMS_Level.aspx.designer.cs">
+      <DependentUpon>SMS_Level.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\SMSM\AuditFailure.aspx.cs">
+      <DependentUpon>AuditFailure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\SMSM\AuditFailure.aspx.designer.cs">
+      <DependentUpon>AuditFailure.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\SMSM\SMS_List.aspx.cs">
+      <DependentUpon>SMS_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\SMSM\SMS_List.aspx.designer.cs">
+      <DependentUpon>SMS_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\SMSM\MOList.aspx.cs">
+      <DependentUpon>MOList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\SMSM\MOList.aspx.designer.cs">
+      <DependentUpon>MOList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\TestM\Accout_ModuleTest.aspx.cs">
+      <DependentUpon>Accout_ModuleTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\TestM\Accout_ModuleTest.aspx.designer.cs">
+      <DependentUpon>Accout_ModuleTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\TestM\AuditFailure_Test.aspx.cs">
+      <DependentUpon>AuditFailure_Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\TestM\AuditFailure_Test.aspx.designer.cs">
+      <DependentUpon>AuditFailure_Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\TestM\SMS_AuditListTest.aspx.cs">
+      <DependentUpon>SMS_AuditListTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\TestM\SMS_AuditListTest.aspx.designer.cs">
+      <DependentUpon>SMS_AuditListTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\TestM\SMS_LevelTest.aspx.cs">
+      <DependentUpon>SMS_LevelTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\TestM\SMS_LevelTest.aspx.designer.cs">
+      <DependentUpon>SMS_LevelTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root\TestM\SMS_SendTest.aspx.cs">
+      <DependentUpon>SMS_SendTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root\TestM\SMS_SendTest.aspx.designer.cs">
+      <DependentUpon>SMS_SendTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tools\DESEncrypt.cs" />
+    <Compile Include="tools\DTKeys.cs" />
+    <Compile Include="tools\verify_code.ashx.cs">
+      <DependentUpon>verify_code.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\common\_notes\1-default.css.mno" />
+    <Content Include="css\common\_notes\2-layout.css.mno" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\tab.psd" />
+    <Content Include="scripts\ui\skins\Aqua\images\layout\tabs-tools.psd" />
+    <Content Include="scripts\ui\skins\Aqua\images\tree\tree.psd" />
+    <None Include="Properties\PublishProfiles\SMS.pubxml" />
+    <Content Include="scripts\formValidator\.project" />
+    <Content Include="scripts\formValidator\.settings\org.eclipse.core.resources.prefs" />
+    <Content Include="scripts\formValidator\.settings\vssver.scc" />
+    <Content Include="scripts\formValidator\datepicker\lang\vssver.scc" />
+    <Content Include="scripts\formValidator\datepicker\skin\blue\vssver.scc" />
+    <Content Include="scripts\formValidator\datepicker\skin\default\vssver.scc" />
+    <Content Include="scripts\formValidator\datepicker\skin\vssver.scc" />
+    <Content Include="scripts\formValidator\datepicker\skin\whyGreen\vssver.scc" />
+    <Content Include="scripts\formValidator\datepicker\vssver.scc" />
+    <Content Include="scripts\formValidator\images\vssver.scc" />
+    <Content Include="scripts\formValidator\style\vssver.scc" />
+    <Content Include="Root\SMSM\Handler1.ashx" />
+    <Content Include="tools\verify_code.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Files\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Monitoring\Monitoring.csproj">
+      <Project>{c8ccae9a-b555-4eb3-b4e2-f2d6dcf91256}</Project>
+      <Name>Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSInterface\SMSInterface.csproj">
+      <Project>{57353e30-a494-4256-8fdc-53b90f40c982}</Project>
+      <Name>SMSInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSModel\SMSModel.csproj">
+      <Project>{c72246fb-d27f-4c92-b04f-f2ff1606ef50}</Project>
+      <Name>SMSModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSUtils\SMSUtils.csproj">
+      <Project>{bec8a3df-afcf-4dc6-bdb3-5a0dc157c5dc}</Project>
+      <Name>SMSUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StatusReportInterface\StatusReportInterface.csproj">
+      <Project>{a44d5218-df48-4766-a4af-96efb880a7da}</Project>
+      <Name>StatusReportInterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>24638</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6829/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

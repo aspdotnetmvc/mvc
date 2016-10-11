@@ -1,0 +1,10 @@
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\bin\Debug\ZHSMSDEMO.exe.config
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\bin\Debug\ZHSMSDEMO.exe
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\bin\Debug\ZHSMSDEMO.pdb
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\bin\Debug\Newtonsoft.Json.dll
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\obj\Debug\ZHSMSDEMO.csprojResolveAssemblyReference.cache
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\obj\Debug\ZHSMSDEMO.fMain.resources
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\obj\Debug\ZHSMSDEMO.Properties.Resources.resources
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\obj\Debug\ZHSMSDEMO.csproj.GenerateResource.Cache
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\obj\Debug\ZHSMSDEMO.exe
+D:\work\sms\OLD\SMS\project\C#DEMO\ZHSMSDEMO\obj\Debug\ZHSMSDEMO.pdb

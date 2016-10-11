@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>审核失败短信</title>
+    <link rel="stylesheet" type="text/css" href="/Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/iframe.css">
+
+    <script type="text/javascript" src='/Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src="/Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            doqry();
+        });
+
+        function doqry() {
+            $("#grid").datagrid({
+                url: "/Enterprise/SMSAuditFailureData",
+                pageNumber: 1,
+                queryParams: {
+                    EnterpriseAccountID: $("#frmqryEnterpriseAccountID").val()
+                }
+            });
+        }
+
+    </script>
+    <style>
+        .box {
+            margin-left: 10px;
+        }
+
+            .box tr td {
+                padding-top: 10px;
+            }
+
+            .box .textbox {
+                width: 68% !important;
+            }
+    </style>
+</head>
+<body>
+    <div style="position: absolute; top: 1%; bottom: 1%; left: 1%; right: 1%;">
+        <table id="grid" class="easyui-datagrid" data-options="fit:true,rownumbers:true,pagination:true,showfooter:true,singleSelect:true">
+            <thead>
+                <tr>
+                    <th data-options="field:'ID',width:100,hidden:true">业务流水号</th>
+                    <th data-options="field:'Content',width:500">短信内容</th>
+                    <th data-options="field:'Signature',width:100">签名</th>
+                    <th data-options="field:'SendTime',width:120">发送时间</th>
+                    <th data-options="field:'AuditTime',width:120">审核时间</th>
+                    <th data-options="field:'NumberCount',width:100">电话号码数</th>
+                    <th data-options="field:'AuditFailureCase',width:200">审核失败原因</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <form id="frmqry" style="display:none;">
+        <input type="hidden" id="frmqryEnterpriseCode" value="@ViewData["EnterpriseCode"]" />
+        <input type="hidden" id="frmqryEnterpriseAccountID" value="@ViewData["EnterpriseAccountID"]" />
+    </form>
+</body>
+</html>

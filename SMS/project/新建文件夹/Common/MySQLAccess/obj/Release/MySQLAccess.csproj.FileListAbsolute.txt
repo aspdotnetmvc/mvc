@@ -1,0 +1,8 @@
+E:\SMS\project\Common\MySQLAccess\bin\Release\MySQLAccess.dll
+E:\SMS\project\Common\MySQLAccess\bin\Release\MySQLAccess.pdb
+E:\SMS\project\Common\MySQLAccess\bin\Release\BXM.DatabaseHelper.dll
+E:\SMS\project\Common\MySQLAccess\bin\Release\MySql.Data.dll
+E:\SMS\project\Common\MySQLAccess\bin\Release\BXM.DatabaseHelper.pdb
+E:\SMS\project\Common\MySQLAccess\obj\Release\MySQLAccess.csprojResolveAssemblyReference.cache
+E:\SMS\project\Common\MySQLAccess\obj\Release\MySQLAccess.dll
+E:\SMS\project\Common\MySQLAccess\obj\Release\MySQLAccess.pdb

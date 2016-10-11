@@ -1,0 +1,14 @@
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\HttpGateways.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\HttpGateways.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\BXM.Utils.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\GatewayInterface.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\SMS.Model.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\Newtonsoft.Json.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\BXM.Utils.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\GatewayInterface.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\SMS.Model.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\Newtonsoft.Json.pdb
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\bin\Release\Newtonsoft.Json.xml
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\obj\Release\HttpGateways.csprojResolveAssemblyReference.cache
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\obj\Release\HttpGateways.dll
+D:\kf\sms\OLD\SMS\project\ZHSMS\HttpGateways\obj\Release\HttpGateways.pdb

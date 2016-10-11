@@ -1,0 +1,335 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/iframe.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/toastr.min.css">
+
+    <script type="text/javascript" src='../Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='../Scripts/jquery.easyui.min.js'></script>
+    <script type="text/javascript" src='../Scripts/easyui-lang-zh_CN.js'></script>
+    <script type="text/javascript" src="../Scripts/plugin/ismp_plugin.js"></script>
+    <script type="text/javascript" src="../Scripts/plugin/toastr.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Common/zh_ISMP.js"></script>
+    <script type="text/javascript" src="/Scripts/Custom/Enterprise/SMSContacts.js?v=20"></script>
+    <title>短信通讯录管理</title>
+    <style type="text/css">
+        .panel-body[region="west"]{background-color: #fff!important;border-color:#F7F7F7!important;}
+        .panel-body[region="west"]>#ChannelZone{padding: 10px 0px 0px 0px!important;}
+        .panel-body[region="west"]>#ServantZone{padding: 10px 0px 10px 0px!important;}
+        .panel-tool a{color:#7B7B7B!important;}
+        .panel-title{color:#5D5D5D!important;}
+        .window .panel-tool a{color:#fff!important;}
+        .window .panel-title{color:#fff!important;}
+        .layout-split-west{border-right:5px solid #F7F7F7;}
+        .layout-panel .panel-header {background-color: #ececec;border:none;}
+        .layout-panel .panel-header .panel-title{height:25px!important;line-height:25px!important;}
+        .layout-button-left{font-size:20px!important;margin-top: -2px;}
+        .layout-button-right{font-size:20px!important;margin-top: -4px;}
+        #ChannelZone .textbox{width: 60%!important;}
+        #ServantZone .textbox{width: 61%!important;}
+        .dailishang_edit {font-size: 14px;}
+        .dailishang_edit td{padding-top: 15px;}
+        .dailishang_edit .textbox{width: 90%!important;}
+        .dailishang_edit td[colspan="3"] .textbox{width: 96%!important;}
+        .dailishang_edit input{width: 90%!important;}
+        .dailishang_edit input[type=radio]{width: 12%!important;}
+        .pure-form select{height: 2.45em!important;}
+        #Address{width: 96%!important;}
+        .TagsZone{list-style-type: none;margin:0px;padding: 0px;float: left;overflow: hidden;}
+        .TagsZone li{float: left;padding-left:5px;padding-right: 7px;border: 1px solid #a5d34a;background: #cde79d;color: #628520;margin-right: 5px;border-radius: 3px;font-size: 12px;line-height: 20px;margin-top: 4px;}
+        .TagsZone li.AddTagsByAgent{border: 1px dashed #a5d34a;border-radius: inherit;background: #fff;color: #628520;}
+        .TagsZone li a{color: #628520;}
+        .TagsZone li.AddTagsByAgent a{color: #a5d34a;}
+        .TagsZone {list-style-type: none;margin: 0px;padding: 0px; float: left; overflow: hidden; margin-top:10px; margin-left:5px;}
+        #NumberCheckResult,#NameCheckResult{position: absolute;display: none;z-index: 9900000;outline: none;opacity: 1;filter: alpha(opacity=100);padding: 5px;border-width: 1px;border-style: solid;border-radius: 5px;-moz-border-radius: 5px 5px 5px 5px;-webkit-border-radius: 5px 5px 5px 5px;border-radius: 5px 5px 5px 5px;border-color:#cc9933;background-color: #ffffcc; font-size: 12px;margin: -30px 0 0 170px;}
+        .textbox{position: relative;}
+    </style>
+</head>
+<body class="easyui-layout" style="overflow-y: hidden" scroll="no">
+    <div region="north" split="false" title="" border="false" style="width: 100%; height:65px;">
+        <div class="ismp_search" style="margin-top:15px;padding-left:1%;font-size:14px;">
+            <form id="frmqry" class="pure-form pure-form-aligned">
+                <span class="searchinput">
+                    <label for="searchNumber">号码：</label>
+                    <input id="searchNumber" name="searchNumber" class="juese" type="text" placeholder="号码">
+                </span>
+                <span class="searchinput" id="TagSearchZone">
+                    <label for="searchGroup">组别：</label>
+                    <input id="searchGroup" name="searchGroup" value="-1">
+                </span>
+                <span class="searchinput">
+                    <a href="javascript:void(0)" class="pure-button ismp-button1 btn" style="font-size:12px;" onclick="searchContact()"><i class="fa fa-search"></i>查询</a>
+                    <a href="javascript:void(0)" class="pure-button ismp-button1 btn" style="font-size:12px;" onclick="addContact()"><i class="fa fa-plus"></i>添加</a>
+                    <a href="javascript:void(0)" class="pure-button ismp-button1 btn" style="font-size:12px;" onclick="importContactExcel()"><i class="fa fa-upload"></i>导入(Excel)</a>
+                    <a href="javascript:void(0)" class="pure-button ismp-button1 btn" style="font-size:12px;" onclick="addGroup()"><i class="fa fa-plus"></i>添加分组</a>
+                    <a href="javascript:void(0)" class="pure-button ismp-button1 btn" style="font-size:12px;" onclick="exportGroup()"><i class="fa fa-download"></i>导出分组</a>
+                    <a href="javascript:void(0)" class="pure-button ismp-button1 btn" style="font-size:12px;" onclick="delGroup()"><i class="fa fa-remove"></i>删除分组</a>
+                    <a href="javascript:void(0)" class="pure-button ismp-button1 btn" style="font-size:12px;" onclick="sendGroupSMS()"><i class="fa fa-envelope-o"></i>分组短信</a>
+                </span>
+            </form>
+        </div>
+    </div>
+    <div region="west" split="true" title="通讯录组" style="width: 250px;" id="west">
+        <div>
+            <ul id="tree"></ul>
+        </div>
+    </div>
+    <div region="center" style="padding: 5px;">
+        <div class="ismp_con">
+            <div style="position:absolute;top:0px;bottom:0px;left:1%;right:1%;">
+                <table id="grid" class="easyui-datagrid" rownumbers="true" data-options="pagination:true,showfooter:true,singleSelect:true,fit:true"></table>
+            </div>
+        </div>
+    </div>
+    
+    <div id="winedit" class="easyui-window" title="添加通讯录" style="width:600px;height:400px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false,singleSelect:false">
+        <form id="frmedit" class="pure-form">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <td align="right">
+                        手机：
+                    </td>
+                    <td>
+                        <input class="input easyui-numberbox" id="TelPhoneNum" name="TelPhoneNum" type="text" required="true" validtype="mobile" missingmessage="手机必须填写">
+                    </td>
+                    <td align="right">
+                        组别：
+                    </td>
+                    <td>
+                        <input id="GroupID" class="input easyui-textbox" style="width:200px;" name="GroupID" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        姓名：
+                    </td>
+                    <td>
+                        <input id="UserName" class="input easyui-textbox" style="width:200px;" name="UserName" required="true" />
+                    </td>
+                    <td align="right">
+                        生日：
+                    </td>
+                    <td>
+                        <input id="UserBrithday" class="input easyui-textbox" style="width:100px;" name="UserBrithday" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        性别：
+                    </td>
+                    <td>
+                        <label for="Radio_male"><input id="Radio_male" name="UserSex" type="radio" value="男" checked="checked" />男</label>
+                        <label for="Radio_female"><input id="Radio_female" name="UserSex" type="radio" value="女" />女</label>
+                    </td>
+                    <td align="right">
+                        公司：
+                    </td>
+                    <td>
+                        <input id="CompanyName" class="input easyui-textbox" style="width:100px;" name="CompanyName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        职位：
+                    </td>
+                    <td>
+                        <input id="ComPostion" class="input easyui-textbox" style="width:100px;" name="ComPostion" />
+                    </td>
+                    <td align="right">
+                        Email：
+                    </td>
+                    <td>
+                        <input id="CompanyEmail" class="input easyui-textbox" style="width:100px;" name="CompanyEmail" validtype="email" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        QQ：
+                    </td>
+                    <td>
+                        <input id="QQ" class="input easyui-numberbox" style="width:100px;" name="QQ" />
+                    </td>
+                    <td align="right">
+                        微信：
+                    </td>
+                    <td>
+                        <input id="WebChat" class="input easyui-textbox" style="width:100px;" name="WebChat" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        网站：
+                    </td>
+                    <td colspan="3">
+                        <input id="CompanyWeb" class="input easyui-textbox" style="width:100px;" name="CompanyWeb" />
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="submitAddContact()">添加</a>
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="closeEdit()">取消</a>
+            </div>
+        </form>
+    </div>
+
+
+    <div id="wineditgroup" class="easyui-window" title="添加通讯录组" style="width:300px;height:200px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false,singleSelect:false">
+        <form id="frmeditgroup" class="pure-form">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <td align="right">
+                        名称：
+                    </td>
+                    <td>
+                        <span><input id="GroupName" class="input easyui-textbox" style="width:200px;" name="GroupName" required="true" /></span>
+                        <span id="NameCheckResult"></span>
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="submitAddGroup()">添加</a>
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="closeEditGroup()">取消</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="winselectgroup" class="easyui-window" title="选择目标通讯录组" style="width:300px;height:200px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false,singleSelect:false">
+        <form id="frmselectgroup" class="pure-form">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <td align="right">
+                        组别：
+                    </td>
+                    <td>
+                        <input id="GroupSelect" class="input easyui-textbox" style="width:200px;" name="GroupSelect" />
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="submitSelectGroup()">确定分组</a>
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="closeSelectGroup()">取消</a>
+            </div>
+            <input id="PIDSelect" type="hidden" name="PIDSelect">
+        </form>
+    </div>
+
+    <div id="winselectgroupsendsms" class="easyui-window" title="选择目标通讯录组" style="width:300px;height:200px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false,singleSelect:false">
+        <form id="frmselectgroupsendsms" class="pure-form">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <td align="right">
+                        组别：
+                    </td>
+                    <td>
+                        <input id="GroupSelectSendSMS" class="input easyui-textbox" style="width:200px;" name="GroupSelectSendSMS" />
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="submitSelectGroupSendSMS()">发送短信</a>
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="closeSelectGroupSendSMS()">取消</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="winimportcontacts" class="easyui-window" title="导入通讯录(Excel)" style="width:500px;height:260px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false,singleSelect:false">
+        <form id="frmimportcontacts" class="pure-form" method="post" enctype="multipart/form-data">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <td align="right">
+                        模版：
+                    </td>
+                    <td>
+                        <a href="/Enterprise/DownloadFile?FilePath=/Resource/Download&FileName=ContactTemplate.xls" target="_black">通讯录模版下载</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"></td>
+                    <td>
+                        <label style="color:#ff0000">导入数据的EXCEL必须标注表头，且数据从第二行开始</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        文件：
+                    </td>
+                    <td>
+                        <input id="SMSContactExcelFile" type="file" style="width:200px;" name="SMSContactExcelFile" accept=".xls" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        组别：
+                    </td>
+                    <td>
+                        <input id="GroupSelectImportExcel" class="input easyui-textbox" style="width:200px;" name="GroupSelectImportExcel" />
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="submitImportContact()">导入</a>
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="closeImportContact()">取消</a>
+            </div>
+            <input id="PIDSelect" type="hidden" name="PIDSelect">
+        </form>
+    </div>
+
+    <div id="winselectgroupdel" class="easyui-window" title="选择目标通讯录组" style="width:300px;height:200px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false,singleSelect:false">
+        <form id="frmselectgroupdel" class="pure-form">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <td align="right">
+                        组别：
+                    </td>
+                    <td>
+                        <input id="GroupSelectDel" class="input easyui-textbox" style="width:200px;" name="GroupSelectDel" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"></td>
+                    <td>
+                        <label style="color:#ff0000">分组联系人将转移到【未分组】下。</label>
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="submitSelectGroupDel()">删除分组</a>
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="closeSelectGroupDel()">取消</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="winselectgroupexport" class="easyui-window" title="选择目标通讯录组" style="width:300px;height:200px;" modal="true" closed="true" data-options="closable:true,collapsible:false,minimizable:false,maximizable:false,singleSelect:false">
+        <form id="frmselectgroupexport" class="pure-form">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <td align="right">
+                        组别：
+                    </td>
+                    <td>
+                        <input id="GroupSelectExport" class="input easyui-textbox" style="width:200px;" name="GroupSelectExport" />
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="submitSelectGroupExport()">导出分组</a>
+                <a href="javascript:void(0)" class="pure-button ismp-button6 btn marginleft" onclick="closeSelectGroupExport()">取消</a>
+            </div>
+        </form>
+    </div>
+    <input id="paramJson" type="hidden" value="@ViewData["ParamObject"]">
+</body>
+</html>

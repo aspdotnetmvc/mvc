@@ -1,0 +1,197 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../Content/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/default-color.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/forms-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/grids-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/buttons-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/tables-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/menus-min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/css/iframe.css">
+
+    <link rel="stylesheet" type="text/css" href="../Content/css/toastr.min.css">
+
+    <script type="text/javascript" src='../Scripts/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='../Scripts/jquery.easyui.min.js'></script>
+    <script type="text/javascript" src='../Scripts/easyui-lang-zh_CN.js'></script>
+    <script type="text/javascript" src="../Scripts/plugin/ismp_plugin.js"></script>
+    <script type="text/javascript" src="../Scripts/plugin/toastr.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Common/zh_ISMP.js"></script>
+
+    <style type="text/css">
+    .dailishang_edit td{padding-top: 15px;}
+    .dailishang_edit input[type=radio]{width: 6%!important;}
+    .dailishang_edit td[colspan='3'] .textbox{width: 96%!important;}
+    .dailishang_edit select{width: 90%!important;}
+    .dailishang_edit {font-size: 14px;}
+    .pure-form select{height: 2.45em!important;}
+    .guishu {position: relative;}
+    .pure-form h3{width: 95%;margin-left:auto;margin-right:auto;}
+    #frmMore{color:#1CB394;margin-right: 22px;}
+    #LoginNameCheckResult{position: absolute;display: none;z-index: 9900000;outline: none;opacity: 1;filter: alpha(opacity=100);padding: 5px;border-width: 1px;border-style: solid;border-radius: 5px;-moz-border-radius: 5px 5px 5px 5px;-webkit-border-radius: 5px 5px 5px 5px;border-radius: 5px 5px 5px 5px;border-color:#cc9933;background-color: #ffffcc; font-size: 12px;margin: -30px 0 0 170px;}
+    .textbox{position: relative;}
+    </style>
+    <title>企业短信设置</title>
+</head>
+<body>
+    <div class="ismp_con">
+        <form id="frmedit" class="pure-form">
+            <table align="center" class="dailishang_edit" style="width:95%;margin:0 auto 0 auto">
+                <tr>
+                    <th align="right">
+                        扩展码号：
+                    </th>
+                    <td>
+                        <input class="input easyui-numberbox" id="SPNumber" name="SPNumber" type="text" required="true" validtype="OnlyNumber" missingmessage="扩展码号必须填写">*
+                        <p style="color:red">（只填写扩展码，网关接入号码系统自动添加。扩展码号长度不能超过8位，建议设置6位扩展码。码号超过20位将导致发送短信失败。）</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        企业短信签名：
+                    </th>
+                    <td>
+                        <input id="Signature" class="input easyui-textbox" name="Signature" />
+                        <span>（如果留空，用户需在短信内容里自己添加企业签名）</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        企业优先级：
+                    </th>
+                    <td>
+                        <input name="Priority" type="radio" value="0" checked="checked" />普通
+                        <input name="Priority" type="radio" value="1" />优先
+                        <input name="Priority" type="radio" value="2" />VIP
+                        <input name="Priority" type="radio" value="9" /><font color="red">紧急</font>
+                        <span>（优先级越高,短信将优先发送，紧急短信将优先发送）</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        审核方式：
+                    </th>
+                    <td>
+                        <input name="Audit" type="radio" value="1" />自动审核
+                        <input name="Audit" type="radio" value="0" checked="checked" />人工审核
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        二次开发接口使用许可：
+                    </th>
+                    <td>
+                        <input name="IsOpen" type="radio" value="1" />是
+                        <input name="IsOpen" type="radio" value="0" checked="checked" />否
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        短信内容过滤方式：
+                    </th>
+                    <td>
+                        <input name="Filter" type="radio" value="1" checked="checked" />替换
+                        <input name="Filter" type="radio" value="2" />发送失败
+                        <input name="Filter" type="radio" value="0" />不过滤
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">
+                        短信发送通道：
+                    </th>
+                    <td>
+                        <div id="tdChannel">
+                        </div>
+                        <p style="color:red">（发送通道为必选项，否则将导致短信发送失败）</p>
+                    </td>
+                </tr>
+            </table>
+            <div class="margintop" style="text-align:center;">
+                <a href="javascript:void(0)" class="pure-button pure-button-primary btn" onclick="submitSMSSetting()">保存</a>
+            </div>
+        </form>
+    </div>
+    <input id="paramJson" type="hidden" value="@ViewData["ParamObject"]">
+</body>
+<script>
+    
+    $.extend($.fn.validatebox.defaults.rules, {
+        OnlyNumber: {
+            validator: function (value) {
+                return /(^\+?[1-9][0-9]*$)/.test(value);
+            },
+            message: "应为数字！"
+        }
+    });
+
+    var Param;
+    $(function () {
+        Param = eval("(" + $('#paramJson').val() + ")");
+
+        InitChannel();
+        setTimeout(LoadData, 1000);
+        InitForm();
+    });
+
+    //初始化通道
+    function InitChannel() {
+        $zh.ajax({  }, "/Platform/GetChannelBySMSType", function (data) {
+            if (data.total) {
+                for (var i = 0; i < data.rows.length; i++) {
+                    $('#tdChannel').append('<input name="Channel" type="radio" value="' + data.rows[i].ChannelID + '" />' + data.rows[i].ChannelName + '');
+                }
+            }
+        });
+    }
+
+    function LoadData() {
+        $zh.ajax({ AccountCode: Param.AccountCode }, "/Platform/GetEnterpriseSMSSetting", function (data) {
+            if (data.total) {
+                $("#frmedit").form("load", data.rows[0]);
+                $("#frmedit").form("load", { IsOpen: data.rows[0].IsOpen ? "1" : "0" });
+                $("#frmedit").form("load", { Channel: (data.rows[0].Channel == "") ? "-1-" : data.rows[0].Channel });
+            }
+        });
+    }
+
+    function InitForm() {
+        $("#frmedit").form({
+            url: "/Platform/UpdateSMSSetting",
+            onSubmit: function (param) {
+                param["AccountCode"] = Param.AccountCode;
+
+                var isValid = $(this).form('validate');
+                if (!isValid) {
+                    $.messager.progress('close');
+                    $.messager.alert("提示", "请先把数据填写完整！");
+                }
+                return isValid;
+            },
+            success: function (data) {
+                var msg = eval("(" + data + ")");
+                if (msg.success) {
+                    
+                }
+                //toastr[msg.type](msg.message);
+                $.messager.alert("提示", msg.message, msg.type);
+            }
+        });
+    }
+
+    function submitSMSSetting() {
+        var channel = $('input[name="Channel"]:checked').val();
+        if (!channel || channel == '') {
+            $.messager.alert("提示", "请选择通道！", msg.type);
+            return;
+        }
+        $("#frmedit").submit();
+    }
+
+</script>
+</html>

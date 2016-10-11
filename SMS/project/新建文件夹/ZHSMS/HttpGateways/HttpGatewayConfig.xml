@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<HttpGatewayConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Account>0001</Account>
+  <UserId>586</UserId>
+  <SendUrl>http://192.168.99.99:9001/send.aspx</SendUrl>
+  <MOInterval>0</MOInterval>
+  <StatusReportInterval>0</StatusReportInterval>
+  <SignaturePos>0</SignaturePos>
+  <ExtendNo>0</ExtendNo>
+</HttpGatewayConfig>

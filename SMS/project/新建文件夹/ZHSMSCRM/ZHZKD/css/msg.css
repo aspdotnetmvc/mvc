@@ -1,0 +1,166 @@
+@charset "utf-8";
+input{outline:none}
+*:focus {noFocusLine: expression(this.onFocus=this.blur());} /*取消IE下input获取焦点时的边框*/
+.msg_box .line {
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #edecff;
+}
+.msg_box .tel_numb {
+	line-height: 40px;
+	height: 40px;
+	margin-bottom: 10px;
+}
+
+.msg_box .tit_text {
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 14px;
+	margin-left: 30px;
+}
+.msg_box .tel_numb input {
+	height: 22px;
+	width: 263px;
+	background-color: #fafafa;
+	border: 1px solid #d7d7d7;
+	list-style-type: none;
+	margin-right: 12px;
+	margin-left: 20px;
+}
+.msg_box .tel_numb a {
+	font-family: "宋体", System;
+	font-size: 12px;
+	color: #3b9cd1;
+	text-decoration: none;
+}
+.msg_box .tel_numb a:hover{
+	text-decoration:underline
+}
+.msg_box .tel_list {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+.msg_box .tel_list.line img {
+	margin-left: 120px;
+}
+
+.msg_box .msg_con {
+	padding-bottom: 10px;
+	overflow: hidden;
+	zoom:1;
+}
+.msg_box .msg_con .msg_text {
+	float: left;
+}
+.msg_box .msg_con .msg_area {
+	width: 520px;
+	font-family: "宋体", System;
+	font-size: 12px;
+	float: left;
+	margin-left: 19px;
+	line-height: 20px;
+	color: #999;
+}
+
+.msg_box .msg_con .msg_area textarea{
+	height: 100px;
+	width: 520px;
+	background-color: #fafafa;
+	border: 1px solid #d2d2d2;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	*margin-left:-18px;
+}
+.msg_box .time_pass {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.msg_box .time_pass input {
+	background-color: #fafafa;
+	background-image:url(../Root/images/date_ico.jpg);
+	background-repeat: no-repeat;
+	background-position: 242px;
+	height: 22px;
+	border: 1px solid #d7d7d7;
+	list-style-type: none;
+	width: 265px;
+	margin-left: 20px;
+}
+.msg_box .url {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.msg_box .url input {
+	height: 22px;
+	width: 263px;
+	background-color: #fafafa;
+	border: 1px solid #d7d7d7;
+	list-style-type: none;
+	margin-right: 12px;
+	margin-left: 20px;
+}
+.daoru_box {
+	height: 170px;
+	width: 310px;
+	border: 1px solid #c7d8ea;
+	position: absolute;
+	z-index: 11;
+	margin-top: -85px;
+	margin-right: -155px;
+	top: 50%;
+	right: 50%;
+	background-color: #FFF;
+	display: none;
+}
+.daoru_box .daoru_title {
+	line-height: 26px;
+	text-indent: 15px;
+	height: 26px;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #c7d8ea;
+	background-image: url(daoru_title.jpg);
+	background-repeat: repeat-x;
+	font-family: "宋体", System;
+	font-size: 12px;
+	font-weight: bold;
+	color: #3d80b3;
+}
+.daoru_box input {
+	width: 200px;
+	margin-left: 75px;
+	list-style-type: none;
+	margin-top: 30px;
+	display: block;
+}
+.daoru_box .daoru_btn {
+	width: 100%;
+	margin-top: 35px;
+	overflow: hidden;
+	zoom:1;
+}
+.daoru_box .daoru_btn button {
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 26px;
+	text-align: center;
+	height: 26px;
+	width: 48px;
+	border: 1px solid #aed0ea;
+	color: #3d80b3;
+	background-image: url(btn_bj_1.jpg);
+	background-repeat: repeat-x;
+}
+.daoru_box .daoru_btn button:hover{
+	background-image: url(btn_bj_2.jpg);
+}
+.daoru_box .daoru_btn #yes {
+	float: left;
+	margin-left: 90px;
+}
+.daoru_box .daoru_btn #no {
+	float: left;
+	margin-left: 40px;
+}

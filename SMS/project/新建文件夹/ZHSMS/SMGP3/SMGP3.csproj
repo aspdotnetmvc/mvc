@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ACBA4DAC-343A-45C0-9BD1-4260DF97FB2D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMGP3</RootNamespace>
+    <AssemblyName>SMGP3</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Active_Test.cs" />
+    <Compile Include="Active_Test_Resp.cs" />
+    <Compile Include="ISMGP_MESSAGE.cs" />
+    <Compile Include="Report.cs" />
+    <Compile Include="SMGPSetting.cs" />
+    <Compile Include="Deliver.cs" />
+    <Compile Include="Deliver_Resp.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="Login_Resp.cs" />
+    <Compile Include="MessageEventArgs.cs" />
+    <Compile Include="MessageHeader.cs" />
+    <Compile Include="Query.cs" />
+    <Compile Include="Query_Resp.cs" />
+    <Compile Include="Sequence.cs" />
+    <Compile Include="SlidingWindow.cs" />
+    <Compile Include="SMGP3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMGP3_COMMAND.cs" />
+    <Compile Include="StateDictionary.cs" />
+    <Compile Include="Submit.cs" />
+    <Compile Include="Submit_Resp.cs" />
+    <Compile Include="Tlv.cs" />
+    <Compile Include="TlvId.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="WapPush.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\SocketClient\SocketClient.csproj">
+      <Project>{e551891d-f4f3-45fb-8cd1-f49177bcdbe0}</Project>
+      <Name>SocketClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GatewayInterface\GatewayInterface.csproj">
+      <Project>{fb367d02-2c85-4247-aded-d5cc858ffeb3}</Project>
+      <Name>GatewayInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSModel\SMSModel.csproj">
+      <Project>{c72246fb-d27f-4c92-b04f-f2ff1606ef50}</Project>
+      <Name>SMSModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMSUtils\SMSUtils.csproj">
+      <Project>{bec8a3df-afcf-4dc6-bdb3-5a0dc157c5dc}</Project>
+      <Name>SMSUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SMGP.Config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

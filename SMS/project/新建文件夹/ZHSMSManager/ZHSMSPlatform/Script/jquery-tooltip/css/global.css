@@ -1,0 +1,110 @@
+/* - - - - - - CSS Document - - - - - - - - -
+
+/* ---------->>> jtip <<<---------------------------------------------------------------*/
+
+#JT_arrow_left
+{
+	background-image: url(../images/arrow_left.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	position: absolute;
+	z-index: 9999999;
+	left: -11px;
+	height: 23px;
+	width: 10px;
+	top: -3px;
+}
+
+#JT_arrow_right
+{
+	background-image: url(../images/arrow_right.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	position: absolute;
+	z-index: 9999999;
+	height: 23px;
+	width: 11px;
+	top: -2px;
+}
+
+#JT
+{
+	position: absolute;
+	border: 1px solid #cccccc;
+	background-color: #fff;
+	z-index: 9999999;
+	color:#ff0000;
+}
+/*消息体内文本内容 样式开始*/
+#JT_copy
+{
+	padding: 0px 10px 10px 5px;
+	color:#2d8605;
+	z-index: 9999999;
+	background-color:#fff;
+}
+
+#JT_copy ul
+{
+	list-style: none;
+	margin:0px;
+	padding:0px;
+}
+
+#JT_copy ul li,ol li
+{
+	padding:3px;
+	line-height:18px;
+}
+/*消息体内文本内容 样式结束*/
+
+.JT_loader
+{
+	background-image: url(../images/loader.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 100%;
+	height: 12px;
+	z-index: 9999999;
+}
+
+#JT_close_left
+{
+	background-color: #cccccc;
+	text-align: left;
+	padding-left: 8px;
+	padding-bottom: 5px;
+	padding-top: 2px;
+	font-weight: bold;
+	z-index: 9999999;
+}
+
+#JT_close_right
+{
+	background-color: #cccccc;
+	text-align: left;
+	padding-left: 8px;
+	padding-bottom: 5px;
+	padding-top: 2px;
+	font-weight: bold;
+	z-index: 9999999;
+}
+
+#JT_copy p
+{
+	margin: 3px 0;
+	z-index: 9999999;
+}
+
+#JT_copy img
+{
+	padding: 1px;
+	border: 1px solid #CCCCCC;
+	z-index: 9999999;
+}
+
+.jTip
+{
+	cursor: help;
+	z-index: 9999999;
+}

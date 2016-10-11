@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net40": {
+      "bin": {
+        "assembly": "../../Json/Newtonsoft.Json.dll",
+        "pdb": "../../Json/Newtonsoft.Json.pdb"
+      }
+    },
+    "net45": {
+      "bin": {
+        "assembly": "../../Json/Newtonsoft.Json.dll",
+        "pdb": "../../Json/Newtonsoft.Json.pdb"
+      }
+    },
+    "net451": {
+      "bin": {
+        "assembly": "../../Json/Newtonsoft.Json.dll",
+        "pdb": "../../Json/Newtonsoft.Json.pdb"
+      }
+    }
+  }
+}
